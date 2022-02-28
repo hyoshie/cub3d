@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/02/28 00:34:13 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/28 16:20:55 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ char *g_map[MAP_NUM_ROWS + 1] = {"11111111111111111111", "10000000000000000001",
 
 void init_map(t_map *map, void *mlx_ptr) {
   map->map_ptr = g_map;
-  map->mlx_ptr = mlx_ptr;
   init_monocolor_image(&map->floor, mlx_ptr, OFFWHITE);
   init_monocolor_image(&map->wall, mlx_ptr, GRAY);
 }
@@ -52,6 +51,7 @@ void init_player(t_player *player) {
 
 void init_game(t_game *game) {
   game->mlx_ptr = mlx_init();
+  // mlx_do_key_autorepeaton(game->mlx_ptr);
   game->win_ptr =
       mlx_new_window(game->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_NAME);
   init_map(&game->map, game->mlx_ptr);

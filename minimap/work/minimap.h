@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/02/28 00:36:46 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/28 16:21:01 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_img {
 
 typedef struct s_map {
   char **map_ptr;
-  void *mlx_ptr;
   t_img floor;
   t_img wall;
 } t_map;
@@ -53,7 +52,7 @@ typedef struct s_game {
 void init_game(t_game *game);
 void register_hooks(t_game *game);
 void my_mlx_pixel_put(t_img *img, int x, int y, int color);
-void render(t_game *game);
+int render(t_game *game);
 void init_image(t_img *img, void *mlx_ptr, int width, int height);
 
 #endif /* MINIMAP_H */

@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 17:40:49 by user42            #+#    #+#             */
-/*   Updated: 2022/02/28 00:59:12 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/28 16:10:52 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void render_player(t_player *player, t_img *current) {
   }
 }
 
-void render(t_game *game) {
+int render(t_game *game) {
   t_img current;
 
   init_image(&current, game->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -54,4 +54,5 @@ void render(t_game *game) {
   render_player(&game->player, &current);
   // render_ray();
   mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, current.img_ptr, 0, 0);
+  return (0);
 }
