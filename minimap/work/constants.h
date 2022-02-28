@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/02/28 00:45:40 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/28 17:14:50 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,11 @@
 #define KEY_W 0x77
 #define STEP_X 10
 #define STEP_Y 10
+#define WALK_SPEED 10
+#define TURN_SPEED (45 * (M_PI / 180))
+#define KEY_PRESS 2
+#define KEY_RELEASE 3
+#define KEY_PRESS_MASK (1L << 0)
+#define KEY_RELEASE_MASK (1L << 1)
 
 #endif /* CONSTANTS_H */

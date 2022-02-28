@@ -6,7 +6,7 @@
 #    By: hyoshie <hyoshie@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/02/27 23:15:56 by user42           ###   ########.fr        #
+#    Updated: 2022/02/28 16:35:19 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ fclean: clean
 
 re: fclean all
 
-# test: $(NAME)
-# 	./$(NAME)
+run: $(NAME)
+	./$(NAME)
 
 .PHONY: all clean fclean re test

@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/02/28 16:20:55 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/28 17:02:41 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ void init_player(t_player *player) {
   player->x = WINDOW_WIDTH / 2;
   player->y = WINDOW_HEIGHT / 2;
   player->radius = 10;
+  player->walk_direction = 0;
+  player->turn_direction = 0;
+  player->rotation_angle = M_PI / 2;
+  player->walk_speed = WALK_SPEED;
+  player->turn_speed = TURN_SPEED;
 }
 
 void init_game(t_game *game) {

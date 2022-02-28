@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/02/28 16:21:01 by user42           ###   ########.fr       */
+/*   Updated: 2022/02/28 17:04:19 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,11 @@ typedef struct s_player {
   int x;
   int y;
   int radius;
-  int height;
+  int walk_direction; // 1 is down, -1 is up
+  int turn_direction; // 1 is right, -1 is left
+  double rotation_angle;
+  int walk_speed;
+  double turn_speed;
 } t_player;
 
 typedef struct s_game {
