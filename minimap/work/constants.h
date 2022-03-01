@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/01 11:07:05 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/01 11:23:20 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,18 @@
 #define STEP_X 10
 #define STEP_Y 10
 #define WALK_SPEED 10
+#define PI 3.14159265
+// #define TURN_SPEED (45 * (PI / 180))
 #define TURN_SPEED (45 * (M_PI / 180))
 // after turn around, walking back cause error
 // #define PI 3.14159265
 // #define TURN_SPEED (30 * (M_PI / 180))
 // #define TURN_SPEED (30 * (PI / 180))
 
-#define CENTER_LINE_LENGTH 50
+#define CENTER_LINE_LENGTH 60
 #define FOV_ANGLE (60 * (M_PI / 180))
-#define NUM_RAYS 30
+// #define FOV_ANGLE (60 * (PI / 180))
+#define NUM_RAYS 4
 #define RAY_LENGTH 100
 
 #endif /* CONSTANTS_H */

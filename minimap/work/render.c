@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 17:40:49 by user42            #+#    #+#             */
-/*   Updated: 2022/03/01 11:12:14 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/01 11:24:20 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void render_ray(t_player *player, t_img *win_img) {
       int y = player->y + sin(ray_angle) * j;
       my_mlx_pixel_put(win_img, x, y, YELLOW);
     };
-    ray_angle += FOV_ANGLE / NUM_RAYS;
+    ray_angle += FOV_ANGLE / (NUM_RAYS - 1);
   }
 }
 
