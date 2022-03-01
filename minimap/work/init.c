@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/02/28 17:02:41 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/01 11:08:41 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ char *g_map[MAP_NUM_ROWS + 1] = {"11111111111111111111", "10000000000000000001",
 
 void init_map(t_map *map, void *mlx_ptr) {
   map->map_ptr = g_map;
-  init_monocolor_image(&map->floor, mlx_ptr, OFFWHITE);
-  init_monocolor_image(&map->wall, mlx_ptr, GRAY);
+  init_monocolor_image(&map->floor, mlx_ptr, GRAY);
+  init_monocolor_image(&map->wall, mlx_ptr, OFFWHITE);
 }
 
 void init_player(t_player *player) {
@@ -49,7 +49,7 @@ void init_player(t_player *player) {
   player->radius = 10;
   player->walk_direction = 0;
   player->turn_direction = 0;
-  player->rotation_angle = M_PI / 2;
+  player->rotation_angle = M_PI / 2 * 3;
   player->walk_speed = WALK_SPEED;
   player->turn_speed = TURN_SPEED;
 }
