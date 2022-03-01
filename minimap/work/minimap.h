@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/01 17:29:20 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/01 17:48:26 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,6 @@ typedef struct s_ray {
   bool is_facing_right;
   int wall_hit_content; // need check
 } t_ray;
-
-// typedef struct s_game {
-//   void *mlx_ptr;
-//   void *win_ptr;
-//   t_map map;
-//   t_player player;
-//   t_ray ray[NUM_RAYS];
-// } t_game;
 
 typedef struct s_game {
   void *mlx_ptr;

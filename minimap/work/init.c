@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/01 17:22:47 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/01 17:48:57 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ static void init_ray(t_ray **ray) {
     (*ray)[i].is_facing_right = false;
     (*ray)[i].wall_hit_content = 42;
   };
-  // printf("[(*ray)[2].wall_hit_content]%d\n", (*ray)[2].wall_hit_content);
 }
 void init_game(t_game *game) {
   game->mlx_ptr = mlx_init();
@@ -77,6 +76,4 @@ void init_game(t_game *game) {
   init_map(&game->map, game->mlx_ptr);
   init_player(&game->player);
   init_ray(&game->ray);
-  // printf("[game->ray[2].wall_hit_content]%d\n",
-  // game->ray[2].wall_hit_content);
 }
