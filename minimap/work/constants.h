@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/01 11:23:20 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/01 11:29:36 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 #define RED 0x00FF0000
 #define YELLOW 0x00FFFF00
 #define ORANGE 0x00FF6500
-// #define GREEN 0x0000FF00
-// #define BLUE 0x000000FF
 #define GRAY 0x002F3128
 #define OFFWHITE 0x00FFF9EE
 
@@ -39,11 +37,8 @@
 #define KEY_PRESS_MASK (1L << 0)
 #define KEY_RELEASE_MASK (1L << 1)
 
-#define STEP_X 10
-#define STEP_Y 10
+#define PLAYER_RADIUS 5
 #define WALK_SPEED 10
-#define PI 3.14159265
-// #define TURN_SPEED (45 * (PI / 180))
 #define TURN_SPEED (45 * (M_PI / 180))
 // after turn around, walking back cause error
 // #define PI 3.14159265
