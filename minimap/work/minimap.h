@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/01 17:22:30 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/01 17:29:20 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,6 @@ typedef struct s_player {
   int walk_speed;
   double turn_speed;
 } t_player;
-
-// struct Ray {
-//   float rayAngle;
-//   float wallHitX;
-//   float wallHitY;
-//   float distance;
-//   int wasHitVertical;
-//   int isRayFacingUp;
-//   int isRayFacingDown;
-//   int isRayFacingLeft;
-//   int isRayFacingRight;
-//   int wallHitContent;
-// } rays[NUM_RAYS];
 
 typedef struct s_ray {
   double angle;
