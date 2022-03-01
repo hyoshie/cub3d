@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/01 11:27:18 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/01 17:22:47 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void init_map(t_map *map, void *mlx_ptr) {
   init_monocolor_image(&map->wall, mlx_ptr, OFFWHITE);
 }
 
-void init_player(t_player *player) {
+static void init_player(t_player *player) {
   player->x = WINDOW_WIDTH / 2;
   player->y = WINDOW_HEIGHT / 2;
   player->radius = PLAYER_RADIUS;
@@ -54,11 +54,29 @@ void init_player(t_player *player) {
   player->turn_speed = TURN_SPEED;
 }
 
+static void init_ray(t_ray **ray) {
+  *ray = malloc(sizeof(t_ray) * NUM_RAYS);
+  for (int i = 0; i < NUM_RAYS; i++) {
+    (*ray)[i].angle = 0;
+    (*ray)[i].wall_hit_x = 0;
+    (*ray)[i].wall_hit_y = 0;
+    (*ray)[i].distance = 0;
+    (*ray)[i].was_hit_vertical = false;
+    (*ray)[i].is_facing_up = false;
+    (*ray)[i].is_facing_down = false;
+    (*ray)[i].is_facing_left = false;
+    (*ray)[i].is_facing_right = false;
+    (*ray)[i].wall_hit_content = 42;
+  };
+  // printf("[(*ray)[2].wall_hit_content]%d\n", (*ray)[2].wall_hit_content);
+}
 void init_game(t_game *game) {
   game->mlx_ptr = mlx_init();
   game->win_ptr =
       mlx_new_window(game->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_NAME);
   init_map(&game->map, game->mlx_ptr);
   init_player(&game->player);
-  // init_ray(game);
+  init_ray(&game->ray);
+  // printf("[game->ray[2].wall_hit_content]%d\n",
+  // game->ray[2].wall_hit_content);
 }

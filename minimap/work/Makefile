@@ -6,7 +6,7 @@
 #    By: hyoshie <hyoshie@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/01 11:11:02 by user42           ###   ########.fr        #
+#    Updated: 2022/03/01 13:08:00 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ SRCS		= main.c\
 			  register_hooks.c\
 			  my_mlx_pixel_put.c\
 			  render.c\
-			  render_map.c
+			  render_map.c\
+			  update.c\
+			  cast_all_rays.c
 OBJS		= $(SRCS:.c=.o)
 
 LIBS		= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
