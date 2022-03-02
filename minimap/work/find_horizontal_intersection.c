@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 13:41:38 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 17:18:31 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 17:31:59 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static t_point find_intersection_with_wall(t_ray *ray, t_map *map,
          intersection.y >= 0 && intersection.y <= WINDOW_HEIGHT) {
     check_x = intersection.x;
     check_y = intersection.y;
+    if (ray->is_facing_up)
+      check_y -= 1;
     if (map_has_wall_at(check_x, check_y, map->map_ptr)) {
       return (intersection);
     } else {

@@ -25,13 +25,13 @@ static void render_ray(t_player *player, t_ray *ray, t_img *win_img) {
   }
 }
 
-static void render_center_line(t_player *player, t_img *win_img) {
-  for (int i = 0; i < CENTER_LINE_LENGTH; i++) {
-    int x = player->position.x + cos(player->rotation_angle) * i;
-    int y = player->position.y + sin(player->rotation_angle) * i;
-    my_mlx_pixel_put(win_img, x, y, RED);
-  }
-}
+// static void render_center_line(t_player *player, t_img *win_img) {
+//   for (int i = 0; i < CENTER_LINE_LENGTH; i++) {
+//     int x = player->position.x + cos(player->rotation_angle) * i;
+//     int y = player->position.y + sin(player->rotation_angle) * i;
+//     my_mlx_pixel_put(win_img, x, y, RED);
+//   }
+// }
 
 static void render_player(t_player *player, t_img *win_img) {
   for (int i = -player->radius; i < player->radius; i++) {
@@ -41,7 +41,7 @@ static void render_player(t_player *player, t_img *win_img) {
                          player->position.y + i, RED);
     }
   }
-  render_center_line(player, win_img);
+  // render_center_line(player, win_img);
 }
 
 int render(t_game *game) {
