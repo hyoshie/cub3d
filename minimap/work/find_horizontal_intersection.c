@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 13:41:38 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 16:02:17 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 17:18:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,14 @@ static t_point find_intersection_with_wall(t_ray *ray, t_map *map,
                                            t_point intersection) {
   const double xstep = get_xstep(ray);
   const double ystep = get_ystep(ray);
+  double check_x;
+  double check_y;
 
   while (intersection.x >= 0 && intersection.x <= WINDOW_WIDTH &&
          intersection.y >= 0 && intersection.y <= WINDOW_HEIGHT) {
-    if (map_has_wall_at(intersection.x, intersection.y, map->map_ptr)) {
+    check_x = intersection.x;
+    check_y = intersection.y;
+    if (map_has_wall_at(check_x, check_y, map->map_ptr)) {
       return (intersection);
     } else {
       intersection.x += xstep;
