@@ -6,14 +6,14 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 11:36:52 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 11:43:06 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 13:25:16 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "minimap.h"
 
-static bool map_has_wall_at(double x, double y, char **map) {
+bool map_has_wall_at(double x, double y, char **map) {
   if (x < 0 || x > WINDOW_WIDTH || y < 0 || y > WINDOW_HEIGHT) {
     return true;
   }
@@ -39,5 +39,5 @@ static void move_player(t_player *player, char **map) {
 
 void update(t_game *game) {
   move_player(&game->player, game->map.map_ptr);
-  cast_all_rays(game->ray, &game->player);
+  cast_all_rays(game->ray, &game->player, &game->map);
 }
