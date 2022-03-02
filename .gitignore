@@ -1,5 +1,6 @@
-./tutorial/ray_tracing/.git
-./tutorial/ray_tracing/mlx_example/minilibx-linux/.git
-./tutorial/minilibx/minilibx-linux/.git
+./minilibx-linux
+./tutorial/*
+./minimap/ref
+./minimap/tags
 
 *.o

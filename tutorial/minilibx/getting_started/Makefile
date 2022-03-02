@@ -6,7 +6,7 @@
 #    By: hyoshie <hyoshie@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/02/23 13:53:05 by user42           ###   ########.fr        #
+#    Updated: 2022/02/27 10:50:15 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,17 +16,23 @@ CFLAGS		= -Wall -Wextra -Werror -g
 
 MLX_DIR		= ../minilibx-linux
 SRCS1		= init.c
-OBJS1		= $(SRCS1:.cpp=.o)
+OBJS1		= $(SRCS1:.c=.o)
 SRCS2		= window.c
-OBJS2		= $(SRCS2:.cpp=.o)
+OBJS2		= $(SRCS2:.c=.o)
 SRCS3		= pixel.c
-OBJS3		= $(SRCS3:.cpp=.o)
+OBJS3		= $(SRCS3:.c=.o)
 SRCS4		= square.c
-OBJS4		= $(SRCS4:.cpp=.o)
+OBJS4		= $(SRCS4:.c=.o)
 SRCS5		= square_filled.c
-OBJS5		= $(SRCS5:.cpp=.o)
+OBJS5		= $(SRCS5:.c=.o)
 SRCS6		= circle.c
-OBJS6		= $(SRCS6:.cpp=.o)
+OBJS6		= $(SRCS6:.c=.o)
+SRCS7		= triangle.c
+OBJS7		= $(SRCS7:.c=.o)
+SRCS8		= random_triangle.c
+OBJS8		= $(SRCS8:.c=.o)
+SRCS9		= hexagon.c
+OBJS9		= $(SRCS9:.c=.o)
 # SRCS2		= 02_textured_raycast.c
 # SRCS3		= 03_img_textured_raycast.c
 # SRCS4		= 04_floor_ceiling.c
@@ -34,7 +40,7 @@ OBJS6		= $(SRCS6:.cpp=.o)
 LIBS		= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 # all: t1 t2 t3 t4 t5
-all: t1 t2 t3 t4 t5 t6
+all: t1 t2 t3 t4 t5 t6 t7 t8 t9
 
 t1: $(OBJS1)
 	$(MAKE) -C $(MLX_DIR)
@@ -60,20 +66,22 @@ t6: $(OBJS6)
 	$(MAKE) -C $(MLX_DIR)
 	$(CC) $(CFLAGS) -o t6 $(OBJS6) $(LIBS) 
 
-# t3: $(SRCS3)
-# 	$(CC) $(CFLAGS) -o t3 $(SRCS3) $(LIBS) 
+t7: $(OBJS7)
+	$(MAKE) -C $(MLX_DIR)
+	$(CC) $(CFLAGS) -o t7 $(OBJS7) $(LIBS) 
 
-# t4: $(SRCS4)
-# 	$(CC) $(CFLAGS) -o t4 $(SRCS4) $(LIBS) 
+t8: $(OBJS8)
+	$(MAKE) -C $(MLX_DIR)
+	$(CC) $(CFLAGS) -o t8 $(OBJS8) $(LIBS) 
 
-# t5: $(SRCS5)
-# 	$(CC) $(CFLAGS) -o t5 $(SRCS5) $(LIBS) 
-
+t9: $(OBJS9)
+	$(MAKE) -C $(MLX_DIR)
+	$(CC) $(CFLAGS) -o t9 $(OBJS9) $(LIBS) 
 clean:
 	$(RM) *.o
 
 fclean: clean
-	$(RM) t1 t2 t3 t4 t5
+	$(RM) t1 t2 t3 t4 t5 t6 t7 t8 t9
 
 re: fclean all
 

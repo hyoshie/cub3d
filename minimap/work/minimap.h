@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/01 17:48:26 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/01 18:02:33 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 #include <string.h>
 
 #include "minilibx-linux/mlx.h"
+
+typedef struct s_point {
+  double x;
+  double y;
+} t_point;
 
 typedef struct s_img {
   void *img_ptr;

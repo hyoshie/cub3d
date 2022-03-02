@@ -1,0 +1,104 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BLUE	keycode.c	/^#define BLUE /;"	d	file:
+BLUE	mose_pos.c	/^#define BLUE /;"	d	file:
+BOTTUN1_MOTION_MASK	keycode.c	/^  BOTTUN1_MOTION_MASK = 1L << 8,$/;"	e	enum:Xmask	file:
+BOTTUN1_MOTION_MASK	mose_pos.c	/^  BOTTUN1_MOTION_MASK = 1L << 8,$/;"	e	enum:Xmask	file:
+BOTTUN_PRESS_MASK	keycode.c	/^  BOTTUN_PRESS_MASK = 1L << 2,$/;"	e	enum:Xmask	file:
+BOTTUN_PRESS_MASK	mose_pos.c	/^  BOTTUN_PRESS_MASK = 1L << 2,$/;"	e	enum:Xmask	file:
+BOTTUN_RELEASE_MASK	keycode.c	/^  BOTTUN_RELEASE_MASK = 1L << 3,$/;"	e	enum:Xmask	file:
+BOTTUN_RELEASE_MASK	mose_pos.c	/^  BOTTUN_RELEASE_MASK = 1L << 3,$/;"	e	enum:Xmask	file:
+CC	Makefile	/^CC			= gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS		= -Wall -Wextra -Werror -g$/;"	m
+CYAN	keycode.c	/^#define CYAN /;"	d	file:
+CYAN	mose_pos.c	/^#define CYAN /;"	d	file:
+ENTER_WINDOW_MASK	keycode.c	/^  ENTER_WINDOW_MASK = 1L << 4,$/;"	e	enum:Xmask	file:
+ENTER_WINDOW_MASK	mose_pos.c	/^  ENTER_WINDOW_MASK = 1L << 4,$/;"	e	enum:Xmask	file:
+GREEN	keycode.c	/^#define GREEN /;"	d	file:
+GREEN	mose_pos.c	/^#define GREEN /;"	d	file:
+KEY_A	keycode.c	/^#define KEY_A /;"	d	file:
+KEY_A	mose_pos.c	/^#define KEY_A /;"	d	file:
+KEY_ESC	keycode.c	/^#define KEY_ESC /;"	d	file:
+KEY_ESC	mose_pos.c	/^#define KEY_ESC /;"	d	file:
+KEY_PRESS_MASK	keycode.c	/^  KEY_PRESS_MASK = 1L << 0,$/;"	e	enum:Xmask	file:
+KEY_PRESS_MASK	mose_pos.c	/^  KEY_PRESS_MASK = 1L << 0,$/;"	e	enum:Xmask	file:
+KEY_RELEASE_MASK	keycode.c	/^  KEY_RELEASE_MASK = 1L << 1,$/;"	e	enum:Xmask	file:
+KEY_RELEASE_MASK	mose_pos.c	/^  KEY_RELEASE_MASK = 1L << 1,$/;"	e	enum:Xmask	file:
+LEAVE_WINDOW_MASK	keycode.c	/^  LEAVE_WINDOW_MASK = 1L << 5,$/;"	e	enum:Xmask	file:
+LEAVE_WINDOW_MASK	mose_pos.c	/^  LEAVE_WINDOW_MASK = 1L << 5,$/;"	e	enum:Xmask	file:
+LIBS	Makefile	/^LIBS		= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm$/;"	m
+MAGENTA	keycode.c	/^#define MAGENTA /;"	d	file:
+MAGENTA	mose_pos.c	/^#define MAGENTA /;"	d	file:
+MLX_DIR	Makefile	/^MLX_DIR		= ..\/minilibx-linux$/;"	m
+MLX_H	mlx.h	/^#define	MLX_H$/;"	d
+NO_EVENT_MASK	keycode.c	/^  NO_EVENT_MASK = 0,$/;"	e	enum:Xmask	file:
+NO_EVENT_MASK	mose_pos.c	/^  NO_EVENT_MASK = 0,$/;"	e	enum:Xmask	file:
+OBJS1	Makefile	/^OBJS1		= $(SRCS1:.cpp=.o)$/;"	m
+OBJS2	Makefile	/^OBJS2		= $(SRCS2:.cpp=.o)$/;"	m
+OBJS3	Makefile	/^OBJS3		= $(SRCS3:.cpp=.o)$/;"	m
+OBJS4	Makefile	/^OBJS4		= $(SRCS4:.cpp=.o)$/;"	m
+OBJS5	Makefile	/^OBJS5		= $(SRCS5:.cpp=.o)$/;"	m
+OBJS6	Makefile	/^OBJS6		= $(SRCS6:.cpp=.o)$/;"	m
+ON_DESTROY	keycode.c	/^  ON_DESTROY = 17,$/;"	e	enum:Xevent	file:
+ON_DESTROY	mose_pos.c	/^  ON_DESTROY = 17,$/;"	e	enum:Xevent	file:
+ON_ENTER_NOTIFY	keycode.c	/^  ON_ENTER_NOTIFY = 7,$/;"	e	enum:Xevent	file:
+ON_ENTER_NOTIFY	mose_pos.c	/^  ON_ENTER_NOTIFY = 7,$/;"	e	enum:Xevent	file:
+ON_EXPOSE	keycode.c	/^  ON_EXPOSE = 12,$/;"	e	enum:Xevent	file:
+ON_EXPOSE	mose_pos.c	/^  ON_EXPOSE = 12,$/;"	e	enum:Xevent	file:
+ON_KEYDOWN	keycode.c	/^  ON_KEYDOWN = 2,$/;"	e	enum:Xevent	file:
+ON_KEYDOWN	mose_pos.c	/^  ON_KEYDOWN = 2,$/;"	e	enum:Xevent	file:
+ON_KEYUP	keycode.c	/^  ON_KEYUP = 3,$/;"	e	enum:Xevent	file:
+ON_KEYUP	mose_pos.c	/^  ON_KEYUP = 3,$/;"	e	enum:Xevent	file:
+ON_LEAVE_NOTIFY	keycode.c	/^  ON_LEAVE_NOTIFY = 8,$/;"	e	enum:Xevent	file:
+ON_LEAVE_NOTIFY	mose_pos.c	/^  ON_LEAVE_NOTIFY = 8,$/;"	e	enum:Xevent	file:
+ON_MOUSEDOWN	keycode.c	/^  ON_MOUSEDOWN = 4,$/;"	e	enum:Xevent	file:
+ON_MOUSEDOWN	mose_pos.c	/^  ON_MOUSEDOWN = 4,$/;"	e	enum:Xevent	file:
+ON_MOUSEMOVE	keycode.c	/^  ON_MOUSEMOVE = 6,$/;"	e	enum:Xevent	file:
+ON_MOUSEMOVE	mose_pos.c	/^  ON_MOUSEMOVE = 6,$/;"	e	enum:Xevent	file:
+ON_MOUSEUP	keycode.c	/^  ON_MOUSEUP = 5,$/;"	e	enum:Xevent	file:
+ON_MOUSEUP	mose_pos.c	/^  ON_MOUSEUP = 5,$/;"	e	enum:Xevent	file:
+ON_RESIZE	keycode.c	/^  ON_RESIZE = 25$/;"	e	enum:Xevent	file:
+ON_RESIZE	mose_pos.c	/^  ON_RESIZE = 25$/;"	e	enum:Xevent	file:
+POINTER_MOTION_MASK	keycode.c	/^  POINTER_MOTION_MASK = 1L << 6,$/;"	e	enum:Xmask	file:
+POINTER_MOTION_MASK	mose_pos.c	/^  POINTER_MOTION_MASK = 1L << 6,$/;"	e	enum:Xmask	file:
+RED	keycode.c	/^#define RED /;"	d	file:
+RED	mose_pos.c	/^#define RED /;"	d	file:
+RESET	keycode.c	/^#define RESET /;"	d	file:
+RESET	mose_pos.c	/^#define RESET /;"	d	file:
+RESIZE_REQUEST_MASK	keycode.c	/^  RESIZE_REQUEST_MASK = 1 << 25,$/;"	e	enum:Xmask	file:
+RESIZE_REQUEST_MASK	mose_pos.c	/^  RESIZE_REQUEST_MASK = 1 << 25,$/;"	e	enum:Xmask	file:
+SRCS1	Makefile	/^SRCS1		= keycode.c$/;"	m
+SRCS2	Makefile	/^SRCS2		= mouse_pos.c$/;"	m
+SRCS3	Makefile	/^SRCS3		= close_bottun.c$/;"	m
+SRCS4	Makefile	/^SRCS4		= resize.c$/;"	m
+SRCS5	Makefile	/^SRCS5		= longpress.c$/;"	m
+SRCS6	Makefile	/^SRCS6		= mouse.c$/;"	m
+STRUCTURE_NOTIFY_MASK	keycode.c	/^  STRUCTURE_NOTIFY_MASK = 1L << 17,$/;"	e	enum:Xmask	file:
+STRUCTURE_NOTIFY_MASK	mose_pos.c	/^  STRUCTURE_NOTIFY_MASK = 1L << 17,$/;"	e	enum:Xmask	file:
+WIN_HEIGHT	keycode.c	/^#define WIN_HEIGHT /;"	d	file:
+WIN_HEIGHT	mose_pos.c	/^#define WIN_HEIGHT /;"	d	file:
+WIN_WIDTH	keycode.c	/^#define WIN_WIDTH /;"	d	file:
+WIN_WIDTH	mose_pos.c	/^#define WIN_WIDTH /;"	d	file:
+Xevent	keycode.c	/^enum Xevent {$/;"	g	file:
+Xevent	mose_pos.c	/^enum Xevent {$/;"	g	file:
+Xmask	keycode.c	/^enum Xmask {$/;"	g	file:
+Xmask	mose_pos.c	/^enum Xmask {$/;"	g	file:
+YELLOW	keycode.c	/^#define YELLOW /;"	d	file:
+YELLOW	mose_pos.c	/^#define YELLOW /;"	d	file:
+key_press_hook	keycode.c	/^int key_press_hook(int keycode, t_vars *vars) {$/;"	f
+key_press_hook	mose_pos.c	/^int key_press_hook(int keycode, t_vars *vars) {$/;"	f
+main	keycode.c	/^int main(void) {$/;"	f
+main	mose_pos.c	/^int main(void) {$/;"	f
+mlx	keycode.c	/^  void *mlx;$/;"	m	struct:__anon1	file:
+mlx	mose_pos.c	/^  void *mlx;$/;"	m	struct:__anon2	file:
+mouse_move_hook	mose_pos.c	/^int mouse_move_hook(int x, int y, t_vars *vars) {$/;"	f
+set_hooks	keycode.c	/^void set_hooks(t_vars *vars) { mlx_key_hook(vars->win, key_press_hook, vars); }$/;"	f
+set_hooks	mose_pos.c	/^void set_hooks(t_vars *vars) {$/;"	f
+t_vars	keycode.c	/^} t_vars;$/;"	t	typeref:struct:__anon1	file:
+t_vars	mose_pos.c	/^} t_vars;$/;"	t	typeref:struct:__anon2	file:
+win	keycode.c	/^  void *win;$/;"	m	struct:__anon1	file:
+win	mose_pos.c	/^  void *win;$/;"	m	struct:__anon2	file:
