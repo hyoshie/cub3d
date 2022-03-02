@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/01 17:47:54 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 11:45:57 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 
 #define CENTER_LINE_LENGTH 60
 #define FOV_ANGLE (60 * (M_PI / 180))
-#define NUM_RAYS 50
+#define NUM_RAYS 4
 #define RAY_LENGTH 100
 
 #endif /* CONSTANTS_H */

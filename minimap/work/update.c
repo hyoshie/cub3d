@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 11:36:52 by user42            #+#    #+#             */
-/*   Updated: 2022/03/01 17:42:49 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 11:43:06 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ static void move_player(t_player *player, char **map) {
 
 void update(t_game *game) {
   move_player(&game->player, game->map.map_ptr);
-  // cast_all_rays(game->ray, &game->player);
+  cast_all_rays(game->ray, &game->player);
 }

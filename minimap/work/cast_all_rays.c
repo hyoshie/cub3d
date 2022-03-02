@@ -6,21 +6,12 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 12:19:01 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 00:15:48 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 11:59:19 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "minimap.h"
-
-// void castRay(float rayAngle, int stripId) {
-//     rayAngle = normalizeAngle(rayAngle);
-
-//     int isRayFacingDown = rayAngle > 0 && rayAngle < PI;
-//     int isRayFacingUp = !isRayFacingDown;
-
-//     int isRayFacingRight = rayAngle < 0.5 * PI || rayAngle > 1.5 * PI;
-//     int isRayFacingLeft = !isRayFacingRight;
 
 static double normalize_angle(double ray_angle) {
   double normalized_angle = remainder(ray_angle, M_PI * 2);
@@ -29,16 +20,28 @@ static double normalize_angle(double ray_angle) {
   return (normalized_angle);
 }
 
-static void set_ray_is_facing_to(t_ray *ray, double ray_angle, int strip_id) {
+// static void set_ray_is_facing_to(t_ray *ray, double ray_angle, int strip_id)
+// {
+//   double normalized_angle = normalize_angle(ray_angle);
+
+//   ray[strip_id].angle = normalized_angle;
+//   ray[strip_id].is_facing_up =
+//       normalized_angle > M_PI && normalized_angle < M_PI * 2;
+//   ray[strip_id].is_facing_down = !ray[strip_id].is_facing_up;
+//   ray[strip_id].is_facing_left =
+//       normalized_angle > 0.5 * M_PI && normalized_angle < 1.5 * M_PI;
+//   ray[strip_id].is_facing_right = !ray[strip_id].is_facing_left;
+// }
+
+static void set_ray_is_facing_to(t_ray *ray, double ray_angle) {
   double normalized_angle = normalize_angle(ray_angle);
 
-  ray[strip_id].angle = normalized_angle;
-  ray[strip_id].is_facing_up =
-      normalized_angle > M_PI && normalized_angle < M_PI * 2;
-  ray[strip_id].is_facing_down = !ray[strip_id].is_facing_up;
-  ray[strip_id].is_facing_left =
-      normalized_angle > 0.5 * M_PI || normalized_angle < 1.5 * M_PI;
-  ray[strip_id].is_facing_right = !ray[strip_id].is_facing_left;
+  ray->angle = normalized_angle;
+  ray->is_facing_up = normalized_angle > M_PI && normalized_angle < M_PI * 2;
+  ray->is_facing_down = !ray->is_facing_up;
+  ray->is_facing_left =
+      normalized_angle > 0.5 * M_PI && normalized_angle < 1.5 * M_PI;
+  ray->is_facing_right = !ray->is_facing_left;
 }
 
 // float xintercept, yintercept;
@@ -89,27 +92,38 @@ static void set_ray_is_facing_to(t_ray *ray, double ray_angle, int strip_id) {
 //    }
 //}
 
-static t_point find_horizontal_intersection(t_ray *ray, double ray_angle,
-                                            int strip_id) {
-  bool found_intersection;
-  t_point closest_intersection;
-  t_point intersection_with_wall;
+// static t_point find_horizontal_intersection(t_ray *ray, double ray_angle,
+//                                             int strip_id) {
+//   bool found_intersection;
+//   t_point closest_intersection;
+//   t_point intersection_with_wall;
 
-  found_intersection = false;
-  // find_closest_intersection();
-  // find_intersection_with_wall();
-  if (found_intersection) {
-    return intersection_with_wall;
-  } else {
-    return ((t_point){INFINITY, INFINITY});
-  }
+//   found_intersection = false;
+//   // find_closest_intersection();
+//   // find_intersection_with_wall();
+//   if (found_intersection) {
+//     return intersection_with_wall;
+//   } else {
+//     return ((t_point){INFINITY, INFINITY});
+//   }
+// }
+
+void show_is_facing_to(t_ray *ray, int strip_id) {
+  printf("-----ID:%d-----\n", strip_id);
+  printf("[up]	%d\n", ray[strip_id].is_facing_up);
+  printf("[down]	%d\n", ray[strip_id].is_facing_down);
+  printf("[left]	%d\n", ray[strip_id].is_facing_left);
+  printf("[right]	%d\n", ray[strip_id].is_facing_right);
 }
 
 static void cast_ray(t_ray *ray, double ray_angle, int strip_id) {
-  t_point horizontal_intersection;
+  // t_point horizontal_intersection;
   // t_point vertical_intersection;
 
-  set_ray_is_facing_to(ray, ray_angle, strip_id);
+  // set_ray_is_facing_to(ray, ray_angle, strip_id);
+  set_ray_is_facing_to(&ray[strip_id], ray_angle);
+  show_is_facing_to(ray, strip_id);
+
   // find_horizontal_intersection();
   // find_vertical_intersection();
   // set_closer_intersection();
@@ -122,4 +136,5 @@ void cast_all_rays(t_ray *ray, t_player *player) {
     cast_ray(ray, ray_angle, strip_id);
     ray_angle += FOV_ANGLE / (NUM_RAYS - 1);
   };
+  printf("------------------\n");
 }
