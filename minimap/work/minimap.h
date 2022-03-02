@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 13:42:49 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 13:52:02 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,6 @@ int render(t_game *game);
 void render_map(t_map *map, t_img *win_img);
 bool map_has_wall_at(double x, double y, char **map);
 t_point find_horizontal_intersection(t_ray *ray, t_player *player, t_map *map);
+t_point find_vertical_intersection(t_ray *ray, t_player *player, t_map *map);
 
 #endif /* MINIMAP_H */

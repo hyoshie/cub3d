@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 13:41:38 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 13:44:41 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 14:27:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,18 @@
 static t_point find_closest_intersection(t_ray *ray, t_player *player) {
   t_point intersection;
 
-  intersection.y = floor(player->y / TILE_SIZE) * TILE_SIZE;
-  if (ray->is_facing_down)
-    intersection.y += TILE_SIZE;
-  intersection.x = player->x + (intersection.y - player->y) / tan(ray->angle);
+  intersection.x = floor(player->x / TILE_SIZE) * TILE_SIZE;
+  if (ray->is_facing_right)
+    intersection.x += TILE_SIZE;
+  intersection.y = player->y + (intersection.x - player->x) * tan(ray->angle);
   return (intersection);
 }
 
 static double get_xstep(t_ray *ray) {
   double xstep;
 
-  xstep = TILE_SIZE / tan(ray->angle);
-  if (ray->is_facing_left && xstep > 0)
-    xstep *= -1;
-  if (ray->is_facing_right && xstep < 0)
+  xstep = TILE_SIZE;
+  if (ray->is_facing_left)
     xstep *= -1;
   return (xstep);
 }
@@ -37,11 +35,14 @@ static double get_xstep(t_ray *ray) {
 static double get_ystep(t_ray *ray) {
   double ystep;
 
-  ystep = TILE_SIZE;
-  if (ray->is_facing_up)
+  ystep = TILE_SIZE * tan(ray->angle);
+  if (ray->is_facing_up && ystep > 0)
+    ystep *= -1;
+  if (ray->is_facing_down && ystep < 0)
     ystep *= -1;
   return (ystep);
 }
+
 //??
 //     float yToCheck = nextHorzTouchY + (isRayFacingUp ? -1 : 0);
 //        horzWallContent = map[(int)floor(yToCheck /
@@ -52,11 +53,15 @@ static t_point find_intersection_with_wall(t_ray *ray, t_map *map,
   const double xstep = get_xstep(ray);
   const double ystep = get_ystep(ray);
 
+  printf("[xstep]%f\n", xstep);
+  printf("[ystep]%f\n", ystep);
   while (intersection.x >= 0 && intersection.x <= WINDOW_WIDTH &&
          intersection.y >= 0 && intersection.y <= WINDOW_HEIGHT) {
     if (map_has_wall_at(intersection.x, intersection.y, map->map_ptr)) {
       return (intersection);
     } else {
+      // printf("[wip.x ]%f\n", intersection.x);
+      // printf("[wip.y ]%f\n", intersection.y);
       intersection.x += xstep;
       intersection.y += ystep;
     };
@@ -66,12 +71,18 @@ static t_point find_intersection_with_wall(t_ray *ray, t_map *map,
   return (intersection);
 }
 
-t_point find_horizontal_intersection(t_ray *ray, t_player *player, t_map *map) {
+t_point find_vertical_intersection(t_ray *ray, t_player *player, t_map *map) {
   t_point closest_intersection;
   t_point intersection_with_wall;
 
   closest_intersection = find_closest_intersection(ray, player);
   intersection_with_wall =
       find_intersection_with_wall(ray, map, closest_intersection);
+  printf("[player.x]%f\n", player->x);
+  printf("[close.x]%f\n", closest_intersection.x);
+  printf("[player.y]%f\n", player->y);
+  printf("[close.y]%f\n", closest_intersection.y);
+  // printf("[wall.x ]%f\n", intersection_with_wall.x);
+  // printf("[wall.y ]%f\n", intersection_with_wall.y);
   return (intersection_with_wall);
 }
