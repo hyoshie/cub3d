@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 11:45:57 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 15:34:59 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #define ORANGE 0x00FF6500
 #define GRAY 0x002F3128
 #define OFFWHITE 0x00FFF9EE
+#define BLACK 0x00000000
 
 #define KEY_ESC 0xff1b
 #define KEY_A 0x61
@@ -44,6 +45,6 @@
 #define CENTER_LINE_LENGTH 60
 #define FOV_ANGLE (60 * (M_PI / 180))
 #define NUM_RAYS 4
-#define RAY_LENGTH 100
+#define RAY_LENGTH 200
 
 #endif /* CONSTANTS_H */

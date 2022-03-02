@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 14:16:43 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 15:57:10 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void init_map(t_map *map, void *mlx_ptr) {
 }
 
 static void init_player(t_player *player) {
-  player->x = WINDOW_WIDTH / 2;
-  player->y = WINDOW_HEIGHT / 2;
+  player->position.x = WINDOW_WIDTH / 2;
+  player->position.y = WINDOW_HEIGHT / 2;
   player->radius = PLAYER_RADIUS;
   player->walk_direction = 0;
   player->turn_direction = 0;

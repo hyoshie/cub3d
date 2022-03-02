@@ -6,7 +6,7 @@
 #    By: hyoshie <hyoshie@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/02 13:52:31 by user42           ###   ########.fr        #
+#    Updated: 2022/03/02 15:42:08 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRCS		= main.c\
 			  update.c\
 			  cast_all_rays.c\
 			  find_horizontal_intersection.c\
-			  find_vertical_intersection.c
+			  find_vertical_intersection.c\
+			  set_closer_intersection.c
 OBJS		= $(SRCS:.c=.o)
 
 LIBS		= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm

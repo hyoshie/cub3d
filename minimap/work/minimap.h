@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 13:52:02 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 16:07:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ typedef struct s_map {
 } t_map;
 
 typedef struct s_player {
-  double x;
-  double y;
+  // double x;
+  // double y;
+  t_point position;
   double radius;
   int walk_direction; // 1 is forward, -1 is back
   int turn_direction; // 1 is right, -1 is left
@@ -53,8 +54,9 @@ typedef struct s_player {
 
 typedef struct s_ray {
   double angle;
-  double wall_hit_x;
-  double wall_hit_y;
+  t_point wall_hit;
+  // double wall_hit_x;
+  // double wall_hit_y;
   double distance;
   bool was_hit_vertical;
   bool is_facing_up;
@@ -81,7 +83,10 @@ void update(t_game *game);
 int render(t_game *game);
 void render_map(t_map *map, t_img *win_img);
 bool map_has_wall_at(double x, double y, char **map);
-t_point find_horizontal_intersection(t_ray *ray, t_player *player, t_map *map);
-t_point find_vertical_intersection(t_ray *ray, t_player *player, t_map *map);
+t_point find_horizontal_intersection(t_ray *ray, t_point *player_pos,
+                                     t_map *map);
+t_point find_vertical_intersection(t_ray *ray, t_point *player_pos, t_map *map);
+void set_closer_intersection(t_ray *ray, t_point *horiz_intersection,
+                             t_point *vert_intersection);
 
 #endif /* MINIMAP_H */

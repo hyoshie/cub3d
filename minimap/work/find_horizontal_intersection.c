@@ -6,20 +6,21 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 13:41:38 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 13:44:35 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 16:02:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "minimap.h"
 
-static t_point find_closest_intersection(t_ray *ray, t_player *player) {
+static t_point find_closest_intersection(t_ray *ray, t_point *player_pos) {
   t_point intersection;
 
-  intersection.y = floor(player->y / TILE_SIZE) * TILE_SIZE;
+  intersection.y = floor(player_pos->y / TILE_SIZE) * TILE_SIZE;
   if (ray->is_facing_down)
     intersection.y += TILE_SIZE;
-  intersection.x = player->x + (intersection.y - player->y) / tan(ray->angle);
+  intersection.x =
+      player_pos->x + (intersection.y - player_pos->y) / tan(ray->angle);
   return (intersection);
 }
 
@@ -66,11 +67,12 @@ static t_point find_intersection_with_wall(t_ray *ray, t_map *map,
   return (intersection);
 }
 
-t_point find_horizontal_intersection(t_ray *ray, t_player *player, t_map *map) {
+t_point find_horizontal_intersection(t_ray *ray, t_point *player_pos,
+                                     t_map *map) {
   t_point closest_intersection;
   t_point intersection_with_wall;
 
-  closest_intersection = find_closest_intersection(ray, player);
+  closest_intersection = find_closest_intersection(ray, player_pos);
   intersection_with_wall =
       find_intersection_with_wall(ray, map, closest_intersection);
   return (intersection_with_wall);

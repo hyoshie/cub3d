@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 11:36:52 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 13:25:16 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 15:58:22 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ static void move_player(t_player *player, char **map) {
 
   double next_player_x;
   double next_player_y;
-  next_player_x = player->x + cos(player->rotation_angle) * move_step;
-  next_player_y = player->y + sin(player->rotation_angle) * move_step;
+  next_player_x = player->position.x + cos(player->rotation_angle) * move_step;
+  next_player_y = player->position.y + sin(player->rotation_angle) * move_step;
 
   if (!map_has_wall_at(next_player_x, next_player_y, map)) {
-    player->x = next_player_x;
-    player->y = next_player_y;
+    player->position.x = next_player_x;
+    player->position.y = next_player_y;
   }
 }
 
