@@ -4,20 +4,19 @@
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/27 17:40:49 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 15:57:57 by user42           ###   ########.fr       */
+/*                                                +#+#+#+#+#+   +#+           */ /*   Created: 2022/02/27 17:40:49 by user42            #+#    #+#             */
+/*   Updated: 2022/03/02 17:07:53 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "minimap.h"
 
-static void render_ray(t_player *player, t_img *win_img) {
+static void render_ray(t_player *player, t_ray *ray, t_img *win_img) {
   double ray_angle = player->rotation_angle - (FOV_ANGLE / 2);
 
   for (int i = 0; i < NUM_RAYS; i++) {
-    for (int j = 0; j < RAY_LENGTH; j++) {
+    for (int j = 0; j < ray[i].distance; j++) {
       int x = player->position.x + cos(ray_angle) * j;
       int y = player->position.y + sin(ray_angle) * j;
       my_mlx_pixel_put(win_img, x, y, YELLOW);
@@ -50,7 +49,7 @@ int render(t_game *game) {
 
   init_image(&win_img, game->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
   render_map(&game->map, &win_img);
-  render_ray(&game->player, &win_img);
+  render_ray(&game->player, game->ray, &win_img);
   render_player(&game->player, &win_img);
   mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, win_img.img_ptr, 0, 0);
   return (0);

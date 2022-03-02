@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 15:57:10 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 17:14:00 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ char *g_map[MAP_NUM_ROWS + 1] = {"11111111111111111111", "10000000000000000001",
 
 void init_map(t_map *map, void *mlx_ptr) {
   map->map_ptr = g_map;
-  init_monocolor_image(&map->floor, mlx_ptr, GRAY);
-  init_monocolor_image(&map->wall, mlx_ptr, OFFWHITE);
+  init_monocolor_image(&map->floor, mlx_ptr, LIGHTGRAY);
+  init_monocolor_image(&map->wall, mlx_ptr, GRAY);
 }
 
 static void init_player(t_player *player) {
@@ -58,8 +58,8 @@ static void init_ray(t_ray **ray) {
   *ray = malloc(sizeof(t_ray) * NUM_RAYS);
   for (int i = 0; i < NUM_RAYS; i++) {
     (*ray)[i].angle = 0;
-    (*ray)[i].wall_hit_x = 0;
-    (*ray)[i].wall_hit_y = 0;
+    (*ray)[i].wall_hit.x = 0;
+    (*ray)[i].wall_hit.y = 0;
     (*ray)[i].distance = 0;
     (*ray)[i].was_hit_vertical = false;
     (*ray)[i].is_facing_up = false;

@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 13:41:38 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 16:05:31 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 16:26:25 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 static t_point find_closest_intersection(t_ray *ray, t_point *player_pos) {
   t_point intersection;
-
   intersection.x = floor(player_pos->x / TILE_SIZE) * TILE_SIZE;
   if (ray->is_facing_right)
     intersection.x += TILE_SIZE;

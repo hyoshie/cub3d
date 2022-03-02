@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 12:19:01 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 16:05:11 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 16:34:22 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,10 @@ static void cast_ray(t_ray *ray, double ray_angle, t_player *player,
       find_horizontal_intersection(ray, &player->position, map);
   vertical_intersection =
       find_vertical_intersection(ray, &player->position, map);
-  (void)vertical_intersection;
-  (void)horizontal_intersection;
-  // set_closer_intersection();
+  set_closer_intersection(ray, &horizontal_intersection, &vertical_intersection,
+                          &player->position);
+  printf("[close.x ]%f\n", ray->wall_hit.x);
+  printf("[close.y ]%f\n", ray->wall_hit.y);
 }
 
 void cast_all_rays(t_ray *ray, t_player *player, t_map *map) {

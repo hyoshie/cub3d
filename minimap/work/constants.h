@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 15:34:59 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 17:13:46 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 #define YELLOW 0x00FFFF00
 #define ORANGE 0x00FF6500
 #define GRAY 0x002F3128
+#define LIGHTGRAY 0x00D3D3D3
 #define OFFWHITE 0x00FFF9EE
 #define BLACK 0x00000000
 

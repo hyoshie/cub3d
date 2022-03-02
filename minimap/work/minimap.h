@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 16:07:09 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/02 16:27:54 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ typedef struct s_map {
 } t_map;
 
 typedef struct s_player {
-  // double x;
-  // double y;
   t_point position;
   double radius;
   int walk_direction; // 1 is forward, -1 is back
@@ -87,6 +85,5 @@ t_point find_horizontal_intersection(t_ray *ray, t_point *player_pos,
                                      t_map *map);
 t_point find_vertical_intersection(t_ray *ray, t_point *player_pos, t_map *map);
 void set_closer_intersection(t_ray *ray, t_point *horiz_intersection,
-                             t_point *vert_intersection);
-
+                             t_point *vert_intersection, t_point *player_pos);
 #endif /* MINIMAP_H */
