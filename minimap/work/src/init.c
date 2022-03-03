@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/03 22:20:09 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/03 23:04:45 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	init_player(t_player *player)
 {
 	player->position.x = WINDOW_WIDTH / 2;
 	player->position.y = WINDOW_HEIGHT / 2;
-	player->radius = PLAYER_RADIUS;
+	player->radius = PLAYER_RADIUS * MINIMAP_SCALE;
 	player->walk_direction = 0;
 	player->turn_direction = 0;
 	player->rotation_angle = M_PI / 2 * 3;

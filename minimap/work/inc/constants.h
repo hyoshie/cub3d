@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/03 22:25:23 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/03 23:12:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define WINDOW_WIDTH 640
 # define WINDOW_HEIGHT 416
 # define WINDOW_NAME "####Minimap####"
+# define MINIMAP_SCALE 0.25
 
 # define RED 0x00FF0000
 # define YELLOW 0x00FFFF00
@@ -39,7 +40,7 @@
 # define KEY_PRESS_MASK 1
 # define KEY_RELEASE_MASK 2
 
-# define PLAYER_RADIUS 5
+# define PLAYER_RADIUS 10
 # define WALK_SPEED 10
 
 # define NUM_RAYS WINDOW_WIDTH
