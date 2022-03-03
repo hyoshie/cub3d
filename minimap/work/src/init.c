@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/03 20:47:57 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/03 22:20:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,9 @@ static void	init_player(t_player *player)
 	player->walk_direction = 0;
 	player->turn_direction = 0;
 	player->rotation_angle = M_PI / 2 * 3;
+	player->fov_angle = 60 * (M_PI / 180);
 	player->walk_speed = WALK_SPEED;
-	player->turn_speed = TURN_SPEED;
+	player->turn_speed = 15 * (M_PI / 180);
 }
 
 // TODO:check calloc or malloc

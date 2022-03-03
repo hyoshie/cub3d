@@ -6,7 +6,7 @@
 #    By: hyoshie <hyoshie@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/03 18:54:19 by user42           ###   ########.fr        #
+#    Updated: 2022/03/03 22:26:32 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ INCLUDES	=	-I./inc
 MLX_DIR		=	lib/minilibx-linux
 OBJDIR		=	./obj
 
-VPATH		=	src:
+VPATH		=	src:\
+				src/raycast
 
 SRCS		=	main.c\
 				init.c\

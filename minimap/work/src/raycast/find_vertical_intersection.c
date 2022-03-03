@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 13:41:38 by user42            #+#    #+#             */
-/*   Updated: 2022/03/02 17:34:04 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/03 22:26:06 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ static t_point find_intersection_with_wall(t_ray *ray, t_map *map,
 	double       check_x;
 	double       check_y;
 
-	printf("[xstep]%f\n", xstep);
-	printf("[ystep]%f\n", ystep);
 	while (intersection.x >= 0 && intersection.x <= WINDOW_WIDTH &&
 	       intersection.y >= 0 && intersection.y <= WINDOW_HEIGHT)
 	{
@@ -69,8 +67,6 @@ static t_point find_intersection_with_wall(t_ray *ray, t_map *map,
 		}
 		else
 		{
-			// printf("[wip.x ]%f\n", intersection.x);
-			// printf("[wip.y ]%f\n", intersection.y);
 			intersection.x += xstep;
 			intersection.y += ystep;
 		};
@@ -90,7 +86,7 @@ t_point find_vertical_intersection(t_ray *ray, t_point *player_pos, t_map *map)
 	    find_intersection_with_wall(ray, map, closest_intersection);
 	// printf("[player.x]%f [close.x]%f\n", player->x, closest_intersection.x);
 	// printf("[player.y]%f [close.y]%f\n", player->y, closest_intersection.y);
-	printf("[wall.x ]%f\n", intersection_with_wall.x);
-	printf("[wall.y ]%f\n", intersection_with_wall.y);
+	// printf("[wall.x ]%f\n", intersection_with_wall.x);
+	// printf("[wall.y ]%f\n", intersection_with_wall.y);
 	return (intersection_with_wall);
 }

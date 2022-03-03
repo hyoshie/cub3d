@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 12:19:01 by user42            #+#    #+#             */
-/*   Updated: 2022/03/03 19:46:35 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/03 22:20:47 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,19 @@ static void cast_ray(t_ray *ray, double ray_angle, t_player *player,
       find_vertical_intersection(ray, &player->position, map);
   set_closer_intersection(ray, &horizontal_intersection, &vertical_intersection,
                           &player->position);
-  printf("[close.x ]%f\n", ray->wall_hit.x);
-  printf("[close.y ]%f\n", ray->wall_hit.y);
+  // printf("[close.x ]%f\n", ray->wall_hit.x);
+  // printf("[close.y ]%f\n", ray->wall_hit.y);
 }
 
 void cast_all_rays(t_ray *ray, t_player *player, t_map *map) {
-  double ray_angle = player->rotation_angle - (FOV_ANGLE / 2);
+  // double ray_angle = player->rotation_angle - (FOV_ANGLE / 2);
+  double ray_angle = player->rotation_angle - (player->fov_angle / 2);
 
   for (int strip_id = 0; strip_id < NUM_RAYS; strip_id++) {
-    printf("-----ID:%d-----\n", strip_id);
+    // printf("-----ID:%d-----\n", strip_id);
     cast_ray(&ray[strip_id], ray_angle, player, map);
     show_is_facing_to(&ray[strip_id]);
-    ray_angle += FOV_ANGLE / (NUM_RAYS - 1);
+    ray_angle += player->fov_angle / (NUM_RAYS - 1);
   };
-  printf("------------------\n");
+  // printf("------------------\n");
 }

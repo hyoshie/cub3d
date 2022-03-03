@@ -14,8 +14,9 @@
 
 static void render_ray(t_player *player, t_ray *ray, t_img *win_img)
 {
-	double ray_angle = player->rotation_angle - (FOV_ANGLE / 2);
+	double ray_angle;
 
+	ray_angle = player->rotation_angle - (player->fov_angle / 2);
 	for (int i = 0; i < NUM_RAYS; i++)
 	{
 		for (int j = 0; j < ray[i].distance; j++)
@@ -24,7 +25,7 @@ static void render_ray(t_player *player, t_ray *ray, t_img *win_img)
 			int y = player->position.y + sin(ray_angle) * j;
 			my_mlx_pixel_put(win_img, x, y, YELLOW);
 		};
-		ray_angle += FOV_ANGLE / (NUM_RAYS - 1);
+		ray_angle += player->fov_angle / (NUM_RAYS - 1);
 	}
 }
 

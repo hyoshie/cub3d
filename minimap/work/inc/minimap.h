@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/03 18:46:36 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/03 22:36:12 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_player {
   int walk_direction; // 1 is forward, -1 is back
   int turn_direction; // 1 is right, -1 is left
   double rotation_angle;
+  double fov_angle;
   int walk_speed;
   double turn_speed;
 } t_player;
@@ -81,9 +82,9 @@ void update(t_game *game);
 int render(t_game *game);
 void render_map(t_map *map, t_img *win_img);
 bool map_has_wall_at(double x, double y, char **map);
-t_point find_horizontal_intersection(t_ray *ray, t_point *player_pos,
-                                     t_map *map);
+t_point find_horizontal_intersection(const t_ray *ray, const t_point *player_pos,
+                                     const t_map *map);
 t_point find_vertical_intersection(t_ray *ray, t_point *player_pos, t_map *map);
-void set_closer_intersection(t_ray *ray, t_point *horiz_intersection,
-                             t_point *vert_intersection, t_point *player_pos);
+void	set_closer_intersection(t_ray *ray, const t_point *horiz_intersection,
+								const t_point *vert_intersection, const t_point *player_pos);
 #endif /* MINIMAP_H */
