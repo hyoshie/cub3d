@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 00:05:42 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 00:50:03 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/04 00:58:54 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,15 @@ void	render_3d_projection(t_player *player, t_ray *ray, t_img *win_img)
 {
 	double	distance_projetion;
 	double	wall_strip_height;
+	double	correct_distance;
 	int	i;
 
 	distance_projetion = (WINDOW_WIDTH / 2) / tan(player->fov_angle / 2);
 	i = 0;
 	while (i < NUM_RAYS)
 	{
-		wall_strip_height = (TILE_SIZE / ray[i].distance) * distance_projetion;
+		correct_distance = ray[i].distance * cos(ray[i].angle - player->rotation_angle);
+		wall_strip_height = (TILE_SIZE / correct_distance) * distance_projetion;
 		if (wall_strip_height  > WINDOW_HEIGHT)
 			wall_strip_height = WINDOW_HEIGHT;
 		render_wall_strip(win_img, i, wall_strip_height, OFFWHITE);

@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/03 22:36:12 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/04 00:34:14 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void cast_all_rays(t_ray *ray, t_player *player, t_map *map);
 void update(t_game *game);
 int render(t_game *game);
 void render_map(t_map *map, t_img *win_img);
+void	render_3d_projection(t_player *player, t_ray *ray, t_img *win_img);
 bool map_has_wall_at(double x, double y, char **map);
 t_point find_horizontal_intersection(const t_ray *ray, const t_point *player_pos,
                                      const t_map *map);

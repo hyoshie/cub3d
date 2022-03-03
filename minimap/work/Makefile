@@ -6,7 +6,7 @@
 #    By: hyoshie <hyoshie@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/03 22:26:32 by user42           ###   ########.fr        #
+#    Updated: 2022/03/04 00:00:07 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,7 @@ INCLUDES	=	-I./inc
 MLX_DIR		=	lib/minilibx-linux
 OBJDIR		=	./obj
 
-VPATH		=	src:\
-				src/raycast
+VPATH		=	src:src/raycast:src/render
 
 SRCS		=	main.c\
 				init.c\
@@ -26,6 +25,7 @@ SRCS		=	main.c\
 				my_mlx_pixel_put.c\
 				render.c\
 				render_map.c\
+				render_3d_projection.c\
 				update.c\
 				cast_all_rays.c\
 				find_horizontal_intersection.c\
