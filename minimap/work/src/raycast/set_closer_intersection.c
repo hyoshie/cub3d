@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:41:29 by user42            #+#    #+#             */
-/*   Updated: 2022/03/03 20:06:15 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/04 00:37:52 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,5 @@ void	set_closer_intersection(t_ray *ray, const t_point *horiz_intersection,
 		ray->wall_hit = *vert_intersection;
 		ray->distance = vert_distance;
 	}
+	printf("[ray->distance]%f\n", ray->distance);
 }
