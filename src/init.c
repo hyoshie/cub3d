@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 11:06:09 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/04 22:09:32 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,6 @@ void	init_image(t_img *img, void *mlx_ptr, int width, int height)
 			 &img->size_line, &img->endian);
 }
 
-static void	init_monocolor_image(t_img *img, void *mlx_ptr, int color)
-{
-	int	i;
-	int	j;
-
-	init_image(img, mlx_ptr, TILE_SIZE, TILE_SIZE);
-	i = 0;
-	while (i < TILE_SIZE)
-	{
-		j = 0;
-		while (j < TILE_SIZE)
-		{
-			my_mlx_pixel_put(img, j, i, color);
-			j++;
-		}
-		i++;
-	}
-}
-
 // temporary map
 char *g_map[MAP_NUM_ROWS + 1] = {"11111111111111111111", "10000000000000000001",
                                  "10000000000000000001", "10001010101010101001",
@@ -48,11 +29,9 @@ char *g_map[MAP_NUM_ROWS + 1] = {"11111111111111111111", "10000000000000000001",
                                  "10000000000000000001", "10000000000000000001",
                                  "11111111111111111111", NULL};
 
-static void	init_map(t_map *map, void *mlx_ptr)
+static void	init_map(t_map *map)
 {
 	map->map_ptr = g_map;
-	init_monocolor_image(&map->floor, mlx_ptr, LIGHTGRAY);
-	init_monocolor_image(&map->wall, mlx_ptr, GRAY);
 }
 
 static void	init_player(t_player *player)
@@ -80,7 +59,7 @@ void	init_game(t_game *game)
 	game->mlx_ptr = mlx_init();
 	game->win_ptr = \
 		mlx_new_window(game->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_NAME);
-	init_map(&game->map, game->mlx_ptr);
+	init_map(&game->map);
 	init_player(&game->player);
 	init_ray(&game->ray, &game->player, &game->map);
 }

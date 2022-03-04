@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 14:40:31 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/04 22:09:39 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "mlx.h"
+#include "../lib/minilibx-linux/mlx.h"
+#include "../lib/libft/mylibft.h"
 
 typedef struct s_point {
   double x;
@@ -36,8 +37,6 @@ typedef struct s_img {
 
 typedef struct s_map {
   char **map_ptr;
-  t_img floor;
-  t_img wall;
 } t_map;
 
 typedef struct s_player {
