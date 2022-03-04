@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 12:19:01 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 00:37:20 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/04 20:33:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void show_is_facing_to(t_ray *ray) {
 }
 
 static void cast_ray(t_ray *ray, double ray_angle, t_player *player,
-                     t_map *map) {
+                   const char  **map) {
   t_point horizontal_intersection;
   t_point vertical_intersection;
 
@@ -55,7 +55,7 @@ static void cast_ray(t_ray *ray, double ray_angle, t_player *player,
   // printf("[close.y ]%f\n", ray->wall_hit.y);
 }
 
-void cast_all_rays(t_ray *ray, t_player *player, t_map *map) {
+void cast_all_rays(t_ray *ray, t_player *player, const char **map) {
   // double ray_angle = player->rotation_angle - (FOV_ANGLE / 2);
   double ray_angle = player->rotation_angle - (player->fov_angle / 2);
 

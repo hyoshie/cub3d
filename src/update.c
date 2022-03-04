@@ -6,14 +6,14 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 11:36:52 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 11:05:15 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/04 20:36:29 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "minimap.h"
 
-bool	map_has_wall_at(double x, double y, char **map)
+bool	map_has_wall_at(double x, double y, const char **map)
 {
 	const int	map_grid_index_x = x / TILE_SIZE;
 	const int	map_grid_index_y = y / TILE_SIZE;
@@ -44,7 +44,7 @@ bool	map_has_wall_at(double x, double y, char **map)
 // 	}
 // }
 
-static void	move_player(t_player *player, char **map)
+static void	move_player(t_player *player, const char **map)
 {
 	const int	move_step = player->walk_speed;
 	double		move_angle;
@@ -65,6 +65,6 @@ static void	move_player(t_player *player, char **map)
 
 void	update(t_game *game)
 {
-	move_player(&game->player, game->map.map_ptr);
-	cast_all_rays(game->ray, &game->player, &game->map);
+	move_player(&game->player, (const char **)game->map);
+	cast_all_rays(game->ray, &game->player, (const char **)game->map);
 }

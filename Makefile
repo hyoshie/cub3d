@@ -6,17 +6,18 @@
 #    By: hyoshie <hyoshie@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/04 14:38:56 by user42           ###   ########.fr        #
+#    Updated: 2022/03/04 19:57:34 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 #
 
 
-NAME		=	minimap
+NAME		=	cub3D
 CFLAGS		=	-Wall -Wextra -Werror -g
-INCLUDES	=	-I./inc -I./$(MLX_DIR)
+INCLUDES	=	-I./inc -I./$(MLX_DIR) -I$(LIBFT_DIR)
 
 MLX_DIR		=	lib/minilibx-linux
+LIBFT_DIR	=	lib/libft
 OBJDIR		=	./obj
 
 VPATH		=	src:src/raycast:src/render
@@ -38,17 +39,19 @@ SRCS		=	main.c\
 
 OBJS		=	$(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
 DPS			=	$(SRCS:.o=.d)
+LIBS 		=	-L$(LIBFT_DIR) -lft
+
 
 UNAME := $(shell uname)
 
 ifeq ($(UNAME), Darwin)
 # MacOS での処理
-INCLUDES += -I/usr/X11/include
-LIBS += -L$(MLX_DIR) -lmlx_Darwin -L/usr/X11/include/../lib -lXext -lX11
+INCLUDES	+=	-I/usr/X11/include
+LIBS		+=	-L$(MLX_DIR) -lmlx_Darwin -L/usr/X11/include/../lib -lXext -lX11
 else
 ifeq ($(UNAME), Linux)
 # Linux での処理
-LIBS += -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+LIBS		+=	-L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 endif
 endif
 
@@ -60,6 +63,7 @@ $(OBJDIR)/%.o: %.c
 all: $(OBJDIR) $(NAME)
 
 $(NAME): $(OBJS)
+	$(MAKE) -C $(LIBFT_DIR)
 	$(MAKE) -C $(MLX_DIR)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS) 
 
@@ -70,6 +74,10 @@ clean:
 	$(RM) $(OBJS)
 
 fclean: clean
+	$(RM) $(LIBFT_DIR)/libft.a
+	$(RM) $(MLX_DIR)/libmlx.a
+	$(RM) $(MLX_DIR)/libmlx_Linux.a
+	$(RM) $(MLX_DIR)/libmlx_Darwin.a
 	$(RM) $(NAME)
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 13:41:38 by user42            #+#    #+#             */
-/*   Updated: 2022/03/03 22:26:06 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/04 20:29:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static double get_ystep(t_ray *ray)
 //        horzWallContent = map[(int)floor(yToCheck /
 //        TILE_SIZE)][(int)floor(xToCheck / TILE_SIZE)]; foundHorzWallHit =
 //        TRUE; break;
-static t_point find_intersection_with_wall(t_ray *ray, t_map *map,
+static t_point find_intersection_with_wall(t_ray *ray, const char **map,
                                            t_point intersection)
 {
 	const double xstep = get_xstep(ray);
@@ -61,7 +61,7 @@ static t_point find_intersection_with_wall(t_ray *ray, t_map *map,
 		check_x = intersection.x;
 		if (ray->is_facing_left) check_x -= 1;
 		check_y = intersection.y;
-		if (map_has_wall_at(check_x, check_y, map->map_ptr))
+		if (map_has_wall_at(check_x, check_y, map))
 		{
 			return (intersection);
 		}
@@ -76,7 +76,7 @@ static t_point find_intersection_with_wall(t_ray *ray, t_map *map,
 	return (intersection);
 }
 
-t_point find_vertical_intersection(t_ray *ray, t_point *player_pos, t_map *map)
+t_point find_vertical_intersection(t_ray *ray, t_point *player_pos, const char **map)
 {
 	t_point closest_intersection;
 	t_point intersection_with_wall;
