@@ -1,6 +1,6 @@
-minilibx-linux
 tutorial/*
 minimap/ref/*
 minimap/tags
 
+*.d
 *.o
