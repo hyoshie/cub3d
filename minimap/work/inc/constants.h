@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 10:28:19 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/04 14:50:07 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define LIGHTGRAY 0x00D3D3D3
 # define OFFWHITE 0x00FFF9EE
 # define BLACK 0x00000000
+# define SKYBLUE 0x0090D7EC
+# define KOGETYA 0x006A4332
 
 # define KEY_ESC 0xff1b
 # define KEY_A 0x61

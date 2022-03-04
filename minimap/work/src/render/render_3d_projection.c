@@ -6,44 +6,54 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 00:05:42 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 00:58:54 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/04 14:51:18 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "minimap.h"
 
-static void	render_wall_strip(t_img *win_img, int x, double wall_strip_height, \
-							  int color)
+static void	render_3d_ceil(t_img *win_img)
 {
-	int	first;
-	int	last;
-
-	first =  (WINDOW_HEIGHT / 2) - (wall_strip_height / 2);
-	last = first + wall_strip_height;
-	while (first < last)
-	{
-		my_mlx_pixel_put(win_img, x, first++, color);
-	}
-}
-
-//TODO:check why height over WINDOW_HEIGHT
-void	render_3d_projection(t_player *player, t_ray *ray, t_img *win_img)
-{
-	double	distance_projetion;
-	double	wall_strip_height;
-	double	correct_distance;
 	int	i;
+	int	j;
 
-	distance_projetion = (WINDOW_WIDTH / 2) / tan(player->fov_angle / 2);
 	i = 0;
-	while (i < NUM_RAYS)
+	while (i < WINDOW_HEIGHT / 2)
 	{
-		correct_distance = ray[i].distance * cos(ray[i].angle - player->rotation_angle);
-		wall_strip_height = (TILE_SIZE / correct_distance) * distance_projetion;
-		if (wall_strip_height  > WINDOW_HEIGHT)
-			wall_strip_height = WINDOW_HEIGHT;
-		render_wall_strip(win_img, i, wall_strip_height, OFFWHITE);
+		j = 0;
+		while (j < WINDOW_WIDTH)
+		{
+			my_mlx_pixel_put(win_img, j, i, SKYBLUE);
+			j++;
+		}
 		i++;
 	}
+
+}
+
+static void	render_3d_floor(t_img *win_img)
+{
+	int	i;
+	int	j;
+
+	printf("[\x1b[32mPASS\x1b[39m]\n");
+	i = WINDOW_HEIGHT / 2;
+	while (i < WINDOW_HEIGHT)
+	{
+		j = 0;
+		while (j < WINDOW_WIDTH)
+		{
+			my_mlx_pixel_put(win_img, j, i, KOGETYA);
+			j++;
+		}
+		i++;
+	}
+
+}
+void	render_3d_projection(t_player *player, t_ray *ray, t_img *win_img)
+{
+	render_3d_ceil(win_img);
+	render_3d_floor(win_img);
+	render_3d_wall(player, ray, win_img);
 }

@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 11:24:42 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/04 14:40:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ typedef struct s_player {
 typedef struct s_ray {
   double angle;
   t_point wall_hit;
-  // double wall_hit_x;
-  // double wall_hit_y;
   double distance;
   bool was_hit_vertical;
   bool is_facing_up;
@@ -83,6 +81,7 @@ void	update(t_game *game);
 int		render(t_game *game);
 void	render_map(t_map *map, t_img *win_img);
 void	render_3d_projection(t_player *player, t_ray *ray, t_img *win_img);
+void	render_3d_wall(t_player *player, t_ray *ray, t_img *win_img);
 bool	map_has_wall_at(double x, double y, char **map);
 t_point	find_horizontal_intersection(const t_ray *ray, const t_point *player_pos,
                                      const t_map *map);
