@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 23:22:31 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 20:32:38 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/04 00:39:18 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	render_player(const t_player *player, t_img *win_img)
 	}
 }
 
-static void	render_minimap(const char **map, t_player *player, t_ray *ray, t_img *win_img)
+static void	render_minimap(t_map *map, t_player *player, t_ray *ray, t_img *win_img)
 {
 	render_map(map, win_img);
 	render_all_rays(player, ray, win_img);
@@ -86,7 +86,7 @@ int	render(t_game *game)
 
 	init_image(&win_img, game->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
 	render_3d_projection(&game->player, game->ray, &win_img);
-	render_minimap((const char **)game->map, &game->player, game->ray, &win_img);
+	render_minimap(&game->map, &game->player, game->ray, &win_img);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
 							win_img.img_ptr, 0, 0);
 	return (0);
