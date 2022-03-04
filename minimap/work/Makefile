@@ -6,7 +6,7 @@
 #    By: hyoshie <hyoshie@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/04 00:00:07 by user42           ###   ########.fr        #
+#    Updated: 2022/03/04 11:23:45 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRCS		=	main.c\
 				cast_all_rays.c\
 				find_horizontal_intersection.c\
 				find_vertical_intersection.c\
-				set_closer_intersection.c
+				set_closer_intersection.c\
+				process_key_press.c
 
 OBJS		=	$(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
 DPS			=	$(SRCS:.o=.d)

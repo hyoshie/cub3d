@@ -6,38 +6,14 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:29:08 by user42            #+#    #+#             */
-/*   Updated: 2022/03/03 20:50:08 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/04 11:29:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "minimap.h"
 
-static void	process_key_press(int keycode, t_player *player)
-{
-	if (keycode == KEY_ESC)
-	{
-		printf("(｡-ω-)ﾉsee you again… \n");
-		exit(EXIT_SUCCESS);
-	}
-	else if (keycode == KEY_W)
-	{
-		player->walk_direction = 1;
-	}
-	else if (keycode == KEY_A)
-	{
-		player->turn_direction = -1;
-	}
-	else if (keycode == KEY_S)
-	{
-		player->walk_direction = -1;
-	}
-	else if (keycode == KEY_D)
-	{
-		player->turn_direction = 1;
-	}
-}
-
+//I wanna change func name:process_key_press.
 static int	key_press_hook(int keycode, t_game *game)
 {
 	process_key_press(keycode, &game->player);
@@ -50,7 +26,7 @@ static int	key_release_hook(int keycode, t_game *game)
 {
 	(void)keycode;
 	game->player.walk_direction = 0;
-	game->player.turn_direction = 0;
+	game->player.should_move = false;
 	return (0);
 }
 

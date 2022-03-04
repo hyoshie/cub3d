@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 00:34:14 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/04 11:24:42 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ typedef struct s_map {
 typedef struct s_player {
   t_point position;
   double radius;
-  int walk_direction; // 1 is forward, -1 is back
-  int turn_direction; // 1 is right, -1 is left
+  double walk_direction; // 0 is forward, M_PI is back
+  bool	should_move;
   double rotation_angle;
   double fov_angle;
   int walk_speed;
@@ -73,19 +73,20 @@ typedef struct s_game {
   t_ray *ray;
 } t_game;
 
-void init_game(t_game *game);
-void init_image(t_img *img, void *mlx_ptr, int width, int height);
-void register_hooks(t_game *game);
-void my_mlx_pixel_put(t_img *img, int x, int y, int color);
-void cast_all_rays(t_ray *ray, t_player *player, t_map *map);
-void update(t_game *game);
-int render(t_game *game);
-void render_map(t_map *map, t_img *win_img);
+void	init_game(t_game *game);
+void	init_image(t_img *img, void *mlx_ptr, int width, int height);
+void	process_key_press(int keycode, t_player *player);
+void	register_hooks(t_game *game);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void	cast_all_rays(t_ray *ray, t_player *player, t_map *map);
+void	update(t_game *game);
+int		render(t_game *game);
+void	render_map(t_map *map, t_img *win_img);
 void	render_3d_projection(t_player *player, t_ray *ray, t_img *win_img);
-bool map_has_wall_at(double x, double y, char **map);
-t_point find_horizontal_intersection(const t_ray *ray, const t_point *player_pos,
+bool	map_has_wall_at(double x, double y, char **map);
+t_point	find_horizontal_intersection(const t_ray *ray, const t_point *player_pos,
                                      const t_map *map);
-t_point find_vertical_intersection(t_ray *ray, t_point *player_pos, t_map *map);
+t_point	find_vertical_intersection(t_ray *ray, t_point *player_pos, t_map *map);
 void	set_closer_intersection(t_ray *ray, const t_point *horiz_intersection,
 								const t_point *vert_intersection, const t_point *player_pos);
 #endif /* MINIMAP_H */

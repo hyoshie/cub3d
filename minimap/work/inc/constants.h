@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/03 23:12:51 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/04 10:28:19 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define KEY_D 0x64
 # define KEY_S 0x73
 # define KEY_W 0x77
+# define KEY_LEFT 0xff51
+# define KEY_RIGHT 0xff53
 
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
