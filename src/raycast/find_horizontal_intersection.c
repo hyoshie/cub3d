@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 13:41:38 by user42            #+#    #+#             */
-/*   Updated: 2022/03/03 20:25:28 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/04 20:31:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static double	get_ystep(const t_ray *ray)
 //        horzWallContent = map[(int)floor(yToCheck /
 //        TILE_SIZE)][(int)floor(xToCheck / TILE_SIZE)]; foundHorzWallHit =
 //        TRUE; break;
-static t_point	find_wall_hit(const t_ray *ray, const t_map *map,
+static t_point	find_wall_hit(const t_ray *ray, const char **map,
 							  t_point intersection)
 {
 	const double	xstep = get_xstep(ray);
@@ -68,7 +68,7 @@ static t_point	find_wall_hit(const t_ray *ray, const t_map *map,
 		check_y = intersection.y;
 		if (ray->is_facing_up)
 			check_y -= 1;
-		if (map_has_wall_at(check_x, check_y, map->map_ptr))
+		if (map_has_wall_at(check_x, check_y, map))
 		{
 			return (intersection);
 		}
@@ -84,7 +84,7 @@ static t_point	find_wall_hit(const t_ray *ray, const t_map *map,
 }
 
 t_point	find_horizontal_intersection(const t_ray *ray, const t_point *player_pos,
-									 const t_map *map)
+									 const char **map)
 {
 	t_point	closest;
 	t_point	wall_hit;

@@ -6,7 +6,7 @@
 #    By: hyoshie <hyoshie@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/04 19:49:50 by user42           ###   ########.fr        #
+#    Updated: 2022/03/04 19:57:34 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 #
@@ -76,6 +76,7 @@ clean:
 fclean: clean
 	$(RM) $(LIBFT_DIR)/libft.a
 	$(RM) $(MLX_DIR)/libmlx.a
+	$(RM) $(MLX_DIR)/libmlx_Linux.a
 	$(RM) $(MLX_DIR)/libmlx_Darwin.a
 	$(RM) $(NAME)
 
