@@ -3,13 +3,13 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyoshie <hyoshie@student.42tokyo.jp>       +#+  +:+       +#+         #
+#    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/04 19:49:50 by user42           ###   ########.fr        #
+#    Updated: 2022/03/05 17:54:52 by yshimazu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-#
+
 
 
 NAME		=	cub3D
@@ -35,7 +35,8 @@ SRCS		=	main.c\
 				find_horizontal_intersection.c\
 				find_vertical_intersection.c\
 				set_closer_intersection.c\
-				process_key_press.c
+				process_key_press.c\
+				args_check.c
 
 OBJS		=	$(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
 DPS			=	$(SRCS:.o=.d)

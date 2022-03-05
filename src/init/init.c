@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
+/*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 22:09:32 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/05 17:42:33 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,12 @@ static void	init_ray(t_ray **ray, t_player *player, t_map *map)
 	cast_all_rays(*ray, player, map);
 }
 
-void	init_game(t_game *game)
+void	init_game(t_game *game, char *file_path)
 {
 	game->mlx_ptr = mlx_init();
 	game->win_ptr = \
 		mlx_new_window(game->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_NAME);
+	perse_file(file_path);
 	init_map(&game->map);
 	init_player(&game->player);
 	init_ray(&game->ray, &game->player, &game->map);
