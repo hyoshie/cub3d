@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/24 12:02:40 by user42            #+#    #+#             */
-/*   Updated: 2022/03/05 17:37:52 by yshimazu         ###   ########.fr       */
+/*   Created: 2022/03/04 21:25:22 by yshimazu          #+#    #+#             */
+/*   Updated: 2022/03/05 17:49:17 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "minimap.h"
 
-int	main(int ac, char *av[])
+/* char	**map_set(char *mapfile, t_map *map)
 {
-	t_game	game;
+	int		fd;
+	t_list	*buf;
 
-	args_check(ac, av);
-	init_game(&game, av[1]);
-	register_hooks(&game);
-	mlx_loop(game.mlx_ptr);
-	return (0);
-}
+	buf = NULL;
+	fd = ft_open_readfile(mapfile);
+	map->height = fd_to_lst(fd, &buf);
+	size_check(map);
+	return (lst_to_array(buf, map->height));
+} */

@@ -3,21 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
+/*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 22:09:39 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/05 17:53:55 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIMAP_H
-#define MINIMAP_H
+#ifndef MINIMAP
+#define MINIMAP
 
 #include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 #include "../lib/minilibx-linux/mlx.h"
 #include "../lib/libft/mylibft.h"
@@ -37,6 +40,8 @@ typedef struct s_img {
 
 typedef struct s_map {
   char **map_ptr;
+  size_t	width;
+  size_t	height;
 } t_map;
 
 typedef struct s_player {
@@ -62,6 +67,15 @@ typedef struct s_ray {
   int wall_hit_content; // need check
 } t_ray;
 
+typedef struct s_design {
+	void	*no_texture;
+	void	*so_texture;
+	void	*we_texture;
+	void	*ea_texture;
+	int		c_color;
+	int		f_color;
+} t_design;
+
 typedef struct s_game {
   void *mlx_ptr;
   void *win_ptr;
@@ -70,7 +84,7 @@ typedef struct s_game {
   t_ray *ray;
 } t_game;
 
-void	init_game(t_game *game);
+void	init_game(t_game *game, char *file_path);
 void	init_image(t_img *img, void *mlx_ptr, int width, int height);
 void	process_key_press(int keycode, t_player *player);
 void	register_hooks(t_game *game);
@@ -87,4 +101,5 @@ t_point	find_horizontal_intersection(const t_ray *ray, const t_point *player_pos
 t_point	find_vertical_intersection(t_ray *ray, t_point *player_pos, t_map *map);
 void	set_closer_intersection(t_ray *ray, const t_point *horiz_intersection,
 								const t_point *vert_intersection, const t_point *player_pos);
-#endif /* MINIMAP_H */
+void	args_check(int ac, char **av);
+#endif /* MINIMAP */
