@@ -6,14 +6,14 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 11:09:55 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 20:33:11 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/03 23:51:55 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "minimap.h"
 
-static bool	is_wall(const char **map, int x, int y)
+static bool	is_wall(char **map, int x, int y)
 {
 	return (map[y][x] == '1');
 }
@@ -53,7 +53,7 @@ static void	render_tile(t_img *win_img, int x, int y, int color)
 // 	}
 // }
 
-void	render_map(const char **map, t_img *win_img)
+void	render_map(t_map *map, t_img *win_img)
 {
 	int	i;
 	int	j;
@@ -64,7 +64,7 @@ void	render_map(const char **map, t_img *win_img)
 		j = 0;
 		while (j < MAP_NUM_COLS)
 		{
-			if (is_wall(map, j, i))
+			if (is_wall(map->map_ptr, j, i))
 				render_tile(win_img, j, i, GRAY);
 			else
 				render_tile(win_img, j, i, LIGHTGRAY);

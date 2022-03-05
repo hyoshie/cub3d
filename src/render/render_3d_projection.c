@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 00:05:42 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 14:51:18 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/04 22:08:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static void	render_3d_floor(t_img *win_img)
 	int	i;
 	int	j;
 
-	printf("[\x1b[32mPASS\x1b[39m]\n");
 	i = WINDOW_HEIGHT / 2;
 	while (i < WINDOW_HEIGHT)
 	{
