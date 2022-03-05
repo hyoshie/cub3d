@@ -6,7 +6,7 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/05 17:54:52 by yshimazu         ###   ########.fr        #
+#    Updated: 2022/03/05 21:02:19 by yshimazu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ MLX_DIR		=	lib/minilibx-linux
 LIBFT_DIR	=	lib/libft
 OBJDIR		=	./obj
 
-VPATH		=	src:src/raycast:src/render
+VPATH		=	src:src/raycast:src/render:src/init
 
 SRCS		=	main.c\
 				init.c\
@@ -36,7 +36,8 @@ SRCS		=	main.c\
 				find_vertical_intersection.c\
 				set_closer_intersection.c\
 				process_key_press.c\
-				args_check.c
+				check_args.c\
+				parse_file.c
 
 OBJS		=	$(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
 DPS			=	$(SRCS:.o=.d)

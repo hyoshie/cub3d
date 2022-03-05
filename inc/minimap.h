@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/05 17:53:55 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/05 21:00:08 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ typedef struct s_ray {
 } t_ray;
 
 typedef struct s_design {
-	void	*no_texture;
-	void	*so_texture;
-	void	*we_texture;
-	void	*ea_texture;
+	t_img	*no_texture;
+	t_img	*so_texture;
+	t_img	*we_texture;
+	t_img	*ea_texture;
 	int		c_color;
 	int		f_color;
 } t_design;
@@ -101,5 +101,6 @@ t_point	find_horizontal_intersection(const t_ray *ray, const t_point *player_pos
 t_point	find_vertical_intersection(t_ray *ray, t_point *player_pos, t_map *map);
 void	set_closer_intersection(t_ray *ray, const t_point *horiz_intersection,
 								const t_point *vert_intersection, const t_point *player_pos);
-void	args_check(int ac, char **av);
+void	check_args(int ac, char **av);
+void	parse_file(char *file_path);
 #endif /* MINIMAP */
