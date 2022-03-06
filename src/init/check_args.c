@@ -6,12 +6,12 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 21:25:29 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/06 15:25:00 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/06 16:31:39 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
-#include "minimap.h"
+#include "cub3d.h"
 
 static int	check_extension(char *filename)
 {

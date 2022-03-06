@@ -6,12 +6,12 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 13:41:38 by user42            #+#    #+#             */
-/*   Updated: 2022/03/06 15:16:14 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/06 16:31:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
-#include "minimap.h"
+#include "cub3d.h"
 
 static t_point	find_intercept(const t_ray *ray, const t_point *player_pos)
 {

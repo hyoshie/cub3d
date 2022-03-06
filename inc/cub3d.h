@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap.h                                          :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/06 15:06:55 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/06 16:26:57 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIMAP_H
-# define MINIMAP_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include <math.h>
 # include <stdbool.h>
@@ -107,4 +107,4 @@ void	set_closer_wall_hit(t_ray *ray, const t_point *horiz_wall_hit,
 			const t_point *vert_wall_hit, const t_point *player_pos);
 void	check_args(int ac, char **av);
 void	parse_file(char *file_path);
-#endif /* MINIMAP_H */
+#endif /* CUB3D_H */

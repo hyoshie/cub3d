@@ -6,12 +6,12 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:02:40 by user42            #+#    #+#             */
-/*   Updated: 2022/03/05 20:57:16 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/06 16:31:39 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
-#include "minimap.h"
+#include "cub3d.h"
 
 int	main(int ac, char *av[])
 {

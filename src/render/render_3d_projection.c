@@ -6,12 +6,12 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 00:05:42 by user42            #+#    #+#             */
-/*   Updated: 2022/03/06 15:09:21 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/06 16:31:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
-#include "minimap.h"
+#include "cub3d.h"
 
 static void	render_3d_ceil(t_img *win_img)
 {

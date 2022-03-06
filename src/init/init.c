@@ -6,12 +6,12 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/05 20:59:06 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/06 16:31:39 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
-#include "minimap.h"
+#include "cub3d.h"
 
 void	init_image(t_img *img, void *mlx_ptr, int width, int height)
 {

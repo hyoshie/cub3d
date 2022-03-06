@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_closer_intersection.c                          :+:      :+:    :+:   */
+/*   set_closer_wall_hit.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:41:29 by user42            #+#    #+#             */
-/*   Updated: 2022/03/06 14:28:27 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/06 16:31:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
-#include "minimap.h"
+#include "cub3d.h"
 
 static double	get_distance(const t_point *p1, const t_point *p2)
 {
