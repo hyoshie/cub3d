@@ -6,62 +6,56 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 12:19:01 by user42            #+#    #+#             */
-/*   Updated: 2022/03/06 14:27:30 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/06 15:22:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "minimap.h"
 
-static double normalize_angle(double ray_angle) {
-  double normalized_angle = remainder(ray_angle, M_PI * 2);
-  if (normalized_angle < 0)
-    normalized_angle += M_PI * 2;
-  return (normalized_angle);
+static double	normalize_angle(double ray_angle)
+{
+	double	normalized_angle;
+
+	normalized_angle = remainder(ray_angle, M_PI * 2);
+	if (normalized_angle < 0)
+		normalized_angle += M_PI * 2;
+	return (normalized_angle);
 }
 
-static void set_ray_is_facing_to(t_ray *ray, double ray_angle) {
-  double normalized_angle = normalize_angle(ray_angle);
-
-  ray->angle = normalized_angle;
-  ray->is_facing_up = normalized_angle > M_PI && normalized_angle < M_PI * 2;
-  ray->is_facing_down = !ray->is_facing_up;
-  ray->is_facing_left =
-      normalized_angle > 0.5 * M_PI && normalized_angle < 1.5 * M_PI;
-  ray->is_facing_right = !ray->is_facing_left;
+static void	set_ray_is_facing_to(t_ray *ray, double ray_angle)
+{
+	ray->angle = normalize_angle(ray_angle);
+	ray->is_facing_up = ray->angle > M_PI && ray->angle < M_PI * 2;
+	ray->is_facing_down = !ray->is_facing_up;
+	ray->is_facing_left = ray->angle > 0.5 * M_PI && ray->angle < 1.5 * M_PI;
+	ray->is_facing_right = !ray->is_facing_left;
 }
 
-void show_is_facing_to(t_ray *ray) {
-  (void)ray;
-  // printf("[up]	%d\n", ray->is_facing_up);
-  // printf("[down]	%d\n", ray->is_facing_down);
-  // printf("[left]	%d\n", ray->is_facing_left);
-  // printf("[right]	%d\n", ray->is_facing_right);
+static void	cast_ray(t_ray *ray, double ray_angle, t_player *player,
+										 t_map *map)
+{
+	t_point	horiz_wall_hit;
+	t_point	vert_wall_hit;
+
+	set_ray_is_facing_to(ray, ray_angle);
+	horiz_wall_hit = find_horiz_wall_hit(ray, &player->position, map);
+	vert_wall_hit = find_vert_wall_hit(ray, &player->position, map);
+	set_closer_wall_hit(ray, &horiz_wall_hit, &vert_wall_hit,
+		&player->position);
 }
 
-static void cast_ray(t_ray *ray, double ray_angle, t_player *player,
-                     t_map *map) {
-  t_point horiz_wall_hit;
-  t_point vert_wall_hit;
+void	cast_all_rays(t_ray *ray, t_player *player, t_map *map)
+{
+	double	ray_angle;
+	int		i;
 
-  set_ray_is_facing_to(ray, ray_angle);
-  horiz_wall_hit = find_horiz_wall_hit(ray, &player->position, map);
-  vert_wall_hit = find_vert_wall_hit(ray, &player->position, map);
-  set_closer_wall_hit(ray, &horiz_wall_hit, &vert_wall_hit,
-                          &player->position);
-  // printf("[close.x ]%f\n", ray->wall_hit.x);
-  // printf("[close.y ]%f\n", ray->wall_hit.y);
-}
-
-void cast_all_rays(t_ray *ray, t_player *player, t_map *map) {
-  // double ray_angle = player->rotation_angle - (FOV_ANGLE / 2);
-  double ray_angle = player->rotation_angle - (player->fov_angle / 2);
-
-  for (int strip_id = 0; strip_id < NUM_RAYS; strip_id++) {
-    // printf("-----ID:%d-----\n", strip_id);
-    cast_ray(&ray[strip_id], ray_angle, player, map);
-    show_is_facing_to(&ray[strip_id]);
-    ray_angle += player->fov_angle / (NUM_RAYS - 1);
-  };
-  // printf("------------------\n");
+	ray_angle = player->rotation_angle - (player->fov_angle / 2);
+	i = 0;
+	while (i < NUM_RAYS)
+	{
+		cast_ray(&ray[i], ray_angle, player, map);
+		ray_angle += player->fov_angle / (NUM_RAYS - 1);
+		i++;
+	}
 }
