@@ -6,7 +6,7 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/05 21:02:19 by yshimazu         ###   ########.fr        #
+#    Updated: 2022/03/06 14:01:04 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ MLX_DIR		=	lib/minilibx-linux
 LIBFT_DIR	=	lib/libft
 OBJDIR		=	./obj
 
-VPATH		=	src:src/raycast:src/render:src/init
+VPATH		=	src:src/raycast:src/render:src/init:src/game
 
 SRCS		=	main.c\
 				init.c\
