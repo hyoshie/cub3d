@@ -6,12 +6,12 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 11:36:52 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 11:05:15 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/06 16:31:39 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
-#include "minimap.h"
+#include "cub3d.h"
 
 bool	map_has_wall_at(double x, double y, char **map)
 {

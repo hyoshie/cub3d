@@ -6,12 +6,12 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 23:22:31 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 00:39:18 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/06 16:31:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
-#include "minimap.h"
+#include "cub3d.h"
 
 static void	render_ray(const t_point *player_pos, double ray_distance, \
 					   double ray_angle, t_img *win_img)
@@ -43,13 +43,6 @@ static void	render_all_rays(t_player *player, t_ray *ray, t_img *win_img)
 		ray_angle += player->fov_angle / (NUM_RAYS - 1);
 	}
 }
-// static void render_center_line(t_player *player, t_img *win_img) {
-//   for (int i = 0; i < CENTER_LINE_LENGTH; i++) {
-//     int x = player->position.x + cos(player->rotation_angle) * i;
-//     int y = player->position.y + sin(player->rotation_angle) * i;
-//     my_mlx_pixel_put(win_img, x, y, RED);
-//   }
-// }
 
 static void	render_player(const t_player *player, t_img *win_img)
 {
@@ -72,13 +65,13 @@ static void	render_player(const t_player *player, t_img *win_img)
 	}
 }
 
-static void	render_minimap(t_map *map, t_player *player, t_ray *ray, t_img *win_img)
+static void	render_minimap(t_map *map, t_player *player,
+		t_ray *ray, t_img *win_img)
 {
 	render_map(map, win_img);
 	render_all_rays(player, ray, win_img);
 	render_player(player, win_img);
 }
-
 
 int	render(t_game *game)
 {
