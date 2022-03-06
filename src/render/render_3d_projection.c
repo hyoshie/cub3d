@@ -6,12 +6,12 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 00:05:42 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 22:08:23 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/06 16:31:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
-#include "minimap.h"
+#include "cub3d.h"
 
 static void	render_3d_ceil(t_img *win_img)
 {
@@ -29,7 +29,6 @@ static void	render_3d_ceil(t_img *win_img)
 		}
 		i++;
 	}
-
 }
 
 static void	render_3d_floor(t_img *win_img)
@@ -48,8 +47,8 @@ static void	render_3d_floor(t_img *win_img)
 		}
 		i++;
 	}
-
 }
+
 void	render_3d_projection(t_player *player, t_ray *ray, t_img *win_img)
 {
 	render_3d_ceil(win_img);
