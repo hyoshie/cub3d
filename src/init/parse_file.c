@@ -15,5 +15,6 @@ void	parse_file(char *file_path)
 {
 	int	fd;
 
-	fd = ft_open_readfile(file_path);	
+	fd = ft_open_readfile(file_path);
+	(void)fd;
 }
