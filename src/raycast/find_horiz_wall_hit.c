@@ -6,24 +6,23 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 13:41:38 by user42            #+#    #+#             */
-/*   Updated: 2022/03/03 20:25:28 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/06 14:15:59 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "minimap.h"
 
-static t_point	find_closest_intersection(const t_ray *ray,
-										  const t_point *player_pos)
+static t_point	find_intercept(const t_ray *ray, const t_point *player_pos)
 {
-	t_point	intersection;
+	t_point	intercept;
 
-	intersection.y = floor(player_pos->y / TILE_SIZE) * TILE_SIZE;
+	intercept.y = floor(player_pos->y / TILE_SIZE) * TILE_SIZE;
 	if (ray->is_facing_down)
-		intersection.y += TILE_SIZE;
-	intersection.x = player_pos->x + \
-					(intersection.y - player_pos->y) / tan(ray->angle);
-	return (intersection);
+		intercept.y += TILE_SIZE;
+	intercept.x = player_pos->x + \
+					(intercept.y - player_pos->y) / tan(ray->angle);
+	return (intercept);
 }
 
 static double	get_xstep(const t_ray *ray)
@@ -54,42 +53,42 @@ static double	get_ystep(const t_ray *ray)
 //        TILE_SIZE)][(int)floor(xToCheck / TILE_SIZE)]; foundHorzWallHit =
 //        TRUE; break;
 static t_point	find_wall_hit(const t_ray *ray, const t_map *map,
-							  t_point intersection)
+							  t_point intercept)
 {
 	const double	xstep = get_xstep(ray);
 	const double	ystep = get_ystep(ray);
 	double			check_x;
 	double			check_y;
 
-	while (intersection.x >= 0 && intersection.x <= WINDOW_WIDTH && \
-	       intersection.y >= 0 && intersection.y <= WINDOW_HEIGHT)
+	while (intercept.x >= 0 && intercept.x <= WINDOW_WIDTH && \
+	       intercept.y >= 0 && intercept.y <= WINDOW_HEIGHT)
 	{
-		check_x = intersection.x;
-		check_y = intersection.y;
+		check_x = intercept.x;
+		check_y = intercept.y;
 		if (ray->is_facing_up)
 			check_y -= 1;
 		if (map_has_wall_at(check_x, check_y, map->map_ptr))
 		{
-			return (intersection);
+			return (intercept);
 		}
 		else
 		{
-			intersection.x += xstep;
-			intersection.y += ystep;
+			intercept.x += xstep;
+			intercept.y += ystep;
 		}
 	}
-	intersection.x = INFINITY;
-	intersection.y = INFINITY;
-	return (intersection);
+	intercept.x = INFINITY;
+	intercept.y = INFINITY;
+	return (intercept);
 }
 
-t_point	find_horizontal_intersection(const t_ray *ray, const t_point *player_pos,
+t_point	find_horiz_wall_hit(const t_ray *ray, const t_point *player_pos,
 									 const t_map *map)
 {
-	t_point	closest;
+	t_point	intercept;
 	t_point	wall_hit;
 
-	closest = find_closest_intersection(ray, player_pos);
-	wall_hit = find_wall_hit(ray, map, closest);
+	intercept = find_intercept(ray, player_pos);
+	wall_hit = find_wall_hit(ray, map, intercept);
 	return (wall_hit);
 }

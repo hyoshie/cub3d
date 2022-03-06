@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/05 21:00:08 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/06 14:29:55 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,11 @@ void	render_map(t_map *map, t_img *win_img);
 void	render_3d_projection(t_player *player, t_ray *ray, t_img *win_img);
 void	render_3d_wall(t_player *player, t_ray *ray, t_img *win_img);
 bool	map_has_wall_at(double x, double y, char **map);
-t_point	find_horizontal_intersection(const t_ray *ray, const t_point *player_pos,
+t_point	find_horiz_wall_hit(const t_ray *ray, const t_point *player_pos,
                                      const t_map *map);
-t_point	find_vertical_intersection(t_ray *ray, t_point *player_pos, t_map *map);
-void	set_closer_intersection(t_ray *ray, const t_point *horiz_intersection,
-								const t_point *vert_intersection, const t_point *player_pos);
+t_point	find_vert_wall_hit(const t_ray *ray, const t_point *player_pos, const t_map *map);
+void	set_closer_wall_hit(t_ray *ray, const t_point *horiz_wall_hit,
+								const t_point *vert_wall_hit, const t_point *player_pos);
 void	check_args(int ac, char **av);
 void	parse_file(char *file_path);
 #endif /* MINIMAP */

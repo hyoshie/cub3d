@@ -6,7 +6,7 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/06 14:01:04 by user42           ###   ########.fr        #
+#    Updated: 2022/03/06 14:27:53 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,10 @@ SRCS		=	main.c\
 				render_3d_wall.c\
 				update.c\
 				cast_all_rays.c\
-				find_horizontal_intersection.c\
-				find_vertical_intersection.c\
-				set_closer_intersection.c\
-				process_key_press.c\
+				find_horiz_wall_hit.c\
+				find_vert_wall_hit.c\
+				set_closer_wall_hit.c\
+				process_keypress.c\
 				check_args.c\
 				parse_file.c
 

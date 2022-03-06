@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 12:19:01 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 00:37:20 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/06 14:27:30 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,13 @@ void show_is_facing_to(t_ray *ray) {
 
 static void cast_ray(t_ray *ray, double ray_angle, t_player *player,
                      t_map *map) {
-  t_point horizontal_intersection;
-  t_point vertical_intersection;
+  t_point horiz_wall_hit;
+  t_point vert_wall_hit;
 
   set_ray_is_facing_to(ray, ray_angle);
-  horizontal_intersection =
-      find_horizontal_intersection(ray, &player->position, map);
-  vertical_intersection =
-      find_vertical_intersection(ray, &player->position, map);
-  set_closer_intersection(ray, &horizontal_intersection, &vertical_intersection,
+  horiz_wall_hit = find_horiz_wall_hit(ray, &player->position, map);
+  vert_wall_hit = find_vert_wall_hit(ray, &player->position, map);
+  set_closer_wall_hit(ray, &horiz_wall_hit, &vert_wall_hit,
                           &player->position);
   // printf("[close.x ]%f\n", ray->wall_hit.x);
   // printf("[close.y ]%f\n", ray->wall_hit.y);
