@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/06 16:31:39 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/06 20:42:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	init_image(t_img *img, void *mlx_ptr, int width, int height)
 	img->img_ptr = mlx_new_image(mlx_ptr, width, height);
 	img->addr = mlx_get_data_addr(img->img_ptr, &img->bits_per_pixel,
 			 &img->size_line, &img->endian);
+	img->width = width;
+	img->height = height;
 }
 
 // temporary map
@@ -61,6 +63,7 @@ void	init_game(t_game *game, char *file_path)
 		mlx_new_window(game->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_NAME);
 	parse_file(file_path);
 	init_map(&game->map);
+	init_design(game->mlx_ptr, &game->design);
 	init_player(&game->player);
 	init_ray(&game->ray, &game->player, &game->map);
 }
