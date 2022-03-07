@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 17:22:59 by hyoshie           #+#    #+#             */
-/*   Updated: 2021/12/22 01:11:30 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/07 13:41:21 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void	clst_link(t_clst *now, t_clst *next);
 t_clst	*clst_new(char *content);
 void	clst_del_content(t_clst *path_clst, char *del_content);
 size_t	clst_count(t_clst *clst);
+char	**clst_to_array(t_clst *buf, size_t height);
 
 #endif

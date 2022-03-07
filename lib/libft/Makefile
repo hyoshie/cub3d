@@ -24,6 +24,7 @@ M_SRC	=	clst_addback.c\
 			clst_insert.c\
 			clst_link.c\
 			clst_new.c\
+			clst_to_array.c\
 			dict_addback.c\
 			dict_clear.c\
 			dict_delone.c\
@@ -74,7 +75,8 @@ M_SRC	=	clst_addback.c\
 			xpipe.c\
 			xwaitpid.c
 
-G_SRCS	= gnl/get_next_line_before.c gnl/get_next_line_utils.c
+G_SRCS	= gnl/get_next_line_before.c gnl/get_next_line_utils.c\
+		  gnl/gnl.c gnl/gnl_utils.c
 
 SRCDIR	= subject/
 SRCS	= $(addprefix $(SRCDIR), $(SRC))
