@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 15:25:32 by user42            #+#    #+#             */
-/*   Updated: 2022/03/07 14:56:17 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:38:32 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void	parse_file(char *file_path, t_map *map, t_design *design, void *mlx_ptr)
 	num_lines = path_to_lsts(file_path, design_lst, map_lst, SEP_LINE);
 	set_map(map, map_lst, num_lines - SEP_LINE);
 	//check_map(map);
+	
 	set_design(mlx_ptr, design, design_lst);
 	(void)design;
 	(void)mlx_ptr;
