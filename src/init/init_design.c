@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_design.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
+/*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 20:44:41 by user42            #+#    #+#             */
-/*   Updated: 2022/03/06 21:10:50 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/07 14:56:10 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,15 @@ void	init_design(void *mlx_ptr, t_design *design)
 	load_xpm_file(mlx_ptr, &design->east, "texture/castle.xpm");
 	design->ceil = SKYBLUE;
 	design->floor = KOGETYA;
+}
+
+void	set_design(void *mlx_ptr, t_design *design, t_clst *design_lst)
+{
+	load_xpm_file(mlx_ptr, &design->north, "texture/manf1.xpm");
+	load_xpm_file(mlx_ptr, &design->south, "texture/manb1.xpm");
+	load_xpm_file(mlx_ptr, &design->west, "texture/ove.xpm");
+	load_xpm_file(mlx_ptr, &design->east, "texture/castle.xpm");
+	design->ceil = SKYBLUE;
+	design->floor = KOGETYA;
+	(void)design_lst;
 }
