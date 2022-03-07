@@ -33,7 +33,7 @@ void	init_design(void *mlx_ptr, t_design *design)
 	design->floor = KOGETYA;
 }
 
-void	design_lst_to_dict(t_clst *design_lst, t_dict *path, char sep)
+void	design_lst_to_dict(t_clst *design_lst, t_dict *design_dict, char sep)
 {
 	t_clst	*lst_ptr;
 	char	**vector;
@@ -44,23 +44,48 @@ void	design_lst_to_dict(t_clst *design_lst, t_dict *path, char sep)
 		vector = ft_xsplit(lst_ptr->content, sep);
 		/* if (vector[2])
 			exit(1);//エラー処理する */
-		dict_addback(path, dict_new(vector[0], vector[1]));
+		dict_addback(design_dict, dict_new(vector[0], vector[1]));
 		lst_ptr = lst_ptr->next;
 	}
 	free_vector(vector);
 }
 
+void	load_wall_xpm_files(void *mlx_ptr, t_design *design, t_dict *design_dict)
+{
+	load_xpm_file(mlx_ptr, &design->north, dict_get_value("NO", design_dict));
+	load_xpm_file(mlx_ptr, &design->south, dict_get_value("SO", design_dict));
+	load_xpm_file(mlx_ptr, &design->west, dict_get_value("WE", design_dict));
+	load_xpm_file(mlx_ptr, &design->east, dict_get_value("EA", design_dict));
+}
+
+t_color	rgb_to_hex(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+void	load_ceil_floor_color(t_design *design, t_dict *design_dict)
+{
+	char	**c_vector;
+	char	**f_vector;
+	t_color c_color;
+	t_color f_color;
+
+	c_vector = ft_xsplit(dict_get_value("C", design_dict), ',');
+	f_vector = ft_xsplit(dict_get_value("F", design_dict), ',');
+	c_color = rgb_to_hex(0, ft_atoi(c_vector[0]), ft_atoi(c_vector[1]), ft_atoi(c_vector[2]));
+	f_color = rgb_to_hex(0, ft_atoi(f_vector[0]), ft_atoi(f_vector[1]), ft_atoi(f_vector[2]));
+	design->ceil = c_color;
+	design->floor = f_color;
+	free_vector(c_vector);
+	free_vector(f_vector);
+}
+
 void	set_design(void *mlx_ptr, t_design *design, t_clst *design_lst)
 {
-	t_dict	*path;
+	t_dict	*design_dict;
 
-	path = dict_new(NULL, NULL);
-	design_lst_to_dict(design_lst, path, ' ');
-	load_xpm_file(mlx_ptr, &design->north, dict_get_value("NO", path));
-	load_xpm_file(mlx_ptr, &design->south, dict_get_value("SO", path));
-	load_xpm_file(mlx_ptr, &design->west, dict_get_value("WE", path));
-	load_xpm_file(mlx_ptr, &design->east, dict_get_value("EA", path));
-	//rgb_to_hex();
-	/* design->ceil = ft_atoi(dict_get_value("C", path));
-	design->floor = ft_atoi(dict_get_value("F", path)); */
+	design_dict = dict_new(NULL, NULL);
+	design_lst_to_dict(design_lst, design_dict, ' ');
+	load_wall_xpm_files(mlx_ptr, design, design_dict);
+	load_ceil_floor_color(design, design_dict);
 }

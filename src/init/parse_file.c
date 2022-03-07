@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 15:25:32 by user42            #+#    #+#             */
-/*   Updated: 2022/03/07 16:38:32 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/07 18:05:49 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,24 +68,6 @@ size_t	fd_to_clsts(int fd, t_clst *clst1, t_clst *clst2, size_t sep_line)
 	return (num_lines);
 }
 
-
-void	set_map_width_height(t_clst *map_lst, t_map *map, size_t num_nodes)
-{
-	t_clst	*p;
-	size_t	line_len;
-
-	map->height = num_nodes;
-	map->width = 0;
-	p = map_lst->next;
-	while (p != map_lst)
-	{
-		line_len = ft_strlen(p->content);
-		if (line_len > map->width)
-			map->width = line_len;
-		p = p->next;
-	}
-}
-
 size_t	path_to_lsts(char *file_path, t_clst *design_lst, t_clst *map_lst, size_t sep_line)
 {
 	int		fd;
@@ -95,12 +77,6 @@ size_t	path_to_lsts(char *file_path, t_clst *design_lst, t_clst *map_lst, size_t
 	num_lines = fd_to_clsts(fd, design_lst, map_lst, sep_line);
 	close(fd);
 	return (num_lines);
-}
-
-void	set_map(t_map *map, t_clst *map_lst, size_t num_nodes)
-{
-	set_map_width_height(map_lst, map, num_nodes);
-	map->map_ptr = clst_to_array(map_lst, map->height);
 }
 
 void	parse_file(char *file_path, t_map *map, t_design *design, void *mlx_ptr)
@@ -114,10 +90,7 @@ void	parse_file(char *file_path, t_map *map, t_design *design, void *mlx_ptr)
 	num_lines = path_to_lsts(file_path, design_lst, map_lst, SEP_LINE);
 	set_map(map, map_lst, num_lines - SEP_LINE);
 	//check_map(map);
-	
 	set_design(mlx_ptr, design, design_lst);
-	(void)design;
-	(void)mlx_ptr;
 	//clst_clear(map_lst);
 	//clst_clear(design_lst);
 	//printf("width: %zu, height: %zu\n", map->width, map->height);
