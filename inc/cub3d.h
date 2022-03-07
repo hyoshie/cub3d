@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/06 16:26:57 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/06 20:42:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # include "../lib/minilibx-linux/mlx.h"
 # include "../lib/libft/mylibft.h"
 
+typedef int		t_color;
+
 typedef struct s_point {
 	double	x;
 	double	y;
@@ -36,7 +38,10 @@ typedef struct s_img {
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
+	int		width;
+	int		height;
 }	t_img;
+typedef t_img	t_texture;
 
 typedef struct s_map {
 	char	**map_ptr;
@@ -71,24 +76,26 @@ typedef struct s_ray {
 }	t_ray;
 
 typedef struct s_design {
-	t_img	*no_texture;
-	t_img	*so_texture;
-	t_img	*we_texture;
-	t_img	*ea_texture;
-	int		c_color;
-	int		f_color;
+	t_texture	north;
+	t_texture	south;
+	t_texture	west;
+	t_texture	east;
+	t_color		ceil;
+	t_color		floor;
 }	t_design;
 
 typedef struct s_game {
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_map		map;
+	t_design	design;
 	t_player	player;
 	t_ray		*ray;
 }	t_game;
 
 void	init_game(t_game *game, char *file_path);
 void	init_image(t_img *img, void *mlx_ptr, int width, int height);
+void	init_design(void *mlx_ptr, t_design *design);
 void	process_key_press(int keycode, t_player *player);
 void	register_hooks(t_game *game);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);

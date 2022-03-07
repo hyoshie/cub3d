@@ -6,7 +6,7 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/06 14:27:53 by user42           ###   ########.fr        #
+#    Updated: 2022/03/06 20:34:14 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ VPATH		=	src:src/raycast:src/render:src/init:src/game
 
 SRCS		=	main.c\
 				init.c\
+				init_design.c\
 				register_hooks.c\
 				my_mlx_pixel_put.c\
 				render.c\
