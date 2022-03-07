@@ -23,7 +23,7 @@ static void	load_xpm_file(void *mlx_ptr, t_texture *direction, char *file_path)
 }
 
 // 色もとりあえずここで初期化しています。
-void	init_design(void *mlx_ptr, t_design *design)
+/* void	init_design(void *mlx_ptr, t_design *design)
 {
 	load_xpm_file(mlx_ptr, &design->north, "texture/manf1.xpm");
 	load_xpm_file(mlx_ptr, &design->south, "texture/manb1.xpm");
@@ -31,9 +31,9 @@ void	init_design(void *mlx_ptr, t_design *design)
 	load_xpm_file(mlx_ptr, &design->east, "texture/castle.xpm");
 	design->ceil = SKYBLUE;
 	design->floor = KOGETYA;
-}
+} */
 
-void	design_lst_to_dict(t_clst *design_lst, t_dict *design_dict, char sep)
+static void	design_lst_to_dict(t_clst *design_lst, t_dict *design_dict, char sep)
 {
 	t_clst	*lst_ptr;
 	char	**vector;
@@ -50,7 +50,7 @@ void	design_lst_to_dict(t_clst *design_lst, t_dict *design_dict, char sep)
 	free_vector(vector);
 }
 
-void	load_wall_xpm_files(void *mlx_ptr, t_design *design, t_dict *design_dict)
+static void	load_wall_xpm_files(void *mlx_ptr, t_design *design, t_dict *design_dict)
 {
 	load_xpm_file(mlx_ptr, &design->north, dict_get_value("NO", design_dict));
 	load_xpm_file(mlx_ptr, &design->south, dict_get_value("SO", design_dict));
@@ -63,7 +63,7 @@ t_color	rgb_to_hex(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-void	load_ceil_floor_color(t_design *design, t_dict *design_dict)
+static void	load_ceil_floor_color(t_design *design, t_dict *design_dict)
 {
 	char	**c_vector;
 	char	**f_vector;
@@ -80,7 +80,7 @@ void	load_ceil_floor_color(t_design *design, t_dict *design_dict)
 	free_vector(f_vector);
 }
 
-void	set_design(void *mlx_ptr, t_design *design, t_clst *design_lst)
+void	set_design(t_design *design, t_clst *design_lst, void *mlx_ptr)
 {
 	t_dict	*design_dict;
 

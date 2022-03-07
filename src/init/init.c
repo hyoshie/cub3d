@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/07 18:09:26 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/07 22:08:14 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ char *g_map[MAP_NUM_ROWS + 1] = {"11111111111111111111", "10000000000000000001",
                                  "10000000000000000001", "10000000000000000001",
                                  "11111111111111111111", NULL};
 
-static void	init_map(t_map *map)
+/* static void	init_map(t_map *map)
 {
 	map->map_ptr = g_map;
-}
+} */
 
-static void	init_player(t_player *player)
+/* static void	init_player(t_player *player)
 {
 	player->position.x = WINDOW_WIDTH / 2;
 	player->position.y = WINDOW_HEIGHT / 2;
@@ -47,7 +47,7 @@ static void	init_player(t_player *player)
 	player->fov_angle = 60 * (M_PI / 180);
 	player->walk_speed = WALK_SPEED;
 	player->turn_speed = 15 * (M_PI / 180);
-}
+} */
 
 // TODO:check calloc or malloc
 static void	init_ray(t_ray **ray, t_player *player, t_map *map)
@@ -61,9 +61,9 @@ void	init_game(t_game *game, char *file_path)
 	game->mlx_ptr = mlx_init();
 	game->win_ptr = \
 		mlx_new_window(game->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_NAME);
-	parse_file(file_path, &game->map, &game->design, game->mlx_ptr);
-	init_map(&game->map);
-	init_design(game->mlx_ptr, &game->design);
-	init_player(&game->player);
+	parse_file(file_path, game, game->mlx_ptr);
+	//init_map(&game->map);
+	//init_design(game->mlx_ptr, &game->design);
+	//init_player(&game->player);
 	init_ray(&game->ray, &game->player, &game->map);
 }

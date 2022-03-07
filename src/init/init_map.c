@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 21:25:22 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/07 18:01:21 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/07 22:06:26 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
 
-void	set_map_width_height(t_clst *map_lst, t_map *map, size_t num_nodes)
+static void	set_map_width_height(t_clst *map_lst, t_map *map, size_t num_nodes)
 {
 	t_clst	*p;
 	size_t	line_len;

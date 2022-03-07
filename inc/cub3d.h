@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/07 17:54:03 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/07 22:07:49 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ t_point	find_vert_wall_hit(const t_ray *ray, const t_point *player_pos,
 void	set_closer_wall_hit(t_ray *ray, const t_point *horiz_wall_hit,
 			const t_point *vert_wall_hit, const t_point *player_pos);
 void	check_args(int ac, char **av);
-void	parse_file(char *file_path, t_map *map, t_design *design, void *mlx_ptr);
-void	set_design(void *mlx_ptr, t_design *design, t_clst *design_lst);
-void	set_map_width_height(t_clst *map_lst, t_map *map, size_t num_nodes);
+void	parse_file(char *file_path, t_game *game, void *mlx_ptr);
+void	set_design(t_design *design, t_clst *design_lst, void *mlx_ptr);
 void	set_map(t_map *map, t_clst *map_lst, size_t num_nodes);
+void	set_player(t_player *player, char **map_ptr);
 #endif /* CUB3D_H */
