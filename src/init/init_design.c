@@ -23,7 +23,7 @@ static void	load_xpm_file(void *mlx_ptr, t_texture *direction, char *file_path)
 }
 
 // 色もとりあえずここで初期化しています。
-/* void	init_design(void *mlx_ptr, t_design *design)
+void	init_design(void *mlx_ptr, t_design *design)
 {
 	load_xpm_file(mlx_ptr, &design->north, "texture/manf1.xpm");
 	load_xpm_file(mlx_ptr, &design->south, "texture/manb1.xpm");
@@ -31,7 +31,7 @@ static void	load_xpm_file(void *mlx_ptr, t_texture *direction, char *file_path)
 	load_xpm_file(mlx_ptr, &design->east, "texture/castle.xpm");
 	design->ceil = SKYBLUE;
 	design->floor = KOGETYA;
-} */
+}
 
 static void	design_lst_to_dict(t_clst *design_lst, t_dict *design_dict, char sep)
 {
@@ -42,11 +42,15 @@ static void	design_lst_to_dict(t_clst *design_lst, t_dict *design_dict, char sep
 	while (lst_ptr != design_lst)
 	{
 		vector = ft_xsplit(lst_ptr->content, sep);
-		/* if (vector[2])
-			exit(1);//エラー処理する */
+		if (!vector[0] || !vector[1])
+		{
+			lst_ptr = lst_ptr->next;
+			continue ;
+		}
 		dict_addback(design_dict, dict_new(vector[0], vector[1]));
 		lst_ptr = lst_ptr->next;
 	}
+	clst_clear(design_lst);
 	free_vector(vector);
 }
 
@@ -63,6 +67,17 @@ t_color	rgb_to_hex(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
+uint32_t	cub_atoi(char *s)
+{
+	int	num;
+
+	num = ft_atoi(s);
+	//all_free_exit的なエラーハンドリングにする
+	if (num < 0 || num > 255)
+		exit(1);
+	return (num);
+}
+
 static void	load_ceil_floor_color(t_design *design, t_dict *design_dict)
 {
 	char	**c_vector;
@@ -72,12 +87,25 @@ static void	load_ceil_floor_color(t_design *design, t_dict *design_dict)
 
 	c_vector = ft_xsplit(dict_get_value("C", design_dict), ',');
 	f_vector = ft_xsplit(dict_get_value("F", design_dict), ',');
-	c_color = rgb_to_hex(0, ft_atoi(c_vector[0]), ft_atoi(c_vector[1]), ft_atoi(c_vector[2]));
-	f_color = rgb_to_hex(0, ft_atoi(f_vector[0]), ft_atoi(f_vector[1]), ft_atoi(f_vector[2]));
+	c_color = rgb_to_hex(0, cub_atoi(c_vector[0]), cub_atoi(c_vector[1]), cub_atoi(c_vector[2]));
+	f_color = rgb_to_hex(0, cub_atoi(f_vector[0]), cub_atoi(f_vector[1]), cub_atoi(f_vector[2]));
 	design->ceil = c_color;
 	design->floor = f_color;
 	free_vector(c_vector);
 	free_vector(f_vector);
+}
+
+//for test
+void	print_dict(t_dict *d)
+{
+	t_dict *p;
+	p = d->next;
+	while (p != d)
+	{
+		printf("key: %s\n", p->key);
+		printf("value: %s\n", p->value);
+		p = p->next;
+	}
 }
 
 void	set_design(t_design *design, t_clst *design_lst, void *mlx_ptr)
@@ -88,4 +116,5 @@ void	set_design(t_design *design, t_clst *design_lst, void *mlx_ptr)
 	design_lst_to_dict(design_lst, design_dict, ' ');
 	load_wall_xpm_files(mlx_ptr, design, design_dict);
 	load_ceil_floor_color(design, design_dict);
+	dict_clear(design_dict);
 }
