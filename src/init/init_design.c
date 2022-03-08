@@ -22,17 +22,6 @@ static void	load_xpm_file(void *mlx_ptr, t_texture *direction, char *file_path)
 			&direction->size_line, &direction->endian);
 }
 
-// 色もとりあえずここで初期化しています。
-void	init_design(void *mlx_ptr, t_design *design)
-{
-	load_xpm_file(mlx_ptr, &design->north, "texture/manf1.xpm");
-	load_xpm_file(mlx_ptr, &design->south, "texture/manb1.xpm");
-	load_xpm_file(mlx_ptr, &design->west, "texture/ove.xpm");
-	load_xpm_file(mlx_ptr, &design->east, "texture/castle.xpm");
-	design->ceil = SKYBLUE;
-	design->floor = KOGETYA;
-}
-
 static void	design_lst_to_dict(t_clst *design_lst, t_dict *design_dict, char sep)
 {
 	t_clst	*lst_ptr;
@@ -45,13 +34,14 @@ static void	design_lst_to_dict(t_clst *design_lst, t_dict *design_dict, char sep
 		if (!vector[0] || !vector[1])
 		{
 			lst_ptr = lst_ptr->next;
+			free_vector(vector);
 			continue ;
 		}
-		dict_addback(design_dict, dict_new(vector[0], vector[1]));
+		dict_addback(design_dict, dict_new(ft_xstrdup(vector[0]), ft_xstrdup(vector[1])));
 		lst_ptr = lst_ptr->next;
+		free_vector(vector);
 	}
 	clst_clear(design_lst);
-	free_vector(vector);
 }
 
 static void	load_wall_xpm_files(void *mlx_ptr, t_design *design, t_dict *design_dict)
@@ -62,7 +52,7 @@ static void	load_wall_xpm_files(void *mlx_ptr, t_design *design, t_dict *design_
 	load_xpm_file(mlx_ptr, &design->east, dict_get_value("EA", design_dict));
 }
 
-t_color	rgb_to_hex(int t, int r, int g, int b)
+t_color	rgb_to_int(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
 }
@@ -87,8 +77,8 @@ static void	load_ceil_floor_color(t_design *design, t_dict *design_dict)
 
 	c_vector = ft_xsplit(dict_get_value("C", design_dict), ',');
 	f_vector = ft_xsplit(dict_get_value("F", design_dict), ',');
-	c_color = rgb_to_hex(0, cub_atoi(c_vector[0]), cub_atoi(c_vector[1]), cub_atoi(c_vector[2]));
-	f_color = rgb_to_hex(0, cub_atoi(f_vector[0]), cub_atoi(f_vector[1]), cub_atoi(f_vector[2]));
+	c_color = rgb_to_int(0, cub_atoi(c_vector[0]), cub_atoi(c_vector[1]), cub_atoi(c_vector[2]));
+	f_color = rgb_to_int(0, cub_atoi(f_vector[0]), cub_atoi(f_vector[1]), cub_atoi(f_vector[2]));
 	design->ceil = c_color;
 	design->floor = f_color;
 	free_vector(c_vector);
@@ -108,12 +98,13 @@ void	print_dict(t_dict *d)
 	}
 }
 
-void	set_design(t_design *design, t_clst *design_lst, void *mlx_ptr)
+void	init_design(t_design *design, t_clst *design_lst, void *mlx_ptr)
 {
 	t_dict	*design_dict;
 
 	design_dict = dict_new(NULL, NULL);
 	design_lst_to_dict(design_lst, design_dict, ' ');
+	validate_design(design_dict);
 	load_wall_xpm_files(mlx_ptr, design, design_dict);
 	load_ceil_floor_color(design, design_dict);
 	dict_clear(design_dict);
