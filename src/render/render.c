@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 23:22:31 by user42            #+#    #+#             */
-/*   Updated: 2022/03/06 16:31:40 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/08 13:57:11 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	render(t_game *game)
 	t_img	win_img;
 
 	init_image(&win_img, game->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
-	render_3d_projection(&game->player, game->ray, &win_img);
+	render_3d_projection(game, &win_img);
 	render_minimap(&game->map, &game->player, game->ray, &win_img);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
 							win_img.img_ptr, 0, 0);
