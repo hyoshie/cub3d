@@ -6,7 +6,7 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/08 13:47:36 by yshimazu         ###   ########.fr        #
+#    Updated: 2022/03/08 15:32:35 by yshimazu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ VPATH		=	src:src/raycast:src/render:src/init:src/game
 SRCS		=	main.c\
 				init.c\
 				init_design.c\
+				validate_design.c\
 				init_map.c\
 				init_player.c\
 				validate_map.c\

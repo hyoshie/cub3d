@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 15:25:32 by user42            #+#    #+#             */
-/*   Updated: 2022/03/08 13:33:50 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/08 15:02:32 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_clst(t_clst *lst)
 	}
 }
 
-/* //for test
+//for test
 void	print_array(char **array)
 {
 	int y;
@@ -37,7 +37,7 @@ void	print_array(char **array)
 		printf("%s\n", array[y]);
 		y++;
 	}
-} */
+}
 
 int	ft_open_readfile(char *readfile)
 {
@@ -60,6 +60,8 @@ size_t	fd_to_clsts(int fd, t_clst *clst1, t_clst *clst2, size_t sep_line)
 		line = gnl(fd);
 		if (!line)
 			break ;
+		if (line[0] == '\0')
+			continue ;
 		else if (num_lines < sep_line)
 			clst_addback(clst1, clst_new(line));
 		else
@@ -94,9 +96,8 @@ void	parse_file(char *file_path, t_game *game, void *mlx_ptr)
 	set_design(&game->design, design_lst, mlx_ptr);
 	set_player(&game->player, game->map.map_ptr);
 	validate_map(game->map.map_ptr, game->player.position.x, game->player.position.y);
-	//check_map(map);
 	//clst_clear(map_lst);
 	//clst_clear(design_lst);
 	//printf("width: %zu, height: %zu\n", map->width, map->height);
-	//print_array(map->map_ptr);
+	//print_array(game->map.map_ptr);
 }
