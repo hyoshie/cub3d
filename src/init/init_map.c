@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 21:25:22 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/06 16:31:39 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/07 23:56:25 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
 
-/* char	**map_set(char *mapfile, t_map *map)
+static void	set_map_width_height(t_clst *map_lst, t_map *map, size_t num_nodes)
 {
-	int		fd;
-	t_list	*buf;
+	t_clst	*p;
+	size_t	line_len;
 
-	buf = NULL;
-	fd = ft_open_readfile(mapfile);
-	map->height = fd_to_lst(fd, &buf);
-	size_check(map);
-	return (lst_to_array(buf, map->height));
-} */
+	map->height = num_nodes;
+	map->width = 0;
+	p = map_lst->next;
+	while (p != map_lst)
+	{
+		line_len = ft_strlen(p->content);
+		if (line_len > map->width)
+			map->width = line_len;
+		p = p->next;
+	}
+}
+
+void	set_map(t_map *map, t_clst *map_lst, size_t num_nodes)
+{
+	set_map_width_height(map_lst, map, num_nodes);
+	map->map_ptr = clst_to_array(map_lst, map->height);
+	//validate_map(map);
+}
