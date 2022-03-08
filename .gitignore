@@ -63,7 +63,7 @@ dkms.conf
 cub3D
 
 # ctags
-ctag
+tags
 
 # reference directory
 ref/

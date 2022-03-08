@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/08 14:12:13 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/08 15:50:20 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,12 @@ typedef struct s_design {
 	t_color		floor;
 }	t_design;
 
+typedef struct s_wall_strip {
+	int	height;
+	int	top_pixel;
+	int	bottom_pixel;
+}	t_wall_strip;
+
 typedef struct s_game {
 	void		*mlx_ptr;
 	void		*win_ptr;
@@ -103,8 +109,8 @@ void	cast_all_rays(t_ray *ray, t_player *player, t_map *map);
 void	update(t_game *game);
 int		render(t_game *game);
 void	render_map(t_map *map, t_img *win_img);
-void	render_3d_projection(t_player *player, t_ray *ray, t_img *win_img);
-void	render_3d_wall(t_player *player, t_ray *ray, t_img *win_img);
+void	render_3d_projection(t_game *game, t_img *win_img);
+int		get_texel_color(t_wall_strip strip, int y, t_ray *ray, t_texture *texture);
 bool	map_has_wall_at(double x, double y, char **map);
 t_point	find_horiz_wall_hit(const t_ray *ray, const t_point *player_pos,
 			const t_map *map);

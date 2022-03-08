@@ -6,7 +6,7 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/08 15:32:35 by yshimazu         ###   ########.fr        #
+#    Updated: 2022/03/08 15:51:51 by yshimazu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRCS		=	main.c\
 				render.c\
 				render_map.c\
 				render_3d_projection.c\
-				render_3d_wall.c\
+				get_texel_color.c\
 				update.c\
 				cast_all_rays.c\
 				find_horiz_wall_hit.c\
