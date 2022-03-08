@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:31:47 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/08 12:54:40 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/08 16:12:07 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	set_pos_angle(t_player *player, char **map_ptr)
 	}
 }
 
-void	set_player(t_player *player, char **map_ptr)
+void	init_player(t_player *player, char **map_ptr)
 {
 	set_pos_angle(player, map_ptr);
 	player->radius = PLAYER_RADIUS * MINIMAP_SCALE;

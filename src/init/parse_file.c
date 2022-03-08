@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 15:25:32 by user42            #+#    #+#             */
-/*   Updated: 2022/03/08 15:02:32 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/08 16:14:03 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ void	parse_file(char *file_path, t_game *game, void *mlx_ptr)
 	design_lst = clst_new(NULL);
 	map_lst = clst_new(NULL);
 	num_lines = path_to_lsts(file_path, design_lst, map_lst, NUM_DESIGN_LINES);
-	set_map(&game->map, map_lst, num_lines - NUM_DESIGN_LINES);
-	set_design(&game->design, design_lst, mlx_ptr);
-	set_player(&game->player, game->map.map_ptr);
+	init_map(&game->map, map_lst, num_lines - NUM_DESIGN_LINES);
+	init_design(&game->design, design_lst, mlx_ptr);
+	init_player(&game->player, game->map.map_ptr);
 	validate_map(game->map.map_ptr, game->player.position.x, game->player.position.y);
 	//clst_clear(map_lst);
 	//clst_clear(design_lst);

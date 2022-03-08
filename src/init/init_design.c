@@ -22,17 +22,6 @@ static void	load_xpm_file(void *mlx_ptr, t_texture *direction, char *file_path)
 			&direction->size_line, &direction->endian);
 }
 
-// 色もとりあえずここで初期化しています。
-void	init_design(void *mlx_ptr, t_design *design)
-{
-	load_xpm_file(mlx_ptr, &design->north, "texture/manf1.xpm");
-	load_xpm_file(mlx_ptr, &design->south, "texture/manb1.xpm");
-	load_xpm_file(mlx_ptr, &design->west, "texture/ove.xpm");
-	load_xpm_file(mlx_ptr, &design->east, "texture/castle.xpm");
-	design->ceil = SKYBLUE;
-	design->floor = KOGETYA;
-}
-
 static void	design_lst_to_dict(t_clst *design_lst, t_dict *design_dict, char sep)
 {
 	t_clst	*lst_ptr;
@@ -109,7 +98,7 @@ void	print_dict(t_dict *d)
 	}
 }
 
-void	set_design(t_design *design, t_clst *design_lst, void *mlx_ptr)
+void	init_design(t_design *design, t_clst *design_lst, void *mlx_ptr)
 {
 	t_dict	*design_dict;
 
