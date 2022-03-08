@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 00:05:42 by user42            #+#    #+#             */
-/*   Updated: 2022/03/08 21:51:59 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/08 22:14:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,28 @@ static t_wall_strip	get_wall_strip_info(t_ray *ray, t_player *player)
 	return (strip);
 }
 
+static t_texture	*select_texture(t_ray *ray, t_design *design)
+{
+	if (ray->was_hit_vertical)
+	{
+		if (ray->is_facing_left)
+			return (&design->west);
+		else
+			return (&design->east);
+	}
+	else
+	{
+		if (ray->is_facing_up)
+			return (&design->north);
+		else
+			return (&design->south);
+	}
+}
+
 static void	render_wall_strip(t_img *win_img, t_game *game, int x)
 {
 	t_wall_strip	strip;
-	t_texture		texture;
+	t_texture		*texture;
 	int				color;
 	int				y;
 
@@ -47,8 +65,8 @@ static void	render_wall_strip(t_img *win_img, t_game *game, int x)
 	}
 	while (y < strip.bottom_pixel)
 	{
-		texture = game->design.north;
-		color = get_texel_color(strip, y, &game->ray[x], &texture);
+		texture = select_texture(&game->ray[x], &game->design);
+		color = get_texel_color(strip, y, &game->ray[x], texture);
 		my_mlx_pixel_put(win_img, x, y++, color);
 	}
 	while (y < WINDOW_HEIGHT)
