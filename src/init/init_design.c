@@ -67,7 +67,7 @@ t_color	rgb_to_hex(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-uint32_t	cub_atoi(char *s)
+int	cub_atoi(char *s)
 {
 	int	num;
 
