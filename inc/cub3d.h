@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/08 16:16:08 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/08 21:35:37 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,4 +124,5 @@ void	init_map(t_map *map, t_clst *map_lst, size_t num_nodes);
 void	init_player(t_player *player, char **map_ptr);
 void	validate_map(char **map, int player_pos_x, int player_pos_y);
 void	validate_design(t_dict *design_dict);
+double	normalize_angle(double ray_angle);
 #endif /* CUB3D_H */

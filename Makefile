@@ -6,7 +6,7 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/08 16:21:05 by yshimazu         ###   ########.fr        #
+#    Updated: 2022/03/08 21:41:59 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ MLX_DIR		=	lib/minilibx-linux
 LIBFT_DIR	=	lib/libft
 OBJDIR		=	./obj
 
-VPATH		=	src:src/raycast:src/render:src/init:src/game
+VPATH		=	src:src/raycast:src/render:src/init:src/game:src/utils
 
 SRCS		=	main.c\
 				init.c\
@@ -42,7 +42,9 @@ SRCS		=	main.c\
 				set_closer_wall_hit.c\
 				process_keypress.c\
 				check_args.c\
-				parse_file.c
+				parse_file.c\
+				normalize_angle.c\
+				map_has_wall_at.c
 
 OBJS		=	$(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
 DPS			=	$(SRCS:.o=.d)

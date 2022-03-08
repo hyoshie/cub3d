@@ -6,60 +6,36 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 11:36:52 by user42            #+#    #+#             */
-/*   Updated: 2022/03/06 16:31:39 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/08 21:42:48 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
 
-bool	map_has_wall_at(double x, double y, char **map)
-{
-	const int	map_grid_index_x = x / TILE_SIZE;
-	const int	map_grid_index_y = y / TILE_SIZE;
-
-	if (x < 0 || x > WINDOW_WIDTH || y < 0 || y > WINDOW_HEIGHT)
-	{
-		return (true);
-	}
-	else
-	{
-		return (map[map_grid_index_y][map_grid_index_x] == '1');
-	}
-}
-
-// static void	move_player(t_player *player, char **map)
-// {
-// 	const int	move_step = player->walk_direction * player->walk_speed;
-// 	double		next_x;
-// 	double		next_y;
-
-// 	player->rotation_angle += player->turn_direction * player->turn_speed;
-// 	next_x = player->position.x + cos(player->rotation_angle) * move_step;
-// 	next_y = player->position.y + sin(player->rotation_angle) * move_step;
-// 	if (!map_has_wall_at(next_x, next_y, map))
-// 	{
-// 		player->position.x = next_x;
-// 		player->position.y = next_y;
-// 	}
-// }
-
 static void	move_player(t_player *player, char **map)
 {
 	const int	move_step = player->walk_speed;
 	double		move_angle;
-	double		next_x;
-	double		next_y;
+	t_point		next;
+	t_point		check;
 
 	if (!player->should_move)
 		return ;
 	move_angle = player->rotation_angle + player->walk_direction;
-	next_x = player->position.x + cos(move_angle) * move_step;
-	next_y = player->position.y + sin(move_angle) * move_step;
-	if (!map_has_wall_at(next_x, next_y, map))
+	move_angle = normalize_angle(move_angle);
+	next.x = player->position.x + cos(move_angle) * move_step;
+	next.y = player->position.y + sin(move_angle) * move_step;
+	check.x = next.x;
+	check.y = next.y;
+	if (move_angle > M_PI && move_angle < M_PI * 2)
+		check.y -= 1;
+	if (move_angle > 0.5 * M_PI && move_angle < 1.5 * M_PI)
+		check.x -= 1;
+	if (!map_has_wall_at(check.x, check.y, map))
 	{
-		player->position.x = next_x;
-		player->position.y = next_y;
+		player->position.x = next.x;
+		player->position.y = next.y;
 	}
 }
 

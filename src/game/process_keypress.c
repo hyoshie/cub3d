@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 11:25:13 by user42            #+#    #+#             */
-/*   Updated: 2022/03/06 16:31:38 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/08 21:39:12 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,12 @@ static void	process_rotate_key(int keycode, t_player *player)
 	if (keycode == KEY_LEFT)
 	{
 		player->rotation_angle -= player->turn_speed;
+		player->rotation_angle = normalize_angle(player->rotation_angle);
 	}
 	if (keycode == KEY_RIGHT)
 	{
 		player->rotation_angle += player->turn_speed;
+		player->rotation_angle = normalize_angle(player->rotation_angle);
 	}
 }
 
