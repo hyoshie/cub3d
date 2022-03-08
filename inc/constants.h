@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
+/*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/04 14:50:07 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/07 14:22:12 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,7 @@
 # define WALK_SPEED 10
 
 # define NUM_RAYS WINDOW_WIDTH
+
+# define SEP_LINE 8
 
 #endif /* CONSTANTS_H */

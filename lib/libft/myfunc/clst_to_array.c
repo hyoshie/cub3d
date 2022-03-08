@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dict_clear.c                                       :+:      :+:    :+:   */
+/*   clst_to_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/10 17:01:06 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/08 00:01:31 by yshimazu         ###   ########.fr       */
+/*   Created: 2022/03/07 13:40:55 by yshimazu          #+#    #+#             */
+/*   Updated: 2022/03/07 13:40:57 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "myfunc.h"
 
-void	dict_clear(t_dict *head)
+char	**clst_to_array(t_clst *buf, size_t height)
 {
-	t_dict	*p;
+	t_clst	*t_buf;
+	size_t	i;
+	char	**map;
 
-	p = head->next;
-	while (p != head)
+	t_buf = buf->next;
+	map = (char **)malloc(sizeof(char *) * (height + 1));
+	if (!map)
+		xperror("malloc");
+	i = 0;
+	while (t_buf != buf)
 	{
-		p = p->next;
-		free(p->prev->key);
-		free(p->prev->value);
-		free (p->prev);
+		map[i] = ft_strdup(t_buf->content);
+		t_buf = t_buf->next;
+		i++;
 	}
-	free (head);
+	map[i] = NULL;
+	clst_clear(buf);
+	return (map);
 }
