@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/09 17:01:19 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/09 19:53:07 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ void	init_game(t_game *game, char *file_path)
 	parse_file(file_path, game, game->mlx_ptr);
 	init_image(&game->win_img, game->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
 	init_ray(&game->ray, &game->player, &game->map);
+	init_minimap(&game->mini, &game->map, game->player.position);
 }
