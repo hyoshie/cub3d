@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/09 19:52:13 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/09 10:41:24 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@
 # define MAP_NUM_ROWS 13
 # define WINDOW_WIDTH 640
 # define WINDOW_HEIGHT 416
-# define WINDOW_ASPECT_RATIO 0.65
-# define WINDOW_NAME "####Cub3D####"
+# define WINDOW_NAME "####Minimap####"
 # define MINIMAP_SCALE 0.25
-# define MINIMAP_WIDTH_MAX 160
-# define MINIMAP_HEIGHT_MAX 104
 
 # define RED 0x00FF0000
 # define YELLOW 0x00FFFF00

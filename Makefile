@@ -6,7 +6,7 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/09 20:17:53 by user42           ###   ########.fr        #
+#    Updated: 2022/03/09 17:01:31 by yshimazu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ MLX_DIR		=	lib/minilibx-linux
 LIBFT_DIR	=	lib/libft
 OBJDIR		=	./obj
 
-VPATH		=	src:src/raycast:src/render:src/init:src/game:src/utils:src/minimap
+VPATH		=	src:src/raycast:src/render:src/init:src/game:src/utils
 
 SRCS		=	main.c\
 				init.c\
@@ -29,15 +29,13 @@ SRCS		=	main.c\
 				rgb_utils.c\
 				init_map.c\
 				init_player.c\
-				init_minimap.c\
 				validate_map.c\
 				free_all_exit.c\
 				register_hooks.c\
 				my_mlx_pixel_put.c\
 				render.c\
-				render_all_ray.c\
+				render_map.c\
 				render_3d_projection.c\
-				render_minimap.c\
 				get_texel_color.c\
 				update.c\
 				cast_all_rays.c\
@@ -48,9 +46,7 @@ SRCS		=	main.c\
 				check_args.c\
 				parse_file.c\
 				normalize_angle.c\
-				map_has_wall_at.c\
-				is_player.c\
-				is_floor.c
+				map_has_wall_at.c
 
 OBJS		=	$(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
 DPS			=	$(SRCS:.o=.d)

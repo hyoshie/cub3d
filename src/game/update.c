@@ -6,14 +6,14 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 11:36:52 by user42            #+#    #+#             */
-/*   Updated: 2022/03/09 19:00:00 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/09 10:29:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
 
-static void	move_player(t_player *player, t_map *map, t_minimap *mini)
+static void	move_player(t_player *player, t_map *map)
 {
 	const int	move_step = player->walk_speed;
 	double		move_angle;
@@ -36,13 +36,11 @@ static void	move_player(t_player *player, t_map *map, t_minimap *mini)
 	{
 		player->position.x = next.x;
 		player->position.y = next.y;
-		mini->player_pos.x = player->position.x * mini->scale;
-		mini->player_pos.y = player->position.y * mini->scale;
 	}
 }
 
 void	update(t_game *game)
 {
-	move_player(&game->player, &game->map, &game->mini);
+	move_player(&game->player, &game->map);
 	cast_all_rays(game->ray, &game->player, &game->map);
 }
