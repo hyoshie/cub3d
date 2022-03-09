@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/08 21:35:37 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/09 10:46:46 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef t_img	t_texture;
 
 typedef struct s_map {
 	char	**map_ptr;
+	size_t	num_cols;
+	size_t	num_rows;
 	size_t	width;
 	size_t	height;
 }	t_map;
@@ -110,7 +112,7 @@ int		render(t_game *game);
 void	render_map(t_map *map, t_img *win_img);
 void	render_3d_projection(t_game *game, t_img *win_img);
 int		get_texel_color(t_wall_strip strip, int y, t_ray *ray, t_texture *texture);
-bool	map_has_wall_at(double x, double y, char **map);
+bool	map_has_wall_at(double x, double y, t_map *map);
 t_point	find_horiz_wall_hit(const t_ray *ray, const t_point *player_pos,
 			const t_map *map);
 t_point	find_vert_wall_hit(const t_ray *ray, const t_point *player_pos,
