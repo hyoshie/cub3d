@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/09 13:30:06 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:15:57 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ typedef struct s_wall_strip {
 typedef struct s_game {
 	void		*mlx_ptr;
 	void		*win_ptr;
+	t_img		win_img;
 	t_map		map;
 	t_design	design;
 	t_player	player;
