@@ -30,6 +30,7 @@ SRCS		=	main.c\
 				init_map.c\
 				init_player.c\
 				validate_map.c\
+				free_all_exit.c\
 				register_hooks.c\
 				my_mlx_pixel_put.c\
 				render.c\

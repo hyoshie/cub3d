@@ -61,7 +61,10 @@ size_t	fd_to_clsts(int fd, t_clst *clst1, t_clst *clst2, size_t sep_line)
 		if (!line)
 			break ;
 		if (line[0] == '\0')
+		{
+			free(line);
 			continue ;
+		}
 		else if (num_lines < sep_line)
 			clst_addback(clst1, clst_new(line));
 		else

@@ -16,7 +16,7 @@
 //I wanna change func name:process_key_press.
 static int	key_press_hook(int keycode, t_game *game)
 {
-	process_key_press(keycode, &game->player);
+	process_key_press(keycode, &game->player, game);
 	update(game);
 	render(game);
 	return (0);

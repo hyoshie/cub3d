@@ -103,7 +103,7 @@ typedef struct s_game {
 
 void	init_game(t_game *game, char *file_path);
 void	init_image(t_img *img, void *mlx_ptr, int width, int height);
-void	process_key_press(int keycode, t_player *player);
+void	process_key_press(int keycode, t_player *player, t_game *game);
 void	register_hooks(t_game *game);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	cast_all_rays(t_ray *ray, t_player *player, t_map *map);
@@ -130,4 +130,5 @@ void	validate_design(t_dict *design_dict);
 double	normalize_angle(double ray_angle);
 t_color	rgb_to_int(int t, int r, int g, int b);
 int		rgb_atoi(char *s);
+void	free_all_exit(t_game *game);
 #endif /* CUB3D_H */

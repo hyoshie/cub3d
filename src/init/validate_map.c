@@ -87,4 +87,5 @@ void	validate_map(char **map)
 		}
 		y++;
 	}
+	free_vector(copy);
 }
