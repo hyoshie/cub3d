@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/09 10:46:46 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/09 13:30:06 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,10 @@ void	parse_file(char *file_path, t_game *game, void *mlx_ptr);
 void	init_design(t_design *design, t_clst *design_lst, void *mlx_ptr);
 void	init_map(t_map *map, t_clst *map_lst, size_t num_nodes);
 void	init_player(t_player *player, char **map_ptr);
-void	validate_map(char **map, int player_pos_x, int player_pos_y);
+bool	is_player(char c);
+void	validate_map(char **map);
 void	validate_design(t_dict *design_dict);
 double	normalize_angle(double ray_angle);
+t_color	rgb_to_int(int t, int r, int g, int b);
+int		rgb_atoi(char *s);
 #endif /* CUB3D_H */

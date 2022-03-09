@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/08 14:33:39 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/09 10:41:24 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@
 
 # define NUM_RAYS WINDOW_WIDTH
 
-# define NUM_DESIGN_LINES 6
+# define NUM_DESIGN_ELEMS 6
 
 #endif /* CONSTANTS_H */
