@@ -12,6 +12,7 @@ void	free_all_exit(t_game *game)
 	mlx_destroy_display(game->mlx_ptr);
 	mlx_loop_end(game->mlx_ptr);
 	free(game->mlx_ptr);
+	free(game->ray);
 	free_vector(game->map.map_ptr);
 	exit (EXIT_SUCCESS);
 }
