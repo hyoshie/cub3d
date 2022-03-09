@@ -6,7 +6,7 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/09 13:20:27 by yshimazu         ###   ########.fr        #
+#    Updated: 2022/03/09 17:01:31 by yshimazu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS		=	main.c\
 				init_map.c\
 				init_player.c\
 				validate_map.c\
+				free_all_exit.c\
 				register_hooks.c\
 				my_mlx_pixel_put.c\
 				render.c\
