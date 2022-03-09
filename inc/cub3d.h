@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/09 10:46:46 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/09 18:54:24 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,18 @@ typedef struct s_map {
 	size_t	num_rows;
 	size_t	width;
 	size_t	height;
+	double	minimap_scale;
+	int		minimap_color;
 }	t_map;
+
+typedef struct s_minimap {
+	t_map	*map;
+	double	scale;
+	double	tile_size;
+	t_point	player_pos;
+	double	player_radius;
+	int		color;
+}	t_minimap;
 
 // 変数をいくつか定数にするかも
 typedef struct s_player {
@@ -96,6 +107,7 @@ typedef struct s_game {
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_map		map;
+	t_minimap	mini;
 	t_design	design;
 	t_player	player;
 	t_ray		*ray;
@@ -109,7 +121,9 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	cast_all_rays(t_ray *ray, t_player *player, t_map *map);
 void	update(t_game *game);
 int		render(t_game *game);
-void	render_map(t_map *map, t_img *win_img);
+// void	render_floor(t_minimap *mini, t_img *win_img);
+void	render_minimap(t_minimap *mini, t_player *player, t_ray *ray, t_img *win_img);
+void	render_all_ray(t_minimap *mini, t_player *player, t_ray *ray, t_img *win_img);
 void	render_3d_projection(t_game *game, t_img *win_img);
 int		get_texel_color(t_wall_strip strip, int y, t_ray *ray, t_texture *texture);
 bool	map_has_wall_at(double x, double y, t_map *map);
@@ -124,6 +138,7 @@ void	parse_file(char *file_path, t_game *game, void *mlx_ptr);
 void	init_design(t_design *design, t_clst *design_lst, void *mlx_ptr);
 void	init_map(t_map *map, t_clst *map_lst, size_t num_nodes);
 void	init_player(t_player *player, char **map_ptr);
+void	init_minimap(t_minimap *mini, t_map *map, t_point player_pos);
 void	validate_map(char **map, int player_pos_x, int player_pos_y);
 void	validate_design(t_dict *design_dict);
 double	normalize_angle(double ray_angle);
