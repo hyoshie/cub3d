@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/09 18:54:24 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/09 19:51:53 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ typedef struct s_wall_strip {
 typedef struct s_game {
 	void		*mlx_ptr;
 	void		*win_ptr;
+	t_img		win_img;
 	t_map		map;
 	t_minimap	mini;
 	t_design	design;
@@ -115,7 +116,7 @@ typedef struct s_game {
 
 void	init_game(t_game *game, char *file_path);
 void	init_image(t_img *img, void *mlx_ptr, int width, int height);
-void	process_key_press(int keycode, t_player *player);
+void	process_key_press(int keycode, t_player *player, t_game *game);
 void	register_hooks(t_game *game);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	cast_all_rays(t_ray *ray, t_player *player, t_map *map);
@@ -139,7 +140,11 @@ void	init_design(t_design *design, t_clst *design_lst, void *mlx_ptr);
 void	init_map(t_map *map, t_clst *map_lst, size_t num_nodes);
 void	init_player(t_player *player, char **map_ptr);
 void	init_minimap(t_minimap *mini, t_map *map, t_point player_pos);
-void	validate_map(char **map, int player_pos_x, int player_pos_y);
+bool	is_player(char c);
+void	validate_map(char **map);
 void	validate_design(t_dict *design_dict);
 double	normalize_angle(double ray_angle);
+t_color	rgb_to_int(int t, int r, int g, int b);
+int		rgb_atoi(char *s);
+void	free_all_exit(t_game *game);
 #endif /* CUB3D_H */

@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 21:25:22 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/09 10:49:44 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/09 13:30:13 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ void	init_map(t_map *map, t_clst *map_lst, size_t num_nodes)
 {
 	set_map_width_height(map_lst, map, num_nodes);
 	map->map_ptr = clst_to_array(map_lst, map->height);
+	validate_map(map->map_ptr);
 }

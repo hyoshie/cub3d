@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 16:22:05 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/08 16:22:08 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/09 13:19:27 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,32 @@ static bool	is_map_closed(char **map, int x, int y)
 	if (map[y][x] == '1' || map[y][x] == '@')
 		return (true);
 	map[y][x] = '@';
-	//print_array(map);
 	return (is_map_closed(map, x + 1, y) && is_map_closed(map, x - 1, y)
 		&& is_map_closed(map, x, y + 1) && is_map_closed(map, x, y - 1));
 }
 
-void	validate_map(char **map, int player_pos_x, int player_pos_y)
+//all_free_exit的なやつにする
+void	validate_map(char **map)
 {
 	char	**copy;
+	size_t	x;
+	size_t	y;
 
-	//all_free_exit的なやつにする
 	copy = array_dup(map);
-	if (!is_map_closed(copy, player_pos_x / TILE_SIZE, player_pos_y / TILE_SIZE))
-		exit(1);
+	y = 0;
+	while (copy[y])
+	{
+		x = 0;
+		while (copy[y][x])
+		{
+			if (copy[y][x] == '0' || is_player(copy[y][x]))
+			{
+				if (!is_map_closed(copy, x, y))
+					exit(1);
+			}
+			x++;
+		}
+		y++;
+	}
+	free_vector(copy);
 }

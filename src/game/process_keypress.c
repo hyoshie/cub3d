@@ -73,12 +73,12 @@ static void	process_rotate_key(int keycode, t_player *player)
 	}
 }
 
-void	process_key_press(int keycode, t_player *player)
+void	process_key_press(int keycode, t_player *player, t_game *game)
 {
 	if (keycode == KEY_ESC)
 	{
 		printf("(｡-ω-)ﾉsee you again… \n");
-		exit(EXIT_SUCCESS);
+		free_all_exit(game);
 	}
 	if (is_move_key(keycode))
 	{
