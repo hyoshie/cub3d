@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 20:44:41 by user42            #+#    #+#             */
-/*   Updated: 2022/03/07 15:59:29by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/09 13:15:47 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static void	load_xpm_file(void *mlx_ptr, t_texture *direction, char *file_path)
 			&direction->size_line, &direction->endian);
 }
 
-static void	design_lst_to_dict(t_clst *design_lst, t_dict *design_dict, char sep)
+static void	design_lst_to_dict(t_clst *design_lst,
+	t_dict *design_dict, char sep)
 {
 	t_clst	*lst_ptr;
 	char	**vector;
@@ -37,14 +38,16 @@ static void	design_lst_to_dict(t_clst *design_lst, t_dict *design_dict, char sep
 			free_vector(vector);
 			continue ;
 		}
-		dict_addback(design_dict, dict_new(ft_xstrdup(vector[0]), ft_xstrdup(vector[1])));
+		dict_addback(design_dict, dict_new(ft_xstrdup(vector[0]),
+				ft_xstrdup(vector[1])));
 		lst_ptr = lst_ptr->next;
 		free_vector(vector);
 	}
 	clst_clear(design_lst);
 }
 
-static void	load_wall_xpm_files(void *mlx_ptr, t_design *design, t_dict *design_dict)
+static void	load_wall_xpm_files(void *mlx_ptr,
+	t_design *design, t_dict *design_dict)
 {
 	load_xpm_file(mlx_ptr, &design->north, dict_get_value("NO", design_dict));
 	load_xpm_file(mlx_ptr, &design->south, dict_get_value("SO", design_dict));
@@ -52,43 +55,29 @@ static void	load_wall_xpm_files(void *mlx_ptr, t_design *design, t_dict *design_
 	load_xpm_file(mlx_ptr, &design->east, dict_get_value("EA", design_dict));
 }
 
-t_color	rgb_to_int(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-int	cub_atoi(char *s)
-{
-	int	num;
-
-	num = ft_atoi(s);
-	//all_free_exit的なエラーハンドリングにする
-	if (num < 0 || num > 255)
-		exit(1);
-	return (num);
-}
-
 static void	load_ceil_floor_color(t_design *design, t_dict *design_dict)
 {
 	char	**c_vector;
 	char	**f_vector;
-	t_color c_color;
-	t_color f_color;
+	t_color	c_color;
+	t_color	f_color;
 
 	c_vector = ft_xsplit(dict_get_value("C", design_dict), ',');
 	f_vector = ft_xsplit(dict_get_value("F", design_dict), ',');
-	c_color = rgb_to_int(0, cub_atoi(c_vector[0]), cub_atoi(c_vector[1]), cub_atoi(c_vector[2]));
-	f_color = rgb_to_int(0, cub_atoi(f_vector[0]), cub_atoi(f_vector[1]), cub_atoi(f_vector[2]));
+	c_color = rgb_to_int(0, rgb_atoi(c_vector[0]),
+			rgb_atoi(c_vector[1]), rgb_atoi(c_vector[2]));
+	f_color = rgb_to_int(0, rgb_atoi(f_vector[0]),
+			rgb_atoi(f_vector[1]), rgb_atoi(f_vector[2]));
 	design->ceil = c_color;
 	design->floor = f_color;
 	free_vector(c_vector);
 	free_vector(f_vector);
 }
-
-//for test
+/* //for test
 void	print_dict(t_dict *d)
 {
-	t_dict *p;
+	t_dict	*p;
+
 	p = d->next;
 	while (p != d)
 	{
@@ -96,7 +85,7 @@ void	print_dict(t_dict *d)
 		printf("value: %s\n", p->value);
 		p = p->next;
 	}
-}
+} */
 
 void	init_design(t_design *design, t_clst *design_lst, void *mlx_ptr)
 {
