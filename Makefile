@@ -6,7 +6,7 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/09 19:52:34 by user42           ###   ########.fr        #
+#    Updated: 2022/03/09 20:17:53 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,9 @@ SRCS		=	main.c\
 				check_args.c\
 				parse_file.c\
 				normalize_angle.c\
-				map_has_wall_at.c
+				map_has_wall_at.c\
+				is_player.c\
+				is_floor.c
 
 OBJS		=	$(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
 DPS			=	$(SRCS:.o=.d)

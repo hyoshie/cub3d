@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 14:33:02 by user42            #+#    #+#             */
-/*   Updated: 2022/03/09 19:10:34 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/09 20:25:06 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	render_player(t_minimap *mini, t_img *win_img)
 		{
 			if (pow(j, 2) + pow(i, 2) < pow(mini->player_radius, 2))
 				my_mlx_pixel_put(win_img,
-						mini->player_pos.x + j, mini->player_pos.y + i, RED);
+					mini->player_pos.x + j, mini->player_pos.y + i, RED);
 			j++;
 		}
 		i++;
@@ -74,15 +74,6 @@ static void	render_wall(t_minimap *mini, t_img *win_img)
 	}
 }
 
-static bool	is_floor(char **map, int x, int y)
-{
-	return (map[y][x] == '0' \
-			|| map[y][x]  == 'N' \
-			|| map[y][x]  == 'S' \
-			|| map[y][x]  == 'W' \
-			|| map[y][x]  == 'E');
-}
-
 static void	render_floor(t_minimap *mini, t_img *win_img)
 {
 	size_t	i;
@@ -95,7 +86,7 @@ static void	render_floor(t_minimap *mini, t_img *win_img)
 		j = 0;
 		while (j < mini->map->num_cols)
 		{
-			if (is_floor(mini->map->map_ptr, j, i))
+			if (is_floor(mini->map->map_ptr[i][j]))
 			{
 				render_tile(mini, win_img, j, i);
 			}
@@ -105,7 +96,8 @@ static void	render_floor(t_minimap *mini, t_img *win_img)
 	}
 }
 
-void	render_minimap(t_minimap *mini, t_player *player, t_ray *ray, t_img *win_img)
+void	render_minimap(t_minimap *mini, t_player *player, t_ray *ray, \
+						t_img *win_img)
 {
 	render_floor(mini, win_img);
 	render_all_ray(mini, player, ray, win_img);
