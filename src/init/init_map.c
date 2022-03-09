@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 21:25:22 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/09 13:30:13 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/10 00:58:22 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	set_map_width_height(t_clst *map_lst, t_map *map, size_t num_nodes)
 	map->num_rows = num_nodes;
 	map->height = map->num_rows * TILE_SIZE;
 	map->num_cols = 0;
+	map->width = 0;
 	p = map_lst->next;
 	while (p != map_lst)
 	{
