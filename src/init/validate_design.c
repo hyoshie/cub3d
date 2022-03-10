@@ -6,14 +6,14 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 15:18:33 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/09 13:19:42 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/10 14:27:14 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
 
-void	validate_design(t_dict *design_dict)
+void	validate_design(t_dict *design_dict, t_game *game)
 {
 	if (!dict_search_item("NO", design_dict)
 		|| !dict_search_item("SO", design_dict)
@@ -21,5 +21,5 @@ void	validate_design(t_dict *design_dict)
 		|| !dict_search_item("EA", design_dict)
 		|| !dict_search_item("F", design_dict)
 		|| !dict_search_item("C", design_dict))
-		exit(1);
+		free_all_exit("Error: Design info is missing in .cub file", game);
 }

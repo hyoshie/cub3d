@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/09 17:28:03 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/10 14:27:30 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,14 +122,14 @@ void	set_closer_wall_hit(t_ray *ray, const t_point *horiz_wall_hit,
 			const t_point *vert_wall_hit, const t_point *player_pos);
 void	check_args(int ac, char **av);
 void	parse_file(char *file_path, t_game *game, void *mlx_ptr);
-void	init_design(t_design *design, t_clst *design_lst, void *mlx_ptr);
-void	init_map(t_map *map, t_clst *map_lst, size_t num_nodes);
+void	init_design(t_design *design, t_clst *design_lst, void *mlx_ptr, t_game *game);
+void	init_map(t_map *map, t_clst *map_lst, size_t num_nodes, t_game *game);
 void	init_player(t_player *player, char **map_ptr);
 bool	is_player(char c);
-void	validate_map(char **map);
-void	validate_design(t_dict *design_dict);
+void	validate_map(char **map, t_game *game);
+void	validate_design(t_dict *design_dict, t_game *game);
 double	normalize_angle(double ray_angle);
 t_color	rgb_to_int(int t, int r, int g, int b);
-int		rgb_atoi(char *s);
-void	free_all_exit(t_game *game);
+int		rgb_atoi(char *s, t_game *game);
+void	free_all_exit(char *exit_message, t_game *game);
 #endif /* CUB3D_H */

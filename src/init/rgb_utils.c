@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:15:05 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/09 13:19:35 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/10 14:25:45 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ t_color	rgb_to_int(int t, int r, int g, int b)
 }
 
 //TODO:all_free_exit的なエラーハンドリングにする
-int	rgb_atoi(char *s)
+int	rgb_atoi(char *s, t_game *game)
 {
 	int	num;
 
 	num = ft_atoi(s);
 	if (num < 0 || num > 255)
-		exit(1);
+		free_all_exit("Error: rgb numbers need to be between 0 and 255", game);
 	return (num);
 }

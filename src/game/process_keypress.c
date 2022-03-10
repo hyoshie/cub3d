@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_keypress.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
+/*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 11:25:13 by user42            #+#    #+#             */
-/*   Updated: 2022/03/08 21:39:12 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/10 13:50:34 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@ void	process_key_press(int keycode, t_player *player, t_game *game)
 {
 	if (keycode == KEY_ESC)
 	{
-		printf("(｡-ω-)ﾉsee you again… \n");
-		free_all_exit(game);
+		free_all_exit("(｡-ω-)ﾉsee you again… ", game);
 	}
 	if (is_move_key(keycode))
 	{

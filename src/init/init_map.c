@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 21:25:22 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/10 13:20:31 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/10 13:33:53 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_clst(t_clst *lst)
 	}
 }
 
-t_clst	*adjast_cols(t_clst *map_lst, size_t map_cols)
+static t_clst	*adjast_map_cols(t_clst *map_lst, size_t map_cols)
 {
 	t_clst	*p;
 	t_clst	*adjasted_lst;
@@ -56,8 +56,6 @@ t_clst	*adjast_cols(t_clst *map_lst, size_t map_cols)
 	return (adjasted_lst);
 }
 
-//たぶんここの初期化はいらない
-//構造体初期化の時点で初期化できてるかを確認してこちら必要なければ削除
 static void	set_map_width_height(t_clst *map_lst, t_map *map, size_t num_nodes)
 {
 	t_clst	*p;
@@ -65,8 +63,6 @@ static void	set_map_width_height(t_clst *map_lst, t_map *map, size_t num_nodes)
 
 	map->num_rows = num_nodes;
 	map->height = map->num_rows * TILE_SIZE;
-	map->num_cols = 0;
-	map->width = 0;
 	p = map_lst->next;
 	while (p != map_lst)
 	{
@@ -80,11 +76,10 @@ static void	set_map_width_height(t_clst *map_lst, t_map *map, size_t num_nodes)
 	}
 }
 
-void	init_map(t_map *map, t_clst *map_lst, size_t num_nodes)
+void	init_map(t_map *map, t_clst *map_lst, size_t num_nodes, t_game *game)
 {
 	set_map_width_height(map_lst, map, num_nodes);
-	map_lst = adjast_cols(map_lst, map->num_cols);
-	print_clst(map_lst);
+	map_lst = adjast_map_cols(map_lst, map->num_cols);
 	map->map_ptr = clst_to_array(map_lst, map->height);
-	validate_map(map->map_ptr);
+	validate_map(map->map_ptr, game);
 }
