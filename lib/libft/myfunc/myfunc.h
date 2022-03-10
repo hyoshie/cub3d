@@ -49,13 +49,7 @@ char	*ft_xtrijoin(char const *s1, char const *s2, char const *s3);
 char	*ft_xulongtoa_base(unsigned long nbr, char *base);
 void	multi_free(char *str1, char *str2, char *str3, char *str4);
 char	**to_vector(int fd);
-int		xdup(int fd);
-void	xdup2(int fd1, int fd2);
 void	*xmalloc(size_t size);
-pid_t	xfork(void);
 void	xperror(char *s);
-void	xpipe(int *fd);
-void	xclose(int fd);
-void	xwaitpid(pid_t pid, int *status, int options);
 
 #endif

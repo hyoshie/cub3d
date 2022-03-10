@@ -67,13 +67,8 @@ M_SRC	=	clst_addback.c\
 			xclose.c\
 			xdict_new.c\
 			xdict_to_array.c\
-			xdup.c\
-			xdup2.c\
-			xfork.c\
 			xmalloc.c\
 			xperror.c\
-			xpipe.c\
-			xwaitpid.c
 
 G_SRCS	= gnl/get_next_line_before.c gnl/get_next_line_utils.c
 
