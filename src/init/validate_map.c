@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 16:22:05 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/09 13:19:27 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/10 00:58:47 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	**array_dup(char **array)
 
 	i = 0;
 	num_rows = count_array_rows(array);
-	copy = (char **)xmalloc((sizeof(char *)) * num_rows + 1);
+	copy = (char **)xmalloc((sizeof(char *)) * (num_rows + 1));
 	while (array[i])
 	{
 		copy[i] = ft_strdup(array[i]);
