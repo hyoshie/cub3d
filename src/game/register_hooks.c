@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:29:08 by user42            #+#    #+#             */
-/*   Updated: 2022/03/06 16:31:39 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/10 20:45:55 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ static int	key_release_hook(int keycode, t_game *game)
 	return (0);
 }
 
+static int	mouse_click_hook(int button, int x, int y, t_game *game)
+{
+	(void)button;
+	(void)y;
+	game->player.angle = game->ray[x].angle;
+	update(game);
+	render(game);
+	return (0);
+}
+
 // mlx_loop_hook(game->mlx_ptr, render, game);
 void	register_hooks(t_game *game)
 {
@@ -37,4 +47,6 @@ void	register_hooks(t_game *game)
 	mlx_hook(game->win_ptr, KEY_PRESS, KEY_PRESS_MASK, key_press_hook, game);
 	mlx_hook(game->win_ptr, KEY_RELEASE, KEY_RELEASE_MASK, key_release_hook,
 		game);
+	mlx_hook(game->win_ptr, KEY_PRESS, KEY_PRESS_MASK, key_press_hook, game);
+	mlx_mouse_hook(game->win_ptr, mouse_click_hook, game);
 }
