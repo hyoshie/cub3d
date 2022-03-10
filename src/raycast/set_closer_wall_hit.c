@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   set_closer_wall_hit.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
+/*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:41:29 by user42            #+#    #+#             */
-/*   Updated: 2022/03/09 10:59:54 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/10 16:54:33 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
 
-static double	get_distance(const t_point *p1, const t_point *p2)
+static double	get_distance(t_point *p1, t_point *p2)
 {
 	double	dx;
 	double	dy;
@@ -23,9 +23,9 @@ static double	get_distance(const t_point *p1, const t_point *p2)
 	return (sqrt(dx * dx + dy * dy));
 }
 
-void	set_closer_wall_hit(t_ray *ray, const t_point *horiz_wall_hit,
-								const t_point *vert_wall_hit,
-								const t_point *player_pos)
+void	set_closer_wall_hit(t_ray *ray, t_point *horiz_wall_hit,
+								t_point *vert_wall_hit,
+								t_point *player_pos)
 {
 	double	horiz_distance;
 	double	vert_distance;

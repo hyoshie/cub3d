@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 23:22:31 by user42            #+#    #+#             */
-/*   Updated: 2022/03/09 17:00:50 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/10 16:50:39 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@
 // 	double	ray_angle;
 // 	int		i;
 
-// 	ray_angle = player->rotation_angle - (player->fov_angle / 2);
+// 	ray_angle = player->angle - (player->fov_angle / 2);
 // 	i = 0;
 // 	while (i < NUM_RAYS)
 // 	{
-// 		render_ray(&player->position, ray[i++].distance, ray_angle, win_img);
+// 		render_ray(&player->pos, ray[i++].distance, ray_angle, win_img);
 // 		ray_angle += player->fov_angle / (NUM_RAYS - 1);
 // 	}
 // }
@@ -57,8 +57,8 @@
 // 		{
 // 			if (pow(j, 2) + pow(i, 2) < pow(player->radius, 2))
 // 				my_mlx_pixel_put(win_img,
-// 								 player->position.x * MINIMAP_SCALE + j,
-// 								 player->position.y * MINIMAP_SCALE + i, RED);
+// 								 player->pos.x * MINIMAP_SCALE + j,
+// 								 player->pos.y * MINIMAP_SCALE + i, RED);
 // 			j++;
 // 		}
 // 		i++;

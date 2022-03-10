@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 14:27:30 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/10 16:51:51 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ typedef struct s_map {
 
 // 変数をいくつか定数にするかも
 typedef struct s_player {
-	t_point	position;
+	t_point	pos;
 	double	radius;
 	double	walk_direction;
 	bool	should_move;
-	double	rotation_angle;
+	double	angle;
 	double	fov_angle;
 	int		walk_speed;
 	double	turn_speed;
@@ -114,12 +114,12 @@ void	render_map(t_map *map, t_img *win_img);
 void	render_3d_projection(t_game *game, t_img *win_img);
 int		get_texel_color(t_wall_strip strip, int y, t_ray *ray, t_texture *texture);
 bool	map_has_wall_at(double x, double y, t_map *map);
-t_point	find_horiz_wall_hit(const t_ray *ray, const t_point *player_pos,
-			const t_map *map);
-t_point	find_vert_wall_hit(const t_ray *ray, const t_point *player_pos,
-			const t_map *map);
-void	set_closer_wall_hit(t_ray *ray, const t_point *horiz_wall_hit,
-			const t_point *vert_wall_hit, const t_point *player_pos);
+t_point	find_horiz_wall_hit(t_ray *ray, t_point *player_pos,
+			t_map *map);
+t_point	find_vert_wall_hit(t_ray *ray, t_point *player_pos,
+			t_map *map);
+void	set_closer_wall_hit(t_ray *ray, t_point *horiz_wall_hit,
+			t_point *vert_wall_hit, t_point *player_pos);
 void	check_args(int ac, char **av);
 void	parse_file(char *file_path, t_game *game, void *mlx_ptr);
 void	init_design(t_design *design, t_clst *design_lst, void *mlx_ptr, t_game *game);
