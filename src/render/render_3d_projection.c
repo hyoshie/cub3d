@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_3d_projection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
+/*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 00:05:42 by user42            #+#    #+#             */
-/*   Updated: 2022/03/08 22:14:56 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/10 16:50:46 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_wall_strip	get_wall_strip_info(t_ray *ray, t_player *player)
 
 	distance_projetion = (WINDOW_WIDTH / 2) / tan(player->fov_angle / 2);
 	perp_distance = \
-	ray->distance * cos(ray->angle - player->rotation_angle);
+	ray->distance * cos(ray->angle - player->angle);
 	strip.height = (TILE_SIZE / perp_distance) * distance_projetion;
 	strip.top_pixel = (WINDOW_HEIGHT / 2) - (strip.height / 2);
 	if (strip.top_pixel < 0)

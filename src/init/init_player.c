@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:31:47 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/10 13:41:40 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/10 16:59:13 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ bool	is_player(char c)
 static void	set_angle(t_player *player, char c)
 {
 	if (c == 'E')
-		player->rotation_angle = M_PI / 2 * 0;
+		player->angle = M_PI / 2 * 0;
 	else if (c == 'S')
-		player->rotation_angle = M_PI / 2 * 1;
+		player->angle = M_PI / 2 * 1;
 	else if (c == 'W')
-		player->rotation_angle = M_PI / 2 * 2;
+		player->angle = M_PI / 2 * 2;
 	else if (c == 'N')
-		player->rotation_angle = M_PI / 2 * 3;
+		player->angle = M_PI / 2 * 3;
 }
 
 static void	set_pos_angle(t_player *player, char **map_ptr)
@@ -43,8 +43,8 @@ static void	set_pos_angle(t_player *player, char **map_ptr)
 		{
 			if (is_player(map_ptr[y][x]))
 			{
-				player->position.y = y * TILE_SIZE + TILE_SIZE / 2;
-				player->position.x = x * TILE_SIZE + TILE_SIZE / 2;
+				player->pos.y = y * TILE_SIZE + TILE_SIZE / 2;
+				player->pos.x = x * TILE_SIZE + TILE_SIZE / 2;
 				set_angle(player, map_ptr[y][x]);
 			}
 			x++;
