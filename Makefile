@@ -6,11 +6,9 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/10 19:38:02 by user42           ###   ########.fr        #
+#    Updated: 2022/03/10 21:39:27 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-
 
 NAME		=	cub3D
 CFLAGS		=	-Wall -Wextra -Werror -g
@@ -53,7 +51,7 @@ SRCS		=	main.c\
 				is_floor.c
 
 OBJS		=	$(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
-DPS			=	$(SRCS:.o=.d)
+DEPS		=	$(OBJS:.o=.d)
 LIBS 		=	-L$(LIBFT_DIR) -lft
 
 
@@ -86,12 +84,12 @@ $(OBJDIR):
 	mkdir $(OBJDIR)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(DEPS)
+	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(MLX_DIR) clean
 
 fclean: clean
-	$(RM) $(LIBFT_DIR)/libft.a
-	$(RM) $(MLX_DIR)/libmlx.a
-	$(RM) $(MLX_DIR)/libmlx_Darwin.a
+	$(MAKE) -C $(LIBFT_DIR) fclean
 	$(RM) $(NAME)
 
 re: fclean all
