@@ -6,7 +6,7 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/10 19:38:02 by user42           ###   ########.fr        #
+#    Updated: 2022/03/10 21:32:19 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ SRCS		=	main.c\
 				is_floor.c
 
 OBJS		=	$(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
-DPS			=	$(SRCS:.o=.d)
+DEPS		=	$(OBJS:.o=.d)
 LIBS 		=	-L$(LIBFT_DIR) -lft
 
 
@@ -86,7 +86,7 @@ $(OBJDIR):
 	mkdir $(OBJDIR)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(DEPS)
 
 fclean: clean
 	$(RM) $(LIBFT_DIR)/libft.a
