@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   is_player.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/03 23:22:31 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 19:50:02 by user42           ###   ########.fr       */
+/*   Created: 2022/03/09 20:18:05 by user42            #+#    #+#             */
+/*   Updated: 2022/03/09 20:18:13 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
 
-int	render(t_game *game)
+bool	is_player(char c)
 {
-	render_3d_projection(game, &game->win_img);
-	render_minimap(&game->mini, &game->player, game->ray, &game->win_img);
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
-							game->win_img.img_ptr, 0, 0);
-	return (0);
+	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }

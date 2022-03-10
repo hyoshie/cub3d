@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 16:51:51 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/10 19:53:18 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,15 @@ typedef struct s_map {
 	size_t	width;
 	size_t	height;
 }	t_map;
+
+typedef struct s_minimap {
+	t_map	*map;
+	double	scale;
+	double	tile_size;
+	t_point	player_pos;
+	double	player_radius;
+	int		color;
+}	t_minimap;
 
 // 変数をいくつか定数にするかも
 typedef struct s_player {
@@ -97,6 +106,7 @@ typedef struct s_game {
 	void		*win_ptr;
 	t_img		win_img;
 	t_map		map;
+	t_minimap	mini;
 	t_design	design;
 	t_player	player;
 	t_ray		*ray;
@@ -110,9 +120,13 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	cast_all_rays(t_ray *ray, t_player *player, t_map *map);
 void	update(t_game *game);
 int		render(t_game *game);
-void	render_map(t_map *map, t_img *win_img);
+void	render_minimap(t_minimap *mini, t_player *player, t_ray *ray,
+			t_img *win_img);
+void	render_all_ray(t_minimap *mini, t_player *player, t_ray *ray,
+			t_img *win_img);
 void	render_3d_projection(t_game *game, t_img *win_img);
-int		get_texel_color(t_wall_strip strip, int y, t_ray *ray, t_texture *texture);
+int		get_texel_color(t_wall_strip strip, int y, t_ray *ray,
+			t_texture *texture);
 bool	map_has_wall_at(double x, double y, t_map *map);
 t_point	find_horiz_wall_hit(t_ray *ray, t_point *player_pos,
 			t_map *map);
@@ -122,14 +136,17 @@ void	set_closer_wall_hit(t_ray *ray, t_point *horiz_wall_hit,
 			t_point *vert_wall_hit, t_point *player_pos);
 void	check_args(int ac, char **av);
 void	parse_file(char *file_path, t_game *game, void *mlx_ptr);
-void	init_design(t_design *design, t_clst *design_lst, void *mlx_ptr, t_game *game);
+void	init_design(t_design *design, t_clst *design_lst, void *mlx_ptr,
+			t_game *game);
 void	init_map(t_map *map, t_clst *map_lst, size_t num_nodes, t_game *game);
 void	init_player(t_player *player, char **map_ptr);
-bool	is_player(char c);
+void	init_minimap(t_minimap *mini, t_map *map, t_point player_pos);
 void	validate_map(char **map, t_game *game);
 void	validate_design(t_dict *design_dict, t_game *game);
 double	normalize_angle(double ray_angle);
 t_color	rgb_to_int(int t, int r, int g, int b);
 int		rgb_atoi(char *s, t_game *game);
 void	free_all_exit(char *exit_message, t_game *game);
+bool	is_floor(char c);
+bool	is_player(char c);
 #endif /* CUB3D_H */
