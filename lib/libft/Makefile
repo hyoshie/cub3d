@@ -75,8 +75,7 @@ M_SRC	=	clst_addback.c\
 			xpipe.c\
 			xwaitpid.c
 
-G_SRCS	= gnl/get_next_line_before.c gnl/get_next_line_utils.c\
-		  gnl/gnl.c gnl/gnl_utils.c
+G_SRCS	= gnl/get_next_line_before.c gnl/get_next_line_utils.c
 
 SRCDIR	= subject/
 SRCS	= $(addprefix $(SRCDIR), $(SRC))

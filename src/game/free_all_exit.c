@@ -1,18 +1,28 @@
 #include "constants.h"
 #include "cub3d.h"
 
-void	free_all_exit(t_game *game)
+void	free_all_exit(char *exit_message, t_game *game)
 {
-	mlx_destroy_image(game->mlx_ptr, game->design.north.img_ptr);
-	mlx_destroy_image(game->mlx_ptr, game->design.south.img_ptr);
-	mlx_destroy_image(game->mlx_ptr, game->design.west.img_ptr);
-	mlx_destroy_image(game->mlx_ptr, game->design.east.img_ptr);
-	mlx_destroy_image(game->mlx_ptr, game->win_img.img_ptr);
-	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	mlx_destroy_display(game->mlx_ptr);
-	mlx_loop_end(game->mlx_ptr);
+	if (game->mlx_ptr && game->design.north.img_ptr)
+		mlx_destroy_image(game->mlx_ptr, game->design.north.img_ptr);
+	if (game->mlx_ptr && game->design.south.img_ptr)
+		mlx_destroy_image(game->mlx_ptr, game->design.south.img_ptr);
+	if (game->mlx_ptr && game->design.west.img_ptr)
+		mlx_destroy_image(game->mlx_ptr, game->design.west.img_ptr);
+	if (game->mlx_ptr && game->design.east.img_ptr)
+		mlx_destroy_image(game->mlx_ptr, game->design.east.img_ptr);
+	if (game->mlx_ptr && game->win_img.img_ptr)
+		mlx_destroy_image(game->mlx_ptr, game->win_img.img_ptr);
+	if (game->mlx_ptr && game->win_ptr)
+		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+	if (game->mlx_ptr)
+	{
+		mlx_destroy_display(game->mlx_ptr);
+		mlx_loop_end(game->mlx_ptr);
+	}
 	free(game->mlx_ptr);
 	free(game->ray);
 	free_vector(game->map.map_ptr);
+	printf("%s\n", exit_message);
 	exit (EXIT_SUCCESS);
 }

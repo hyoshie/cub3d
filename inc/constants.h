@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/09 10:41:24 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/10 13:46:00 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@
 # define NUM_RAYS WINDOW_WIDTH
 
 # define NUM_DESIGN_ELEMS 6
+# define MAX_MAP_COLS 512 
+# define MAX_MAP_ROWS 512
 
 #endif /* CONSTANTS_H */
