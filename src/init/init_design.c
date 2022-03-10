@@ -6,14 +6,15 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 20:44:41 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 14:28:00 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/10 14:56:27 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
 
-static void	load_xpm_file(void *mlx_ptr, t_texture *direction, char *file_path, t_game *game)
+static void	load_xpm_file(void *mlx_ptr,
+	t_texture *direction, char *file_path, t_game *game)
 {
 	direction->img_ptr = mlx_xpm_file_to_image(mlx_ptr, file_path,
 			&direction->width, &direction->height);
@@ -51,13 +52,18 @@ static void	design_lst_to_dict(t_clst *design_lst,
 static void	load_wall_xpm_files(void *mlx_ptr,
 	t_design *design, t_dict *design_dict, t_game *game)
 {
-	load_xpm_file(mlx_ptr, &design->north, dict_get_value("NO", design_dict), game);
-	load_xpm_file(mlx_ptr, &design->south, dict_get_value("SO", design_dict), game);
-	load_xpm_file(mlx_ptr, &design->west, dict_get_value("WE", design_dict), game);
-	load_xpm_file(mlx_ptr, &design->east, dict_get_value("EA", design_dict), game);
+	load_xpm_file(mlx_ptr, &design->north,
+		dict_get_value("NO", design_dict), game);
+	load_xpm_file(mlx_ptr, &design->south,
+		dict_get_value("SO", design_dict), game);
+	load_xpm_file(mlx_ptr, &design->west,
+		dict_get_value("WE", design_dict), game);
+	load_xpm_file(mlx_ptr, &design->east,
+		dict_get_value("EA", design_dict), game);
 }
 
-static void	load_ceil_floor_color(t_design *design, t_dict *design_dict, t_game *game)
+static void	load_ceil_floor_color(t_design *design,
+	t_dict *design_dict, t_game *game)
 {
 	char	**c_vector;
 	char	**f_vector;
@@ -89,7 +95,8 @@ void	print_dict(t_dict *d)
 	}
 } */
 
-void	init_design(t_design *design, t_clst *design_lst, void *mlx_ptr, t_game *game)
+void	init_design(t_design *design, t_clst *design_lst,
+	void *mlx_ptr, t_game *game)
 {
 	t_dict	*design_dict;
 
