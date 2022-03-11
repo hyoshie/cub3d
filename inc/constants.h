@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/11 12:13:31 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/11 12:32:18 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,7 @@
 # define EM_MISS_DES "Error: Design info is missing in .cub file"
 # define EM_MAP_BIG "Error: Map is too big (Upto 256 * 256)"
 # define EM_MAP_NOT_CLOSED "Error: Map is not closed by wall"
+# define EM_MANY_PLAYERS "Error: Too many players"
+# define EM_NO_PLAYER "Error: One player is needed"
 
 #endif /* CONSTANTS_H */
