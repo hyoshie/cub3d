@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/11 12:32:53 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/11 13:06:02 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,4 +149,7 @@ int		rgb_atoi(char *s, t_game *game);
 void	free_all_exit(char *exit_message, t_game *game);
 bool	is_floor(char c);
 bool	is_player(char c);
+void	*xmlx_init(void);
+void	*xmlx_new_window(void *mlx_ptr, int size_x, int size_y, char *title);
+void	*xmlx_new_image(void *mlx_ptr, int width, int height);
 #endif /* CUB3D_H */

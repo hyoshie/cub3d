@@ -6,7 +6,7 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/11 11:41:46 by yshimazu         ###   ########.fr        #
+#    Updated: 2022/03/11 13:10:13 by yshimazu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ SRCS		=	main.c\
 				normalize_angle.c\
 				map_has_wall_at.c\
 				is_player.c\
-				is_floor.c
+				is_floor.c\
+				xmlx.c
 
 OBJS		=	$(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
 DEPS		=	$(OBJS:.o=.d)
