@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 15:25:32 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 14:01:43 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/11 12:08:57 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_open_readfile(char *readfile)
 
 	fd = open(readfile, O_RDONLY);
 	if (fd == -1)
-		xperror("open");
+		xperror(EM_OPEN);
 	return (fd);
 }
 
@@ -62,7 +62,7 @@ size_t	fd_to_clsts(int fd, t_clst *clst1, t_clst *clst2, size_t sep_line)
 		if (gnl_ret == 0)
 			break ;
 		if (gnl_ret == -1)
-			xperror("Error: Can't read file");
+			xperror(EM_GNL);
 		if (line[0] == '\0')
 		{
 			free(line);

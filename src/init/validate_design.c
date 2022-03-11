@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 15:18:33 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/10 14:27:14 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/11 12:10:48 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ void	validate_design(t_dict *design_dict, t_game *game)
 		|| !dict_search_item("EA", design_dict)
 		|| !dict_search_item("F", design_dict)
 		|| !dict_search_item("C", design_dict))
-		free_all_exit("Error: Design info is missing in .cub file", game);
+		free_all_exit(EM_MISS_DES, game);
 }

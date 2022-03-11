@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 21:25:29 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/06 16:31:39 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/11 12:01:54 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	check_args(int ac, char **av)
 {
 	if (ac != 2 || check_extension(av[1]) == -1)
 	{
-		ft_putstr_fd("Error\nUsage: ./cub3d xxx.cub\n", 2);
+		ft_putstr_fd(EM_ARG, 2);
 		exit (EXIT_SUCCESS);
 	}
 }
