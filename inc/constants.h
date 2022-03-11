@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/11 15:14:38 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:44:33 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,16 @@
 # define MAX_MAP_COLS 256
 # define MAX_MAP_ROWS 256
 # define EM_ESC "(｡-ω-)ﾉsee you again… "
-# define EM_ARG "Error: Usage ./cub3d xxx.cub"
-# define EM_READ_XPM "Error: Can't read xpm file (Check your cub file)"
-# define EM_OPEN "Error: open: Can't read file"
-# define EM_GNL "Error: gnl: Can't read line"
-# define EM_RGB "Error: rgb numbers need to be integer between 0 and 255"
-# define EM_MISS_DES "Error: Design info is missing in .cub file"
-# define EM_MAP_BIG "Error: Map is too big (Upto 256 * 256)"
-# define EM_MAP_NOT_CLOSED "Error: Map is not closed by wall"
-# define EM_MANY_PLAYERS "Error: Too many players"
-# define EM_NO_PLAYER "Error: One player is needed"
-# define EM_MLX "Error: Something is wrong in mlx function"
+# define EM_ARG "Error\nUsage ./cub3d xxx.cub"
+# define EM_READ_XPM "Error\nCan't read xpm file (Check your cub file)"
+# define EM_OPEN "Error\nopen: Can't read file"
+# define EM_GNL "Error\ngnl: Can't read line"
+# define EM_RGB "Error\nrgb numbers need to be integer between 0 and 255"
+# define EM_MISS_DES "Error\nDesign info is missing in .cub file"
+# define EM_MAP_BIG "Error\nMap is too big (Upto 256 * 256)"
+# define EM_MAP_NOT_CLOSED "Error\nMap is not closed by wall"
+# define EM_MANY_PLAYERS "Error\nToo many players"
+# define EM_NO_PLAYER "Error\nOne player is needed"
+# define EM_MLX "Error\nSomething is wrong in mlx function"
 
 #endif /* CONSTANTS_H */
