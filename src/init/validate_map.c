@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 16:22:05 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/10 13:52:46 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/11 12:12:39 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ void	validate_map(char **map, t_game *game)
 		while (copy[y][x])
 		{
 			if (y > MAX_MAP_ROWS || x > MAX_MAP_COLS)
-				free_all_exit("Error: Map is too big (Upto 512 * 512)", game);
+				free_all_exit(EM_MAP_BIG, game);
 			if (copy[y][x] == '0' || is_player(copy[y][x]))
 			{
 				if (!is_map_closed(copy, x, y))
-					free_all_exit("Error: Map is not closed by wall", game);
+					free_all_exit(EM_MAP_NOT_CLOSED, game);
 			}
 			x++;
 		}
