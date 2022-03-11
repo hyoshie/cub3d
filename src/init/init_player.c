@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:31:47 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/10 19:36:33 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/11 12:37:54 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,36 @@ static void	set_pos_angle(t_player *player, char **map_ptr)
 	}
 }
 
-void	init_player(t_player *player, char **map_ptr)
+void	validate_player(char **map_ptr, t_game *game)
 {
+	size_t	y;
+	size_t	x;
+	int		num_player;
+
+	y = 0;
+	num_player = 0;
+	while (map_ptr[y])
+	{
+		x = 0;
+		while (map_ptr[y][x])
+		{
+			if (is_player(map_ptr[y][x]))
+			{
+				num_player++;
+				if (num_player > 1)
+					free_all_exit(EM_MANY_PLAYERS, game);
+			}
+			x++;
+		}
+		y++;
+	}
+	if (num_player == 0)
+		free_all_exit(EM_NO_PLAYER, game);
+}
+
+void	init_player(t_player *player, char **map_ptr, t_game *game)
+{
+	validate_player(map_ptr, game);
 	set_pos_angle(player, map_ptr);
 	player->radius = PLAYER_RADIUS * MINIMAP_SCALE;
 	player->walk_direction = 0;

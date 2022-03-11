@@ -48,7 +48,8 @@ SRCS		=	main.c\
 				normalize_angle.c\
 				map_has_wall_at.c\
 				is_player.c\
-				is_floor.c
+				is_floor.c\
+				xmlx.c
 
 OBJS		=	$(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
 DEPS		=	$(OBJS:.o=.d)
