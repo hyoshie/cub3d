@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 19:40:42 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/11 15:01:01 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_image(t_img *img, void *mlx_ptr, int width, int height)
 // TODO:check calloc or malloc
 static void	init_ray(t_ray **ray, t_player *player, t_map *map)
 {
-	*ray = calloc(sizeof(t_ray), NUM_RAYS);
+	*ray = ft_calloc(sizeof(t_ray), NUM_RAYS);
 	cast_all_rays(*ray, player, map);
 }
 
