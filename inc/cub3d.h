@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 19:53:18 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/11 12:32:53 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ void	parse_file(char *file_path, t_game *game, void *mlx_ptr);
 void	init_design(t_design *design, t_clst *design_lst, void *mlx_ptr,
 			t_game *game);
 void	init_map(t_map *map, t_clst *map_lst, size_t num_nodes, t_game *game);
-void	init_player(t_player *player, char **map_ptr);
+void	init_player(t_player *player, char **map_ptr, t_game *game);
 void	init_minimap(t_minimap *mini, t_map *map, t_point player_pos);
 void	validate_map(char **map, t_game *game);
 void	validate_design(t_dict *design_dict, t_game *game);
