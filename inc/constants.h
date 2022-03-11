@@ -55,7 +55,6 @@
 # define NUM_DESIGN_ELEMS 6
 # define MAX_MAP_COLS 256
 # define MAX_MAP_ROWS 256
-
 # define EM_ESC "(｡-ω-)ﾉsee you again… "
 # define EM_ARG "Error: Usage ./cub3d xxx.cub"
 # define EM_READ_XPM "Error: Can't read xpm file (Check your cub file)"
@@ -67,6 +66,5 @@
 # define EM_MAP_NOT_CLOSED "Error: Map is not closed by wall"
 # define EM_MANY_PLAYERS "Error: Too many players"
 # define EM_NO_PLAYER "Error: One player is needed"
-
 
 #endif /* CONSTANTS_H */
