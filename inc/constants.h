@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/11 14:37:25 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:14:38 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@
 # define EM_ESC "(｡-ω-)ﾉsee you again… "
 # define EM_ARG "Error: Usage ./cub3d xxx.cub"
 # define EM_READ_XPM "Error: Can't read xpm file (Check your cub file)"
-# define EM_OPEN "Error: Open: Can't read file"
+# define EM_OPEN "Error: open: Can't read file"
 # define EM_GNL "Error: gnl: Can't read line"
 # define EM_RGB "Error: rgb numbers need to be integer between 0 and 255"
 # define EM_MISS_DES "Error: Design info is missing in .cub file"

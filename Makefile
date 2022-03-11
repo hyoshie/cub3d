@@ -6,7 +6,7 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/11 14:46:44 by yshimazu         ###   ########.fr        #
+#    Updated: 2022/03/11 15:31:07 by yshimazu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS		=	main.c\
 				rgb_utils.c\
 				init_map.c\
 				init_player.c\
+				validate_player.c\
 				init_minimap.c\
 				validate_map.c\
 				free_all_exit.c\
@@ -78,7 +79,7 @@ all: $(OBJDIR) $(NAME)
 
 $(NAME): $(OBJS)
 	$(MAKE) -C $(LIBFT_DIR)
-	#$(MAKE) -C $(MLX_DIR)
+	$(MAKE) -C $(MLX_DIR)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS) 
 
 $(OBJDIR):

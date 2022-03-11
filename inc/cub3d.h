@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/11 13:06:02 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:29:58 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ void	init_player(t_player *player, char **map_ptr, t_game *game);
 void	init_minimap(t_minimap *mini, t_map *map, t_point player_pos);
 void	validate_map(char **map, t_game *game);
 void	validate_design(t_dict *design_dict, t_game *game);
+void	validate_player(char **map_ptr, t_game *game);
 double	normalize_angle(double ray_angle);
 t_color	rgb_to_int(int t, int r, int g, int b);
 int		rgb_atoi(char *s, t_game *game);
