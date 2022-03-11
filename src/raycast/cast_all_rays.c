@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 12:19:01 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 16:50:43 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/12 01:27:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,24 @@ static void	set_ray_is_facing_to(t_ray *ray, double ray_angle)
 	ray->is_facing_right = !ray->is_facing_left;
 }
 
+static void	set_wall_direction(t_ray *ray)
+{
+	if (ray->was_hit_vertical)
+	{
+		if (ray->is_facing_left)
+			ray->wall_direction = WEST;
+		else
+			ray->wall_direction = EAST;
+	}
+	else
+	{
+		if (ray->is_facing_up)
+			ray->wall_direction = NORTH;
+		else
+			ray->wall_direction = SOUTH;
+	}
+}
+
 static void	cast_ray(t_ray *ray, double ray_angle, t_player *player,
 										 t_map *map)
 {
@@ -33,6 +51,7 @@ static void	cast_ray(t_ray *ray, double ray_angle, t_player *player,
 	vert_wall_hit = find_vert_wall_hit(ray, &player->pos, map);
 	set_closer_wall_hit(ray, &horiz_wall_hit, &vert_wall_hit,
 		&player->pos);
+	set_wall_direction(ray);
 }
 
 void	cast_all_rays(t_ray *ray, t_player *player, t_map *map)
