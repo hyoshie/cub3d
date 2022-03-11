@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 15:25:32 by user42            #+#    #+#             */
-/*   Updated: 2022/03/11 12:33:20 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/11 14:30:37 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,15 @@ size_t	fd_to_clsts(int fd, t_clst *clst1, t_clst *clst2, size_t sep_line)
 			break ;
 		if (gnl_ret == -1)
 			xperror(EM_GNL);
-		if (line[0] == '\0')
-		{
-			free(line);
-			continue ;
-		}
 		else if (num_lines < sep_line)
+		{
+			if (line[0] == '\0')
+			{
+				free(line);
+				continue ;
+			}
 			clst_addback(clst1, clst_new(line));
+		}
 		else
 			clst_addback(clst2, clst_new(line));
 		num_lines++;
