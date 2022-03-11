@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:29:08 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 20:45:55 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/11 23:50:20 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,21 @@ static int	mouse_click_hook(int button, int x, int y, t_game *game)
 	return (0);
 }
 
+static int	close_window(t_game *game)
+{
+	free_all_exit(EM_ESC, game);
+	return (0);
+}
+
 // mlx_loop_hook(game->mlx_ptr, render, game);
 void	register_hooks(t_game *game)
 {
-	mlx_expose_hook(game->win_ptr, render, game);
 	mlx_hook(game->win_ptr, KEY_PRESS, KEY_PRESS_MASK, key_press_hook, game);
 	mlx_hook(game->win_ptr, KEY_RELEASE, KEY_RELEASE_MASK, key_release_hook,
 		game);
 	mlx_hook(game->win_ptr, KEY_PRESS, KEY_PRESS_MASK, key_press_hook, game);
+	mlx_hook(game->win_ptr, WIN_DESTROY, STRUCTURE_NOTIFY_MASK, close_window,
+		game);
+	mlx_expose_hook(game->win_ptr, render, game);
 	mlx_mouse_hook(game->win_ptr, mouse_click_hook, game);
 }

@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/11 15:44:33 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/11 23:48:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,10 @@
 
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
+# define WIN_DESTROY 17
 # define KEY_PRESS_MASK 1
 # define KEY_RELEASE_MASK 2
+# define STRUCTURE_NOTIFY_MASK 131072
 
 # define PLAYER_RADIUS 10
 # define WALK_SPEED 10
