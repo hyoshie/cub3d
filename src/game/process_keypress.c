@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 11:25:13 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 16:50:41 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/11 12:00:15 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	process_key_press(int keycode, t_player *player, t_game *game)
 {
 	if (keycode == KEY_ESC)
 	{
-		free_all_exit("(｡-ω-)ﾉsee you again… ", game);
+		free_all_exit(EM_ESC, game);
 	}
 	if (is_move_key(keycode))
 	{

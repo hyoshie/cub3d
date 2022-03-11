@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 19:47:28 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/11 12:13:31 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,16 @@
 # define NUM_RAYS WINDOW_WIDTH
 
 # define NUM_DESIGN_ELEMS 6
-# define MAX_MAP_COLS 512
-# define MAX_MAP_ROWS 512
+# define MAX_MAP_COLS 256
+# define MAX_MAP_ROWS 256
+# define EM_ESC "(｡-ω-)ﾉsee you again… "
+# define EM_ARG "Error: Usage ./cub3d xxx.cub"
+# define EM_READ_XPM "Error: Can't read xpm file (Check your cub file)"
+# define EM_OPEN "Error: Open: Can't read file"
+# define EM_GNL "Error: gnl: Can't read line"
+# define EM_RGB "Error: rgb numbers need to be between 0 and 255"
+# define EM_MISS_DES "Error: Design info is missing in .cub file"
+# define EM_MAP_BIG "Error: Map is too big (Upto 256 * 256)"
+# define EM_MAP_NOT_CLOSED "Error: Map is not closed by wall"
 
 #endif /* CONSTANTS_H */

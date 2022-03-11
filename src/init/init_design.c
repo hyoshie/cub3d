@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 20:44:41 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 14:56:27 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/11 12:04:10 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	load_xpm_file(void *mlx_ptr,
 	direction->img_ptr = mlx_xpm_file_to_image(mlx_ptr, file_path,
 			&direction->width, &direction->height);
 	if (!direction->img_ptr)
-		free_all_exit("Error: Can't read xpm file (Check your cub file)", game);
+		free_all_exit(EM_READ_XPM, game);
 	direction->addr = \
 			mlx_get_data_addr(direction->img_ptr, &direction->bits_per_pixel,
 			&direction->size_line, &direction->endian);
