@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 21:25:29 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/11 12:01:54 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/11 16:26:05 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	check_extension(char *filename)
 {
 	char	*dot_ptr;
 
-	dot_ptr = ft_strchr(filename, '.');
+	dot_ptr = ft_strrchr(filename, '.');
 	if (dot_ptr == NULL)
 		return (-1);
 	else
