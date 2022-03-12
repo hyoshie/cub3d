@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/11 15:29:58 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/12 01:15:43 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@
 # include "../lib/libft/mylibft.h"
 
 typedef int		t_color;
+typedef enum e_wall {
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST
+}	t_wall;
 
 typedef struct s_point {
 	double	x;
@@ -83,7 +89,7 @@ typedef struct s_ray {
 	bool	is_facing_down;
 	bool	is_facing_left;
 	bool	is_facing_right;
-	int		wall_hit_content;
+	t_wall	wall_direction;
 }	t_ray;
 
 typedef struct s_design {
