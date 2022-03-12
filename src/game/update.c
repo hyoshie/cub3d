@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 11:36:52 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 19:43:58 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/12 10:37:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ static void	move_player(t_player *player, t_map *map, t_minimap *mini)
 		player->pos.y = next.y;
 		mini->player_pos.x = player->pos.x * mini->scale;
 		mini->player_pos.y = player->pos.y * mini->scale;
+	}
+	else
+	{
+		ft_putendl_fd(MSG_WALL_COLLISION, STDERR_FILENO);
 	}
 }
 
