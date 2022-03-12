@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/12 10:38:11 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/12 10:40:24 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 # define STRUCTURE_NOTIFY_MASK 131072
 
 # define PLAYER_RADIUS 10
-# define WALK_SPEED 10
+# define MOVE_STEP 10
 
 # define NUM_RAYS WINDOW_WIDTH
 

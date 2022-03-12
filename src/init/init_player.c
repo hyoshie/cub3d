@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:31:47 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/11 15:28:43 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/12 10:40:53 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,5 @@ void	init_player(t_player *player, char **map_ptr, t_game *game)
 	player->walk_direction = 0;
 	player->should_move = false;
 	player->fov_angle = 60 * (M_PI / 180);
-	player->walk_speed = WALK_SPEED;
 	player->turn_speed = 15 * (M_PI / 180);
 }
