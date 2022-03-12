@@ -1,12 +1,12 @@
 import sys
 import random
 
-CUB_TEMPLATE = """NO ./texture/manf1.xpm
-SO ./texture/manb1.xpm
-WE ./texture/ove.xpm 
-EA ./texture/castle.xpm
-F 220,100,0
-C 225,30,0
+CUB_TEMPLATE = """NO ./texture/rat.xpm
+SO ./texture/horse.xpm
+WE ./texture/dog.xpm
+EA ./texture/rabbit.xpm
+F 100,100,40
+C 211,237,251
 """
 WALL = "1"
 FLOOR = "0"
