@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/11 23:48:56 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/12 10:40:24 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,16 @@
 # define STRUCTURE_NOTIFY_MASK 131072
 
 # define PLAYER_RADIUS 10
-# define WALK_SPEED 10
+# define MOVE_STEP 10
 
 # define NUM_RAYS WINDOW_WIDTH
 
 # define NUM_DESIGN_ELEMS 6
 # define MAX_MAP_COLS 256
 # define MAX_MAP_ROWS 256
+
+# define MSG_WALL_COLLISION "Ouch! What a hard wall!"
+
 # define EM_ESC "(｡-ω-)ﾉsee you again… "
 # define EM_ARG "Error\nUsage ./cub3d xxx.cub"
 # define EM_READ_XPM "Error\nCan't read xpm file (Check your cub file)"

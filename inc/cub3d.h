@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/12 01:15:43 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/12 10:41:16 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ typedef struct s_player {
 	bool	should_move;
 	double	angle;
 	double	fov_angle;
-	int		walk_speed;
 	double	turn_speed;
 }	t_player;
 
