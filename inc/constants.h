@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/12 10:40:24 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/12 11:17:26 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@
 
 # define PLAYER_RADIUS 10
 # define MOVE_STEP 10
+# define START_SHADING_DISTANCE 200
 
 # define NUM_RAYS WINDOW_WIDTH
 

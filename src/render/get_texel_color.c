@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 14:21:36 by user42            #+#    #+#             */
-/*   Updated: 2022/03/12 01:22:18 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/12 11:17:19 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	get_texel_color(t_wall_strip strip, int y, t_ray *ray, t_texture *texture)
 	distance_from_top = y + (strip.height / 2) - (WINDOW_HEIGHT / 2);
 	tex_offset_y = distance_from_top * ((double)texture->height / strip.height);
 	color = get_pixel_from_texture(texture, tex_offset_x, tex_offset_y);
-	if (ray->distance > 100)
-		color = add_shade(color, 100 / ray->distance);
+	if (ray->distance > START_SHADING_DISTANCE)
+		color = add_shade(color, START_SHADING_DISTANCE / ray->distance);
 	return (color);
 }
