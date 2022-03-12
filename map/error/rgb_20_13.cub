@@ -1,7 +1,7 @@
-NO ./texture/manf1.xpm
-SO ./texture/manb1.xpm
-WE ./texture/ove.xpm 
-EA ./texture/castle.xpm
+NO ./texture/rat.xpm
+SO ./texture/horse.xpm
+WE ./texture/dog.xpm 
+EA ./texture/rabbit.xpm
 
 F 118,118,118
 C -1,90,90
