@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 15:25:32 by user42            #+#    #+#             */
-/*   Updated: 2022/03/11 16:17:21 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/11 18:43:30 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,28 +79,21 @@ size_t	fd_to_clsts(int fd, t_clst *clst1, t_clst *clst2, size_t sep_line)
 	return (num_lines);
 }
 
-size_t	path_to_lsts(char *file_path, t_clst *design_lst,
-		t_clst *map_lst, size_t sep_line)
+void	file_path_to_lsts(char *file_path, t_parse *parse, size_t sep_line)
 {
-	int		fd;
-	size_t	num_lines;
-
-	fd = ft_open_readfile(file_path);
-	num_lines = fd_to_clsts(fd, design_lst, map_lst, sep_line);
-	close(fd);
-	return (num_lines);
+	parse->fd = ft_open_readfile(file_path);
+	parse->num_lines = fd_to_clsts(parse->fd, parse->design_lst, parse->map_lst, sep_line);
+	close(parse->fd);
 }
 
 void	parse_file(char *file_path, t_game *game, void *mlx_ptr)
 {
-	t_clst	*design_lst;
-	t_clst	*map_lst;
-	size_t	num_lines;
+	t_parse	parse;
 
-	design_lst = clst_new(NULL);
-	map_lst = clst_new(NULL);
-	num_lines = path_to_lsts(file_path, design_lst, map_lst, NUM_DESIGN_ELEMS);
-	init_map(&game->map, map_lst, num_lines - NUM_DESIGN_ELEMS, game);
-	init_design(&game->design, design_lst, mlx_ptr, game);
+	parse.design_lst = clst_new(NULL);
+	parse.map_lst = clst_new(NULL);
+	file_path_to_lsts(file_path, &parse, NUM_DESIGN_ELEMS);
+	init_map(&game->map, parse.map_lst, parse.num_lines - NUM_DESIGN_ELEMS, game);
+	init_design(&game->design, parse.design_lst, mlx_ptr, game);
 	init_player(&game->player, game->map.map_ptr, game);
 }
