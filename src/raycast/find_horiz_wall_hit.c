@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 13:41:38 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 01:42:49 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/14 01:53:07 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,15 @@ static t_point	find_wall_hit(t_ray *ray, t_map *map, t_point intercept)
 {
 	const double	xstep = get_xstep(ray);
 	const double	ystep = get_ystep(ray);
-	double			check_x;
-	double			check_y;
+	t_point			check;
 
 	while (intercept.x >= 0 && intercept.x <= map->width && \
 	       intercept.y >= 0 && intercept.y <= map->height)
 	{
-		check_x = intercept.x;
-		check_y = intercept.y;
+		check = intercept;
 		if (ray->is_facing_up)
-			check_y -= 1;
-		if (map_has_wall_at(check_x, check_y, (t_map *)map))
+			check.y -= 1;
+		if (map_has_wall_at(check.x, check.y, map))
 		{
 			return (intercept);
 		}
