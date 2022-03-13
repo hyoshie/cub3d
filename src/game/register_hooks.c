@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:29:08 by user42            #+#    #+#             */
-/*   Updated: 2022/03/12 11:08:36 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/13 12:08:36 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	register_hooks(t_game *game)
 	mlx_hook(game->win_ptr, KEY_PRESS, KEY_PRESS_MASK, key_press_hook, game);
 	mlx_hook(game->win_ptr, KEY_RELEASE, KEY_RELEASE_MASK,
 		key_release_hook, game);
-	mlx_hook(game->win_ptr, KEY_PRESS, KEY_PRESS_MASK, key_press_hook, game);
 	mlx_hook(game->win_ptr, WIN_DESTROY, STRUCTURE_NOTIFY_MASK,
 		close_window, game);
 	mlx_expose_hook(game->win_ptr, render, game);
