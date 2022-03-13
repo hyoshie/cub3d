@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/12 11:17:26 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/13 13:38:30 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,15 @@
 
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
+# define MOUSE_MOVE 6
 # define WIN_DESTROY 17
 # define KEY_PRESS_MASK 1
 # define KEY_RELEASE_MASK 2
+# define MOUSE_MOVE_MASK 64
 # define STRUCTURE_NOTIFY_MASK 131072
 
 # define PLAYER_RADIUS 10
-# define MOVE_STEP 10
+# define MOVE_STEP 2
 # define START_SHADING_DISTANCE 200
 
 # define NUM_RAYS WINDOW_WIDTH
