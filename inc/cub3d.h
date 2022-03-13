@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/12 10:41:16 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/13 14:17:22 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_player {
 	double	angle;
 	double	fov_angle;
 	double	turn_speed;
+	double	auto_turn_speed;
 }	t_player;
 
 // wall_hit_contentはまだ使ってない
