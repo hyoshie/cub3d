@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 11:36:52 by user42            #+#    #+#             */
-/*   Updated: 2022/03/13 14:18:36 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/13 14:31:20 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void	rotate_player_angle(void *mlx_ptr, void *win_ptr, t_player *player)
 	int	x;
 	int	y;
 
+	if (!player->should_rotate)
+		return ;
 	mlx_mouse_get_pos(mlx_ptr, win_ptr, &x, &y);
 	if (is_in_range(x, 0, WINDOW_WIDTH / 3)
 		&& is_in_range(y, 0, WINDOW_HEIGHT))

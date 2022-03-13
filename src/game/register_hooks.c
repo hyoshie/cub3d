@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:29:08 by user42            #+#    #+#             */
-/*   Updated: 2022/03/13 13:56:27 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/13 14:37:06 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,15 @@ static int	update_screen(t_game *game)
 	return (0);
 }
 
+static int	toggle_auto_rotate(int button, int x, int y, t_player *player)
+{
+	(void)button;
+	(void)x;
+	(void)y;
+	player->should_rotate = !player->should_rotate;
+	return (0);
+}
+
 void	register_hooks(t_game *game)
 {
 	mlx_hook(game->win_ptr, KEY_PRESS, KEY_PRESS_MASK, key_press_hook, game);
@@ -50,4 +59,5 @@ void	register_hooks(t_game *game)
 		close_window, game);
 	mlx_expose_hook(game->win_ptr, render, game);
 	mlx_loop_hook(game->mlx_ptr, update_screen, game);
+	mlx_mouse_hook(game->win_ptr, toggle_auto_rotate, &game->player);
 }
