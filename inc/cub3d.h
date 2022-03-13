@@ -7,6 +7,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
 /*   Updated: 2022/03/13 15:04:26 by user42           ###   ########.fr       */
+
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +70,7 @@ typedef struct s_minimap {
 // should_move, should_rotateの命名がしっくりこないです
 typedef struct s_player {
 	t_point	pos;
+	t_point	wall_hit;
 	double	walk_direction;
 	double	angle;
 	double	fov_angle;

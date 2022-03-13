@@ -40,6 +40,7 @@ static void	set_pos_angle(t_player *player, char **map_ptr)
 			{
 				player->pos.y = y * TILE_SIZE + TILE_SIZE / 2;
 				player->pos.x = x * TILE_SIZE + TILE_SIZE / 2;
+				player->wall_hit = player->pos;
 				set_angle(player, map_ptr[y][x]);
 			}
 			x++;
