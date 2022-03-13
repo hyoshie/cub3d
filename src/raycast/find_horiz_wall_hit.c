@@ -6,22 +6,22 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 13:41:38 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 16:53:40 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 01:07:14 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
 
-static t_point	find_intercept(t_ray *ray, t_point *player_pos)
+static t_point	find_intercept(t_ray *ray)
 {
 	t_point	intercept;
 
-	intercept.y = floor(player_pos->y / TILE_SIZE) * TILE_SIZE;
+	intercept.y = floor(ray->light_source.y / TILE_SIZE) * TILE_SIZE;
 	if (ray->is_facing_down)
 		intercept.y += TILE_SIZE;
-	intercept.x = player_pos->x + \
-					(intercept.y - player_pos->y) / tan(ray->angle);
+	intercept.x = ray->light_source.x + \
+					(intercept.y - ray->light_source.y) / tan(ray->angle);
 	return (intercept);
 }
 
@@ -81,13 +81,12 @@ static t_point	find_wall_hit(t_ray *ray, t_map *map, t_point intercept)
 	return (intercept);
 }
 
-t_point	find_horiz_wall_hit(t_ray *ray, t_point *player_pos,
-									 t_map *map)
+t_point	find_horiz_wall_hit(t_ray *ray, t_map *map)
 {
 	t_point	intercept;
 	t_point	wall_hit;
 
-	intercept = find_intercept(ray, player_pos);
+	intercept = find_intercept(ray);
 	wall_hit = find_wall_hit(ray, map, intercept);
 	return (wall_hit);
 }

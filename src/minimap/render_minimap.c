@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 14:33:02 by user42            #+#    #+#             */
-/*   Updated: 2022/03/09 20:25:06 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/14 00:48:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,10 @@ static void	render_floor(t_minimap *mini, t_img *win_img)
 	}
 }
 
-void	render_minimap(t_minimap *mini, t_player *player, t_ray *ray, \
-						t_img *win_img)
+void	render_minimap(t_minimap *mini, t_ray *ray, t_img *win_img)
 {
 	render_floor(mini, win_img);
-	render_all_ray(mini, player, ray, win_img);
+	render_all_ray(mini, ray, win_img);
 	render_player(mini, win_img);
 	render_wall(mini, win_img);
 }

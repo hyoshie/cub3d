@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 12:19:01 by user42            #+#    #+#             */
-/*   Updated: 2022/03/12 01:27:27 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/14 01:08:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,15 @@ static void	set_wall_direction(t_ray *ray)
 	}
 }
 
-static void	cast_ray(t_ray *ray, double ray_angle, t_player *player,
-										 t_map *map)
+static void	cast_ray(t_ray *ray, double ray_angle, t_map *map)
 {
 	t_point	horiz_wall_hit;
 	t_point	vert_wall_hit;
 
 	set_ray_is_facing_to(ray, ray_angle);
-	horiz_wall_hit = find_horiz_wall_hit(ray, &player->pos, map);
-	vert_wall_hit = find_vert_wall_hit(ray, &player->pos, map);
-	set_closer_wall_hit(ray, &horiz_wall_hit, &vert_wall_hit,
-		&player->pos);
+	horiz_wall_hit = find_horiz_wall_hit(ray, map);
+	vert_wall_hit = find_vert_wall_hit(ray, map);
+	set_closer_wall_hit(ray, &horiz_wall_hit, &vert_wall_hit);
 	set_wall_direction(ray);
 }
 
@@ -63,7 +61,8 @@ void	cast_all_rays(t_ray *ray, t_player *player, t_map *map)
 	i = 0;
 	while (i < NUM_RAYS)
 	{
-		cast_ray(&ray[i], ray_angle, player, map);
+		ray[i].light_source = player->pos;
+		cast_ray(&ray[i], ray_angle, map);
 		ray_angle += player->fov_angle / (NUM_RAYS - 1);
 		i++;
 	}

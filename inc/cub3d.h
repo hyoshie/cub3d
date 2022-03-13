@@ -6,8 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/13 15:04:26 by user42           ###   ########.fr       */
-
+/*   Updated: 2022/03/14 01:10:29 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +82,7 @@ typedef struct s_player {
 // 余裕があったらis_facingを一つの変数にする
 typedef struct s_ray {
 	double	angle;
+	t_point	light_source;
 	t_point	wall_hit;
 	double	distance;
 	bool	was_hit_vertical;
@@ -127,20 +127,15 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	cast_all_rays(t_ray *ray, t_player *player, t_map *map);
 void	update(t_game *game);
 int		render(t_game *game);
-void	render_minimap(t_minimap *mini, t_player *player, t_ray *ray,
-			t_img *win_img);
-void	render_all_ray(t_minimap *mini, t_player *player, t_ray *ray,
-			t_img *win_img);
+void	render_minimap(t_minimap *mini, t_ray *ray, t_img *win_img);
+void	render_all_ray(t_minimap *mini, t_ray *ray, t_img *win_img);
 void	render_3d_projection(t_game *game, t_img *win_img);
 int		get_texel_color(t_wall_strip strip, int y, t_ray *ray,
 			t_texture *texture);
 bool	map_has_wall_at(double x, double y, t_map *map);
-t_point	find_horiz_wall_hit(t_ray *ray, t_point *player_pos,
-			t_map *map);
-t_point	find_vert_wall_hit(t_ray *ray, t_point *player_pos,
-			t_map *map);
-void	set_closer_wall_hit(t_ray *ray, t_point *horiz_wall_hit,
-			t_point *vert_wall_hit, t_point *player_pos);
+t_point	find_horiz_wall_hit(t_ray *ray, t_map *map);
+t_point	find_vert_wall_hit(t_ray *ray, t_map *map);
+void	set_closer_wall_hit(t_ray *ray, t_point *horiz_hit, t_point *vert_hit);
 void	check_args(int ac, char **av);
 void	parse_file(char *file_path, t_game *game, void *mlx_ptr);
 void	init_design(t_design *design, t_clst *design_lst, void *mlx_ptr,

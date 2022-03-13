@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:41:29 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 16:54:33 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 01:10:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,22 @@ static double	get_distance(t_point *p1, t_point *p2)
 	return (sqrt(dx * dx + dy * dy));
 }
 
-void	set_closer_wall_hit(t_ray *ray, t_point *horiz_wall_hit,
-								t_point *vert_wall_hit,
-								t_point *player_pos)
+void	set_closer_wall_hit(t_ray *ray, t_point *horiz_hit, t_point *vert_hit)
 {
 	double	horiz_distance;
 	double	vert_distance;
 
-	horiz_distance = get_distance(horiz_wall_hit, player_pos);
-	vert_distance = get_distance(vert_wall_hit, player_pos);
+	horiz_distance = get_distance(horiz_hit, &ray->light_source);
+	vert_distance = get_distance(vert_hit, &ray->light_source);
 	if (horiz_distance < vert_distance)
 	{
-		ray->wall_hit = *horiz_wall_hit;
+		ray->wall_hit = *horiz_hit;
 		ray->distance = horiz_distance;
 		ray->was_hit_vertical = false;
 	}
 	else
 	{
-		ray->wall_hit = *vert_wall_hit;
+		ray->wall_hit = *vert_hit;
 		ray->distance = vert_distance;
 		ray->was_hit_vertical = true;
 	}
