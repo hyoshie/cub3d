@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/12 10:41:16 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/13 11:27:44 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_minimap {
 // 変数をいくつか定数にするかも
 typedef struct s_player {
 	t_point	pos;
+	t_point	wall_hit;
 	double	radius;
 	double	walk_direction;
 	bool	should_move;

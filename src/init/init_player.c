@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:31:47 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/12 10:40:53 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/13 11:29:03 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void	set_pos_angle(t_player *player, char **map_ptr)
 			{
 				player->pos.y = y * TILE_SIZE + TILE_SIZE / 2;
 				player->pos.x = x * TILE_SIZE + TILE_SIZE / 2;
+				player->wall_hit = player->pos;
 				set_angle(player, map_ptr[y][x]);
 			}
 			x++;
