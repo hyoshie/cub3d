@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/11 15:38:19 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 01:43:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,12 @@ void	init_image(t_img *img, void *mlx_ptr, int width, int height)
 	img->height = height;
 }
 
-// TODO:check calloc or malloc
 static void	init_ray(t_ray **ray, t_player *player, t_map *map)
 {
 	*ray = ft_calloc(sizeof(t_ray), NUM_RAYS);
 	cast_all_rays(*ray, player, map);
 }
 
-// fileをparseしてからwindows作った方がエラーが出た時に一瞬画面が出るということがないので順番変えました
 void	init_game(t_game *game, char *file_path)
 {
 	*game = (t_game){0};

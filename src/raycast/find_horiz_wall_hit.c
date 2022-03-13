@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 13:41:38 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 01:07:14 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/14 01:42:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,6 @@ static double	get_ystep(t_ray *ray)
 	return (ystep);
 }
 
-//??
-//     float yToCheck = nextHorzTouchY + (isRayFacingUp ? -1 : 0);
-//        horzWallContent = map[(int)floor(yToCheck /
-//        TILE_SIZE)][(int)floor(xToCheck / TILE_SIZE)]; foundHorzWallHit =
-//        TRUE; break;
 static t_point	find_wall_hit(t_ray *ray, t_map *map, t_point intercept)
 {
 	const double	xstep = get_xstep(ray);
