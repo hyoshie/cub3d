@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/13 14:29:19 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/13 15:04:26 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,18 @@ typedef struct s_minimap {
 	int		color;
 }	t_minimap;
 
-// 変数をいくつか定数にするかも
+// should_move, should_rotateの命名がしっくりこないです
 typedef struct s_player {
 	t_point	pos;
-	double	radius;
 	double	walk_direction;
-	bool	should_move;
 	double	angle;
 	double	fov_angle;
 	double	turn_speed;
 	double	auto_turn_speed;
+	bool	should_move;
 	bool	should_rotate;
 }	t_player;
 
-// wall_hit_contentはまだ使ってない
 // 余裕があったらis_facingを一つの変数にする
 typedef struct s_ray {
 	double	angle;
@@ -121,7 +119,7 @@ typedef struct s_game {
 
 void	init_game(t_game *game, char *file_path);
 void	init_image(t_img *img, void *mlx_ptr, int width, int height);
-void	process_key_press(int keycode, t_player *player, t_game *game);
+int		process_key_press(int keycode, t_game *game);
 void	register_hooks(t_game *game);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	cast_all_rays(t_ray *ray, t_player *player, t_map *map);
