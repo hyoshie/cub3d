@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/11 18:39:48 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/13 16:46:53 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ typedef struct s_wall_strip {
 
 typedef struct s_parse {
 	int		fd;
+	t_clst	*file_lst;
 	t_clst	*design_lst;
 	t_clst	*map_lst;
 	size_t	num_lines;
