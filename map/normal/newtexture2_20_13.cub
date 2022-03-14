@@ -1,6 +1,6 @@
 NO ./texture/paris.xpm
 SO ./texture/amsterdam.xpm
-WE ./texture/tokyo.xpm 
+WE ./texture/tokyo.xpm
 EA ./texture/newyork.xpm
 
 F 100,100,40

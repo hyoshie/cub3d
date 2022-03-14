@@ -1,6 +1,6 @@
 NO ./texture/block.xpm
 SO ./texture/broken.xpm
-WE ./texture/stone.xpm 
+WE ./texture/stone.xpm
 EA ./texture/renga.xpm
 
 F 100,100,40

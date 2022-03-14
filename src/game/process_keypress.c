@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 11:25:13 by user42            #+#    #+#             */
-/*   Updated: 2022/03/11 12:00:15 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/13 14:53:36 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,13 @@
 
 static bool	is_move_key(int keycode)
 {
-	if (keycode == KEY_W || keycode == KEY_A || \
-		keycode == KEY_S || keycode == KEY_D)
-	{
-		return (true);
-	}
-	else
-	{
-		return (false);
-	}
+	return (keycode == KEY_W || keycode == KEY_A
+		|| keycode == KEY_S || keycode == KEY_D);
 }
 
 static bool	is_rotate_key(int keycode)
 {
-	if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
-	{
-		return (true);
-	}
-	else
-	{
-		return (false);
-	}
+	return (keycode == KEY_LEFT || keycode == KEY_RIGHT);
 }
 
 static void	process_move_key(int keycode, t_player *player)
@@ -73,7 +59,7 @@ static void	process_rotate_key(int keycode, t_player *player)
 	}
 }
 
-void	process_key_press(int keycode, t_player *player, t_game *game)
+int	process_key_press(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
 	{
@@ -81,10 +67,11 @@ void	process_key_press(int keycode, t_player *player, t_game *game)
 	}
 	if (is_move_key(keycode))
 	{
-		process_move_key(keycode, player);
+		process_move_key(keycode, &game->player);
 	}
 	if (is_rotate_key(keycode))
 	{
-		process_rotate_key(keycode, player);
+		process_rotate_key(keycode, &game->player);
 	}
+	return (0);
 }

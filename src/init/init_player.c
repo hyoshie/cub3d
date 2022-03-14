@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:31:47 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/11 15:28:43 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/13 14:59:47 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void	set_pos_angle(t_player *player, char **map_ptr)
 			{
 				player->pos.y = y * TILE_SIZE + TILE_SIZE / 2;
 				player->pos.x = x * TILE_SIZE + TILE_SIZE / 2;
+				player->wall_hit = player->pos;
 				set_angle(player, map_ptr[y][x]);
 			}
 			x++;
@@ -52,10 +53,10 @@ void	init_player(t_player *player, char **map_ptr, t_game *game)
 {
 	validate_player(map_ptr, game);
 	set_pos_angle(player, map_ptr);
-	player->radius = PLAYER_RADIUS * MINIMAP_SCALE;
 	player->walk_direction = 0;
-	player->should_move = false;
 	player->fov_angle = 60 * (M_PI / 180);
-	player->walk_speed = WALK_SPEED;
-	player->turn_speed = 15 * (M_PI / 180);
+	player->turn_speed = 10 * (M_PI / 180);
+	player->auto_turn_speed = 1 * (M_PI / 180);
+	player->should_move = false;
+	player->should_rotate = true;
 }

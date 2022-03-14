@@ -6,13 +6,14 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/13 18:43:59 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 12:19:04 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONSTANTS_H
 # define CONSTANTS_H
 
+/*	Window and Map Info	*/
 # define TILE_SIZE 32
 # define MAP_NUM_COLS 20
 # define MAP_NUM_ROWS 13
@@ -24,6 +25,18 @@
 # define MINIMAP_WIDTH_MAX 240
 # define MINIMAP_HEIGHT_MAX 156
 
+/*	Cubfile Info	*/
+# define NUM_DESIGN_ELEMS 6
+# define MAX_MAP_COLS 256
+# define MAX_MAP_ROWS 256
+
+/*	Render Info	*/
+# define NUM_RAYS WINDOW_WIDTH
+# define PLAYER_RADIUS 10
+# define MOVE_STEP 2
+# define START_SHADING_DISTANCE 200
+
+/*	Color	*/
 # define RED 0x00FF0000
 # define YELLOW 0x00FFFF00
 # define ORANGE 0x00FF6500
@@ -34,6 +47,7 @@
 # define SKYBLUE 0x0090D7EC
 # define KOGETYA 0x006A4332
 
+/*	Keycode	*/
 # define KEY_ESC 0xff1b
 # define KEY_A 0x61
 # define KEY_D 0x64
@@ -42,19 +56,20 @@
 # define KEY_LEFT 0xff51
 # define KEY_RIGHT 0xff53
 
+/*	Xwindow	*/
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
+# define MOUSE_MOVE 6
+# define WIN_DESTROY 17
 # define KEY_PRESS_MASK 1
 # define KEY_RELEASE_MASK 2
+# define MOUSE_MOVE_MASK 64
+# define STRUCTURE_NOTIFY_MASK 131072
 
-# define PLAYER_RADIUS 10
-# define WALK_SPEED 10
+/*	Message	*/
+# define MSG_WALL_COLLISION "Ouch! What a hard wall!"
 
-# define NUM_RAYS WINDOW_WIDTH
-
-# define NUM_DESIGN_ELEMS 6
-# define MAX_MAP_COLS 256
-# define MAX_MAP_ROWS 256
+/*	Exit Message	*/
 # define EM_ESC "(｡-ω-)ﾉsee you again… "
 # define EM_ARG "Error\nUsage ./cub3d xxx.cub"
 # define EM_READ_XPM "Error\nCan't read xpm file (Check your cub file)"

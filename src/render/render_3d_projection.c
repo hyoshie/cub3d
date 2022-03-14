@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 00:05:42 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 16:50:46 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/12 01:22:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,14 @@ static t_wall_strip	get_wall_strip_info(t_ray *ray, t_player *player)
 
 static t_texture	*select_texture(t_ray *ray, t_design *design)
 {
-	if (ray->was_hit_vertical)
-	{
-		if (ray->is_facing_left)
-			return (&design->west);
-		else
-			return (&design->east);
-	}
+	if (ray->wall_direction == NORTH)
+		return (&design->north);
+	else if (ray->wall_direction == SOUTH)
+		return (&design->south);
+	else if (ray->wall_direction == WEST)
+		return (&design->west);
 	else
-	{
-		if (ray->is_facing_up)
-			return (&design->north);
-		else
-			return (&design->south);
-	}
+		return (&design->east);
 }
 
 static void	render_wall_strip(t_img *win_img, t_game *game, int x)

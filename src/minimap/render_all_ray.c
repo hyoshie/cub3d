@@ -6,7 +6,7 @@
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 11:09:55 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 19:41:46 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/14 00:44:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,13 @@ static void	render_ray(t_minimap *mini, t_ray *ray, t_img *win_img)
 	}
 }
 
-void	render_all_ray(t_minimap *mini, t_player *player, t_ray *ray, \
-						t_img *win_img)
+void	render_all_ray(t_minimap *mini, t_ray *ray, t_img *win_img)
 {
-	double	ray_angle;
 	int		i;
 
-	ray_angle = player->angle - (player->fov_angle / 2);
 	i = 0;
 	while (i < NUM_RAYS)
 	{
 		render_ray(mini, &ray[i++], win_img);
-		ray_angle += player->fov_angle / (NUM_RAYS - 1);
 	}
 }
