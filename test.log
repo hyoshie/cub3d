@@ -1,0 +1,73 @@
+file name: ./map/error/02_extention_20_13.cubb
+Error
+Usage ./cub3d xxx.cub
+
+file name: ./map/error/02_extention_20_13cub
+Error
+Usage ./cub3d xxx.cub
+
+file name: ./map/error/03_no_xpm_20_13.cub
+Error
+Can't read xpm file (Check your cub file)
+
+file name: ./map/error/03_texture_path_20_13.cub
+Error
+Can't read xpm file (Check your cub file)
+
+file name: ./map/error/04_open_unable_20_13.cub
+Error
+open: Can't read file: Permission denied
+
+
+file name: ./map/error/06_rgb_20_13.cub
+Error
+rgb numbers need to be integer between 0 and 255
+
+file name: ./map/error/06_rgb_decimal_20_13.cub
+Error
+rgb numbers need to be integer between 0 and 255
+
+file name: ./map/error/07_design_missing_20_13.cub
+Error
+Design info is missing in .cub file
+
+file name: ./map/error/08_design_word_20_13.cub
+Error
+Design info is wrong in .cub file
+
+file name: ./map/error/09_design_dup_20_13.cub
+Error
+Design info is wrong in .cub file
+
+file name: ./map/error/10_design_too_many_20_13.cub
+Error
+Texture or color settings is invalid in .cub file
+
+file name: ./map/error/11_map_big_257_257.cub
+Error
+Map is too big (Upto 256 * 256)
+
+file name: ./map/error/12_map_gap_20_13.cub
+Error
+Map is not closed by wall
+
+file name: ./map/error/12_player_outside_20_13.cub
+Error
+Map is not closed by wall
+
+file name: ./map/error/13_player_dup_20_13.cub
+Error
+Too many players
+
+file name: ./map/error/14_player_zero_20_13.cub
+Error
+One player is needed
+
+file name: ./map/error/16_order_20_13.cub
+Error
+Texture or color settings is invalid in .cub file
+
+file name: ./map/error/17_dir.cub
+Error
+gnl: Can't read line
+

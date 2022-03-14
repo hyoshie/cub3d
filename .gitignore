@@ -2,6 +2,9 @@
 #### Github Default C.gitignore #####
 #####################################
 
+# Permition test file
+map/error/04_open_unable_20_13.cub
+
 # Prerequisites
 *.d
 
