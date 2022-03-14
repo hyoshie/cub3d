@@ -27,6 +27,7 @@ M_SRC	=	clst_addback.c\
 			clst_to_array.c\
 			dict_addback.c\
 			dict_clear.c\
+			dict_count.c\
 			dict_delone.c\
 			dict_get_value.c\
 			dict_new.c\
