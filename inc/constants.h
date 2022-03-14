@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/11 15:44:33 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/13 18:43:59 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,8 @@
 # define EM_MANY_PLAYERS "Error\nToo many players"
 # define EM_NO_PLAYER "Error\nOne player is needed"
 # define EM_MLX "Error\nSomething is wrong in mlx function"
+# define EM_DESIGN "Error\nTexture or color settings is invalid in .cub file"
+# define EM_NO_MAP "Error\nCannot find valid map in .cub file"
+
 
 #endif /* CONSTANTS_H */

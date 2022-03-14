@@ -6,13 +6,13 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 21:25:22 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/11 12:06:46 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 10:43:49 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
-
+/* 
 //for test, check
 void	print_clst(t_clst *lst)
 {
@@ -26,8 +26,8 @@ void	print_clst(t_clst *lst)
 		p = p->next;
 	}
 }
-
-static t_clst	*adjast_map_cols(t_clst *map_lst, size_t map_cols)
+ */
+t_clst	*adjast_map_cols(t_clst *map_lst, size_t map_cols)
 {
 	t_clst	*p;
 	t_clst	*adjasted_lst;
@@ -56,7 +56,7 @@ static t_clst	*adjast_map_cols(t_clst *map_lst, size_t map_cols)
 	return (adjasted_lst);
 }
 
-static void	set_map_width_height(t_clst *map_lst, t_map *map, size_t num_nodes)
+void	set_map_width_height(t_clst *map_lst, t_map *map, size_t num_nodes)
 {
 	t_clst	*p;
 	size_t	line_len;
@@ -76,10 +76,29 @@ static void	set_map_width_height(t_clst *map_lst, t_map *map, size_t num_nodes)
 	}
 }
 
-void	init_map(t_map *map, t_clst *map_lst, size_t num_nodes, t_game *game)
+t_clst	*del_design_nodes(t_clst *file_lst, int design_end_line)
 {
-	set_map_width_height(map_lst, map, num_nodes);
-	map_lst = adjast_map_cols(map_lst, map->num_cols);
-	map->map_ptr = clst_to_array(map_lst, map->height);
-	validate_map(map->map_ptr, game);
+	t_clst	*p;
+	int		num_nodes;
+
+	num_nodes = 0;
+	p = file_lst->next;
+	while (num_nodes < design_end_line)
+	{
+		clst_delone(p);
+		p = file_lst->next;
+		num_nodes++;
+	}
+	return (file_lst);
+}
+
+void	init_map(t_clst *file_lst, int map_start_line, int num_nodes, t_game *game)
+{
+	t_clst	*map_lst;
+
+	map_lst = del_design_nodes(file_lst, map_start_line);
+	set_map_width_height(map_lst, &game->map, num_nodes);
+	map_lst = adjast_map_cols(file_lst, game->map.num_cols);
+	game->map.map_ptr = clst_to_array(map_lst, game->map.height);
+	validate_map(game->map.map_ptr, game);
 }

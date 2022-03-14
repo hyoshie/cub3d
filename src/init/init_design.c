@@ -6,12 +6,23 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 20:44:41 by user42            #+#    #+#             */
-/*   Updated: 2022/03/11 12:04:10 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/13 21:34:17 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
+/* //for test
+void	print_array(char **array)
+{
+	int y;
+	y = 0;
+	while (array[y])
+	{
+		printf("%s\n", array[y]);
+		y++;
+	}
+} */
 
 static void	load_xpm_file(void *mlx_ptr,
 	t_texture *direction, char *file_path, t_game *game)
@@ -25,28 +36,32 @@ static void	load_xpm_file(void *mlx_ptr,
 			&direction->size_line, &direction->endian);
 }
 
-static void	design_lst_to_dict(t_clst *design_lst,
-	t_dict *design_dict, char sep)
+static void	lst_to_design_dict(t_clst *file_lst,
+	int design_end_line, t_dict *design_dict, t_game *game)
 {
 	t_clst	*lst_ptr;
 	char	**vector;
+	int		i;
 
-	lst_ptr = design_lst->next;
-	while (lst_ptr != design_lst)
+	i = 1;
+	lst_ptr = file_lst->next;
+	while (i < design_end_line)
 	{
-		vector = ft_xsplit(lst_ptr->content, sep);
+		vector = ft_xsplit(lst_ptr->content, ' ');
 		if (!vector[0] || !vector[1])
 		{
 			lst_ptr = lst_ptr->next;
 			free_vector(vector);
 			continue ;
 		}
+		if(vector[2])
+			free_all_exit(EM_DESIGN, game);
 		dict_addback(design_dict, dict_new(ft_xstrdup(vector[0]),
 				ft_xstrdup(vector[1])));
 		lst_ptr = lst_ptr->next;
 		free_vector(vector);
+		i++;
 	}
-	clst_clear(design_lst);
 }
 
 static void	load_wall_xpm_files(void *mlx_ptr,
@@ -81,7 +96,7 @@ static void	load_ceil_floor_color(t_design *design,
 	free_vector(c_vector);
 	free_vector(f_vector);
 }
-/* //for test
+//for test
 void	print_dict(t_dict *d)
 {
 	t_dict	*p;
@@ -93,17 +108,16 @@ void	print_dict(t_dict *d)
 		printf("value: %s\n", p->value);
 		p = p->next;
 	}
-} */
+}
 
-void	init_design(t_design *design, t_clst *design_lst,
-	void *mlx_ptr, t_game *game)
+void	init_design(t_clst *file_lst, int design_end_line, void *mlx_ptr, t_game *game)
 {
 	t_dict	*design_dict;
 
 	design_dict = dict_new(NULL, NULL);
-	design_lst_to_dict(design_lst, design_dict, ' ');
+	lst_to_design_dict(file_lst, design_end_line, design_dict, game);
 	validate_design(design_dict, game);
-	load_wall_xpm_files(mlx_ptr, design, design_dict, game);
-	load_ceil_floor_color(design, design_dict, game);
+	load_wall_xpm_files(mlx_ptr, &game->design, design_dict, game);
+	load_ceil_floor_color(&game->design, design_dict, game);
 	dict_clear(design_dict);
 }

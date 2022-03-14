@@ -6,24 +6,14 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 16:22:05 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/11 12:12:39 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/13 21:33:24 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
 
-//for test
-/* void	print_array(char **array)
-{
-	int y;
-	y = 0;
-	while (array[y])
-	{
-		printf("%s\n", array[y]);
-		y++;
-	}
-} */
+
 
 static size_t	count_array_rows(char **map)
 {
@@ -72,6 +62,7 @@ void	validate_map(char **map, t_game *game)
 	size_t	y;
 
 	(void)game;
+	//高さと横幅のvalidateも入れる
 	copy = array_dup(map);
 	y = 0;
 	while (copy[y])
