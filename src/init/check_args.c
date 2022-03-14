@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 21:25:29 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/11 16:26:05 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 22:02:20 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	check_args(int ac, char **av)
 {
 	if (ac != 2 || check_extension(av[1]) == -1)
 	{
-		ft_putstr_fd(EM_ARG, 2);
+		ft_putstr_fd(EM_ARG, STDERR_FILENO);
+		ft_putstr_fd("\n", STDERR_FILENO);
 		exit (EXIT_SUCCESS);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 19:51:37 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 18:44:40 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:59:30 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	free_all_exit(char *exit_message, t_game *game)
 	free(game->ray);
 	free_vector(game->map.map_ptr);
 	ft_putstr_fd(exit_message, STDERR_FILENO);
+	ft_putstr_fd("\n", STDERR_FILENO);
 	exit (EXIT_SUCCESS);
 }
