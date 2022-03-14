@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 14:46:30 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 22:18:30 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@
 # define EM_OPEN "Error\nopen: Can't read file"
 # define EM_GNL "Error\ngnl: Can't read line"
 # define EM_RGB "Error\nrgb numbers need to be integer between 0 and 255"
+# define EM_MANY_RGB "Error\nToo many RGB numbers"
 # define EM_MISS_DES "Error\nDesign info is missing in .cub file"
 # define EM_WRONG_DES "Error\nDesign info is wrong in .cub file"
 # define EM_MAP_BIG "Error\nMap is too big (Upto 256 * 256)"
