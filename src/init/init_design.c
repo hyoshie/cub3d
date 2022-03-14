@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 20:44:41 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 12:16:02 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 13:17:29 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,8 @@ void	print_dict(t_dict *d)
 		printf("value: %s\n", p->value);
 		p = p->next;
 	}
-}
- */
+} */
+
 void	init_design(t_clst *file_lst,
 	int design_end_line, void *mlx_ptr, t_game *game)
 {

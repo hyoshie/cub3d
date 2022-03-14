@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 16:22:05 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/14 12:16:35 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 14:17:00 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,14 @@ static bool	is_all_sides_closed(char **map, int x, int y)
 		&& is_all_sides_closed(map, x, y - 1));
 }
 
+bool	is_map_char(char c)
+{
+	if (ft_strchr("10 ", c))
+		return (true);
+	else
+		return (false);
+}
+
 void	check_map_closed(char **map, t_game *game)
 {
 	char	**copy;
@@ -79,10 +87,84 @@ void	check_map_closed(char **map, t_game *game)
 	free_vector(copy);
 }
 
+void	check_map_char(char **map, t_game *game)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (!is_map_char(map[y][x]) && !is_player(map[y][x]))
+				free_all_exit(EM_MAP_CHAR, game);
+			x++;
+		}
+		y++;
+	}
+}
+
+bool	is_only_space_line(char *line)
+{
+	while (*line)
+	{
+		if (!ft_strchr(" ", *line))
+			return (false);
+		line++;
+	}
+	return (true);
+}
+/* 
+
+bool	is_only_space_vert(char **map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			printf("%c\n", map[y][x]);
+			if (!ft_strchr(" ", map[y][x]))
+				return (false);
+			x++;
+		}
+		y++;
+	}
+	return (false);
+}
+
+void	check_map_vert_dup(char **map, t_game *game)
+{
+	if (is_only_space_vert(map))
+		free_all_exit(EM_MAP_DUP, game);
+} */
+
+void	check_map_hori_dup(char **map, t_game *game)
+{
+	int		y;
+
+	y = 0;
+	while (map[y])
+	{
+		if (is_only_space_line(map[y]))
+			free_all_exit(EM_MAP_DUP, game);
+		y++;
+	}
+}
+
 //all_free_exit的なやつにする
 void	validate_map(t_map *map, t_game *game)
 {
 	if (map->num_cols > MAX_MAP_COLS || map->num_rows > MAX_MAP_ROWS)
 		free_all_exit(EM_MAP_BIG, game);
 	check_map_closed(map->map_ptr, game);
+	check_map_char(map->map_ptr, game);
+	check_map_hori_dup(map->map_ptr, game);
+	//check_map_vert_dup(map->map_ptr, game);
 }
