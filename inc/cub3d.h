@@ -6,8 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/13 15:04:26 by user42           ###   ########.fr       */
-
+/*   Updated: 2022/03/14 01:41:28 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +82,7 @@ typedef struct s_player {
 // 余裕があったらis_facingを一つの変数にする
 typedef struct s_ray {
 	double	angle;
+	t_point	light_source;
 	t_point	wall_hit;
 	double	distance;
 	bool	was_hit_vertical;
@@ -119,45 +119,52 @@ typedef struct s_game {
 	t_ray		*ray;
 }	t_game;
 
+/*	init	*/
+void	check_args(int ac, char **av);
 void	init_game(t_game *game, char *file_path);
 void	init_image(t_img *img, void *mlx_ptr, int width, int height);
-int		process_key_press(int keycode, t_game *game);
-void	register_hooks(t_game *game);
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
-void	cast_all_rays(t_ray *ray, t_player *player, t_map *map);
-void	update(t_game *game);
-int		render(t_game *game);
-void	render_minimap(t_minimap *mini, t_player *player, t_ray *ray,
-			t_img *win_img);
-void	render_all_ray(t_minimap *mini, t_player *player, t_ray *ray,
-			t_img *win_img);
-void	render_3d_projection(t_game *game, t_img *win_img);
-int		get_texel_color(t_wall_strip strip, int y, t_ray *ray,
-			t_texture *texture);
-bool	map_has_wall_at(double x, double y, t_map *map);
-t_point	find_horiz_wall_hit(t_ray *ray, t_point *player_pos,
-			t_map *map);
-t_point	find_vert_wall_hit(t_ray *ray, t_point *player_pos,
-			t_map *map);
-void	set_closer_wall_hit(t_ray *ray, t_point *horiz_wall_hit,
-			t_point *vert_wall_hit, t_point *player_pos);
-void	check_args(int ac, char **av);
-void	parse_file(char *file_path, t_game *game, void *mlx_ptr);
 void	init_design(t_design *design, t_clst *design_lst, void *mlx_ptr,
 			t_game *game);
 void	init_map(t_map *map, t_clst *map_lst, size_t num_nodes, t_game *game);
-void	init_player(t_player *player, char **map_ptr, t_game *game);
 void	init_minimap(t_minimap *mini, t_map *map, t_point player_pos);
+void	init_player(t_player *player, char **map_ptr, t_game *game);
+void	parse_file(char *file_path, t_game *game, void *mlx_ptr);
+t_color	rgb_to_int(int t, int r, int g, int b);
+int		rgb_atoi(char *s, t_game *game);
 void	validate_map(char **map, t_game *game);
 void	validate_design(t_dict *design_dict, t_game *game);
 void	validate_player(char **map_ptr, t_game *game);
-double	normalize_angle(double ray_angle);
-t_color	rgb_to_int(int t, int r, int g, int b);
-int		rgb_atoi(char *s, t_game *game);
-void	free_all_exit(char *exit_message, t_game *game);
-bool	is_floor(char c);
-bool	is_player(char c);
 void	*xmlx_init(void);
 void	*xmlx_new_window(void *mlx_ptr, int size_x, int size_y, char *title);
 void	*xmlx_new_image(void *mlx_ptr, int width, int height);
+
+/*	game	*/
+void	free_all_exit(char *exit_message, t_game *game);
+int		process_key_press(int keycode, t_game *game);
+void	register_hooks(t_game *game);
+void	update(t_game *game);
+
+/*	raycast	*/
+void	cast_all_rays(t_ray *ray, t_player *player, t_map *map);
+t_point	find_horiz_wall_hit(t_ray *ray, t_map *map);
+t_point	find_vert_wall_hit(t_ray *ray, t_map *map);
+void	set_closer_wall_hit(t_ray *ray, t_point *horiz_hit, t_point *vert_hit);
+
+/*	render	*/
+int		get_texel_color(t_wall_strip strip, int y, t_ray *ray,
+			t_texture *texture);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+int		render(t_game *game);
+void	render_3d_projection(t_game *game, t_img *win_img);
+
+/*	utils	*/
+bool	is_floor(char c);
+bool	is_player(char c);
+bool	map_has_wall_at(double x, double y, t_map *map);
+double	normalize_angle(double ray_angle);
+
+/*	minimap	*/
+void	render_minimap(t_minimap *mini, t_ray *ray, t_img *win_img);
+void	render_all_ray(t_minimap *mini, t_ray *ray, t_img *win_img);
+
 #endif /* CUB3D_H */
