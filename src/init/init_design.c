@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 20:44:41 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 11:11:28 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 11:17:41 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	lst_to_design_dict(t_clst *file_lst,
 			free_vector(vector);
 			continue ;
 		}
-		if(vector[2])
+		if (vector[2])
 			free_all_exit(EM_DESIGN, game);
 		dict_addback(design_dict, dict_new(ft_xstrdup(vector[0]),
 				ft_xstrdup(vector[1])));
@@ -96,7 +96,8 @@ static void	load_ceil_floor_color(t_design *design,
 	free_vector(c_vector);
 	free_vector(f_vector);
 }
-//for test
+
+/* //for test
 void	print_dict(t_dict *d)
 {
 	t_dict	*p;
@@ -108,9 +109,10 @@ void	print_dict(t_dict *d)
 		printf("value: %s\n", p->value);
 		p = p->next;
 	}
-}
+} */
 
-void	init_design(t_clst *file_lst, int design_end_line, void *mlx_ptr, t_game *game)
+void	init_design(t_clst *file_lst,
+	int design_end_line, void *mlx_ptr, t_game *game)
 {
 	t_dict	*design_dict;
 

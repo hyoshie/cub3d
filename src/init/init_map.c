@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 21:25:22 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/14 11:11:24 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 11:33:47 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,14 @@ t_clst	*del_design_nodes(t_clst *file_lst, int design_end_line)
 	return (file_lst);
 }
 
-void	init_map(t_clst *file_lst, int map_start_line, int num_nodes, t_game *game)
+void	init_map(t_clst *file_lst,
+	int map_start_line, int num_nodes, t_game *game)
 {
 	t_clst	*map_lst;
 
 	map_lst = del_design_nodes(file_lst, map_start_line);
-	printf("%d, %d\n", num_nodes, map_start_line);
 	set_map_width_height(map_lst, &game->map, num_nodes - map_start_line);
 	map_lst = adjast_map_cols(file_lst, game->map.num_cols);
 	game->map.map_ptr = clst_to_array(map_lst, game->map.height);
-	validate_map(game->map.map_ptr, game);
+	validate_map(&game->map, game);
 }

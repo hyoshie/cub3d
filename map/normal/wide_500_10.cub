@@ -2,6 +2,7 @@ NO ./texture/manf1.xpm
 SO ./texture/manb1.xpm
 WE ./texture/ove.xpm 
 EA ./texture/castle.xpm
+
 F 220,100,0
 C 225,30,0
 

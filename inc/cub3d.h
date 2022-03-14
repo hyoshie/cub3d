@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/13 21:04:39 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 11:34:06 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,11 +144,12 @@ void	set_closer_wall_hit(t_ray *ray, t_point *horiz_wall_hit,
 			t_point *vert_wall_hit, t_point *player_pos);
 void	check_args(int ac, char **av);
 void	parse_file(char *file_path, t_game *game, void *mlx_ptr);
+int		path_to_clst(char *file_path, t_clst *file_lst, t_game *game);
 void	init_design(t_clst *file_lst, int map_start_line, void *mlx_ptr, t_game *game);
 void	init_map(t_clst *file_lst, int map_start_line, int num_nodes, t_game *game);
 void	init_player(t_player *player, char **map_ptr, t_game *game);
 void	init_minimap(t_minimap *mini, t_map *map, t_point player_pos);
-void	validate_map(char **map, t_game *game);
+void	validate_map(t_map *map, t_game *game);
 void	validate_design(t_dict *design_dict, t_game *game);
 void	validate_player(char **map_ptr, t_game *game);
 double	normalize_angle(double ray_angle);
