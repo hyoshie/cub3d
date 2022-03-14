@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 01:41:28 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/14 12:27:58 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,14 @@ typedef struct s_wall_strip {
 	int	bottom_pixel;
 }	t_wall_strip;
 
+typedef struct s_parse {
+	int		fd;
+	t_clst	*file_lst;
+	t_clst	*design_lst;
+	t_clst	*map_lst;
+	size_t	num_lines;
+}	t_parse;
+
 typedef struct s_game {
 	void		*mlx_ptr;
 	void		*win_ptr;
@@ -123,15 +131,16 @@ typedef struct s_game {
 void	check_args(int ac, char **av);
 void	init_game(t_game *game, char *file_path);
 void	init_image(t_img *img, void *mlx_ptr, int width, int height);
-void	init_design(t_design *design, t_clst *design_lst, void *mlx_ptr,
-			t_game *game);
-void	init_map(t_map *map, t_clst *map_lst, size_t num_nodes, t_game *game);
+void	init_design(t_clst *file_lst, int design_end_line, void *mlx_ptr, t_game *game);
+void	init_map(t_clst *file_lst,
+	int map_start_line, int num_nodes, t_game *game);
 void	init_minimap(t_minimap *mini, t_map *map, t_point player_pos);
 void	init_player(t_player *player, char **map_ptr, t_game *game);
 void	parse_file(char *file_path, t_game *game, void *mlx_ptr);
+int		path_to_clst(char *file_path, t_clst *file_lst, t_game *game);
 t_color	rgb_to_int(int t, int r, int g, int b);
 int		rgb_atoi(char *s, t_game *game);
-void	validate_map(char **map, t_game *game);
+void	validate_map(t_map *map, t_game *game);
 void	validate_design(t_dict *design_dict, t_game *game);
 void	validate_player(char **map_ptr, t_game *game);
 void	*xmlx_init(void);

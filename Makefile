@@ -6,7 +6,7 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/11 15:38:33 by yshimazu         ###   ########.fr        #
+#    Updated: 2022/03/14 12:28:15 by yshimazu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRCS		=	main.c\
 				process_keypress.c\
 				check_args.c\
 				parse_file.c\
+				parse_file_utils.c\
 				normalize_angle.c\
 				map_has_wall_at.c\
 				is_player.c\
@@ -79,7 +80,7 @@ all: $(OBJDIR) $(NAME)
 
 $(NAME): $(OBJS)
 	$(MAKE) -C $(LIBFT_DIR)
-	$(MAKE) -C $(MLX_DIR)
+	#$(MAKE) -C $(MLX_DIR)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS) 
 
 $(OBJDIR):

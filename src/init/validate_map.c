@@ -6,24 +6,12 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 16:22:05 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/11 12:12:39 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 12:16:35 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
-
-//for test
-/* void	print_array(char **array)
-{
-	int y;
-	y = 0;
-	while (array[y])
-	{
-		printf("%s\n", array[y]);
-		y++;
-	}
-} */
 
 static size_t	count_array_rows(char **map)
 {
@@ -53,25 +41,25 @@ char	**array_dup(char **array)
 	return (copy);
 }
 
-static bool	is_map_closed(char **map, int x, int y)
+static bool	is_all_sides_closed(char **map, int x, int y)
 {
 	if (!map[y] || map[y][x] == ' ' || map[y][x] == '\0')
 		return (false);
 	if (map[y][x] == '1' || map[y][x] == '@')
 		return (true);
 	map[y][x] = '@';
-	return (is_map_closed(map, x + 1, y) && is_map_closed(map, x - 1, y)
-		&& is_map_closed(map, x, y + 1) && is_map_closed(map, x, y - 1));
+	return (is_all_sides_closed(map, x + 1, y)
+		&& is_all_sides_closed(map, x - 1, y)
+		&& is_all_sides_closed(map, x, y + 1)
+		&& is_all_sides_closed(map, x, y - 1));
 }
 
-//all_free_exit的なやつにする
-void	validate_map(char **map, t_game *game)
+void	check_map_closed(char **map, t_game *game)
 {
 	char	**copy;
-	size_t	x;
-	size_t	y;
+	int		x;
+	int		y;
 
-	(void)game;
 	copy = array_dup(map);
 	y = 0;
 	while (copy[y])
@@ -79,11 +67,9 @@ void	validate_map(char **map, t_game *game)
 		x = 0;
 		while (copy[y][x])
 		{
-			if (y > MAX_MAP_ROWS || x > MAX_MAP_COLS)
-				free_all_exit(EM_MAP_BIG, game);
 			if (copy[y][x] == '0' || is_player(copy[y][x]))
 			{
-				if (!is_map_closed(copy, x, y))
+				if (!is_all_sides_closed(copy, x, y))
 					free_all_exit(EM_MAP_NOT_CLOSED, game);
 			}
 			x++;
@@ -91,4 +77,12 @@ void	validate_map(char **map, t_game *game)
 		y++;
 	}
 	free_vector(copy);
+}
+
+//all_free_exit的なやつにする
+void	validate_map(t_map *map, t_game *game)
+{
+	if (map->num_cols > MAX_MAP_COLS || map->num_rows > MAX_MAP_ROWS)
+		free_all_exit(EM_MAP_BIG, game);
+	check_map_closed(map->map_ptr, game);
 }

@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 15:25:32 by user42            #+#    #+#             */
-/*   Updated: 2022/03/11 16:17:21 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 11:47:39 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,68 +39,55 @@ void	print_array(char **array)
 	}
 } */
 
-int	ft_open_readfile(char *readfile)
+bool	is_map_line(char *line)
 {
-	int	fd;
-
-	fd = open(readfile, O_RDONLY);
-	if (fd == -1)
-		xperror(EM_OPEN);
-	return (fd);
-}
-
-size_t	fd_to_clsts(int fd, t_clst *clst1, t_clst *clst2, size_t sep_line)
-{
-	char	*line;
-	size_t	num_lines;
-	int		gnl_ret;
-
-	num_lines = 0;
-	while (1)
+	if (*line == '\0')
+		return (false);
+	while (*line)
 	{
-		gnl_ret = get_next_line(fd, &line);
-		if (gnl_ret == 0)
-			break ;
-		if (gnl_ret == -1)
-			xperror(EM_GNL);
-		else if (num_lines < sep_line)
-		{
-			if (line[0] == '\0')
-			{
-				free(line);
-				continue ;
-			}
-			clst_addback(clst1, clst_new(line));
-		}
-		else
-			clst_addback(clst2, clst_new(line));
-		num_lines++;
+		if (!ft_strchr(" 1", *line))
+			return (false);
+		line++;
 	}
-	return (num_lines);
+	return (true);
 }
 
-size_t	path_to_lsts(char *file_path, t_clst *design_lst,
-		t_clst *map_lst, size_t sep_line)
+int	map_line_at(t_clst *file_lst)
 {
-	int		fd;
-	size_t	num_lines;
+	int		map_start_line;
+	t_clst	*p;
 
-	fd = ft_open_readfile(file_path);
-	num_lines = fd_to_clsts(fd, design_lst, map_lst, sep_line);
-	close(fd);
-	return (num_lines);
+	map_start_line = 0;
+	p = file_lst->next;
+	while (p != file_lst)
+	{
+		if (is_map_line(p->content))
+			return (map_start_line);
+		map_start_line++;
+		p = p->next;
+	}
+	return (-1);
+}
+
+void	validate_start_line(int map_start_line, t_game *game)
+{
+	if (map_start_line == -1)
+		free_all_exit(EM_NO_MAP, game);
+	if (map_start_line < NUM_DESIGN_ELEMS)
+		free_all_exit(EM_DESIGN, game);
 }
 
 void	parse_file(char *file_path, t_game *game, void *mlx_ptr)
 {
-	t_clst	*design_lst;
-	t_clst	*map_lst;
-	size_t	num_lines;
+	t_clst	*file_lst;
+	int		map_start_line;
+	int		num_nodes;
 
-	design_lst = clst_new(NULL);
-	map_lst = clst_new(NULL);
-	num_lines = path_to_lsts(file_path, design_lst, map_lst, NUM_DESIGN_ELEMS);
-	init_map(&game->map, map_lst, num_lines - NUM_DESIGN_ELEMS, game);
-	init_design(&game->design, design_lst, mlx_ptr, game);
+	file_lst = clst_new(NULL);
+	num_nodes = path_to_clst(file_path, file_lst, game);
+	map_start_line = map_line_at(file_lst);
+	validate_start_line(map_start_line, game);
+	init_design(file_lst, map_start_line - 1, mlx_ptr, game);
+	init_map(file_lst, map_start_line, num_nodes, game);
 	init_player(&game->player, game->map.map_ptr, game);
 }
