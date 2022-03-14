@@ -6,33 +6,19 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 21:25:22 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/14 11:33:47 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:40:55 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
-/* 
-//for test, check
-void	print_clst(t_clst *lst)
-{
-	t_clst	*p;
 
-	p = lst->next;
-	while (p != lst)
-	{
-		printf("%s", p->content);
-		printf(" : %zu\n", ft_strlen(p->content));
-		p = p->next;
-	}
-}
- */
-t_clst	*adjast_map_cols(t_clst *map_lst, size_t map_cols)
+static t_clst	*adjast_map_cols(t_clst *map_lst, int map_cols)
 {
 	t_clst	*p;
 	t_clst	*adjasted_lst;
 	char	*spaces;
-	size_t	content_len;
+	int		content_len;
 
 	p = map_lst->next;
 	adjasted_lst = clst_new(NULL);
@@ -56,7 +42,7 @@ t_clst	*adjast_map_cols(t_clst *map_lst, size_t map_cols)
 	return (adjasted_lst);
 }
 
-void	set_map_width_height(t_clst *map_lst, t_map *map, size_t num_nodes)
+static void	set_map_width_height(t_clst *map_lst, t_map *map, size_t num_nodes)
 {
 	t_clst	*p;
 	size_t	line_len;
@@ -76,7 +62,7 @@ void	set_map_width_height(t_clst *map_lst, t_map *map, size_t num_nodes)
 	}
 }
 
-t_clst	*del_design_nodes(t_clst *file_lst, int design_end_line)
+static t_clst	*del_design_nodes(t_clst *file_lst, int design_end_line)
 {
 	t_clst	*p;
 	int		num_nodes;

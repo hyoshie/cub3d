@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:29:07 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/14 12:21:38 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:38:48 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 void	validate_player(char **map_ptr, t_game *game)
 {
-	size_t	y;
-	size_t	x;
-	int		num_player;
+	int	y;
+	int	x;
+	int	num_player;
 
 	y = 0;
 	num_player = 0;

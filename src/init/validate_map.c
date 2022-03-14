@@ -6,14 +6,14 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 16:22:05 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/14 18:21:11 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:43:40 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
 
-bool	is_map_char(char c)
+static bool	is_map_char(char c)
 {
 	if (ft_strchr("10 ", c))
 		return (true);
@@ -21,7 +21,7 @@ bool	is_map_char(char c)
 		return (false);
 }
 
-void	check_map_char(char **map, t_game *game)
+static void	check_map_char(char **map, t_game *game)
 {
 	int		x;
 	int		y;

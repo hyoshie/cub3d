@@ -6,37 +6,13 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 20:44:41 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 20:26:39 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:40:21 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
-/* //for test
-void	print_array(char **array)
-{
-	int y;
-	y = 0;
-	while (array[y])
-	{
-		printf("%s\n", array[y]);
-		y++;
-	}
-} */
 
-/* void	print_clst(t_clst *lst)
-{
-	t_clst	*p;
-
-	p = lst->next;
-	while (p != lst)
-	{
-		printf("%s", p->content);
-		printf(" : %zu\n", ft_strlen(p->content));
-		p = p->next;
-	}
-}
- */
 static void	load_xpm_file(void *mlx_ptr,
 	t_texture *direction, char *file_path, t_game *game)
 {
@@ -109,20 +85,6 @@ static void	load_ceil_floor_color(t_design *design,
 	free_vector(c_vector);
 	free_vector(f_vector);
 }
-
-/* //for test
-void	print_dict(t_dict *d)
-{
-	t_dict	*p;
-
-	p = d->next;
-	while (p != d)
-	{
-		printf("key: %s\n", p->key);
-		printf("value: %s\n", p->value);
-		p = p->next;
-	}
-} */
 
 void	init_design(t_clst *file_lst,
 	int map_start_line, void *mlx_ptr, t_game *game)

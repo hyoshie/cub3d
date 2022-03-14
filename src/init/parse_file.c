@@ -6,40 +6,14 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 15:25:32 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 20:22:56 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:42:09 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
 
-/* //for test
-void	print_clst(t_clst *lst)
-{
-	t_clst	*p;
-
-	p = lst->next;
-	while (p != lst)
-	{
-		ft_putstr_fd(p->content, STDOUT_FILENO);
-		ft_putchar_fd('\n', STDOUT_FILENO);
-		p = p->next;
-	}
-}
-
-//for test
-void	print_array(char **array)
-{
-	int y;
-	y = 0;
-	while (array[y])
-	{
-		printf("%s\n", array[y]);
-		y++;
-	}
-} */
-
-bool	is_map_line(char *line)
+static bool	is_map_line(char *line)
 {
 	if (*line == '\0')
 		return (false);
@@ -52,7 +26,7 @@ bool	is_map_line(char *line)
 	return (true);
 }
 
-int	map_line_at(t_clst *file_lst)
+static int	map_line_at(t_clst *file_lst)
 {
 	int		map_start_line;
 	t_clst	*p;
@@ -69,7 +43,7 @@ int	map_line_at(t_clst *file_lst)
 	return (-1);
 }
 
-void	validate_start_line(int map_start_line, t_game *game)
+static void	validate_start_line(int map_start_line, t_game *game)
 {
 	if (map_start_line == -1)
 		free_all_exit(EM_NO_MAP, game);

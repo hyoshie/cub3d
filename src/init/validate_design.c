@@ -6,14 +6,14 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 15:18:33 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/14 14:55:11 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:43:22 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
 
-bool	exist_all_settings(t_dict *design_dict)
+static bool	exist_all_settings(t_dict *design_dict)
 {
 	return (dict_search_item("NO", design_dict)
 		&& dict_search_item("SO", design_dict)
