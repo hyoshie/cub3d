@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 20:44:41 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 13:17:29 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 20:26:39 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	load_xpm_file(void *mlx_ptr,
 }
 
 static void	lst_to_design_dict(t_clst *file_lst,
-	int design_end_line, t_dict *design_dict, t_game *game)
+	int map_start_line, t_dict *design_dict, t_game *game)
 {
 	t_clst	*lst_ptr;
 	char	**vector;
@@ -58,7 +58,7 @@ static void	lst_to_design_dict(t_clst *file_lst,
 
 	i = 0;
 	lst_ptr = file_lst->next;
-	while (i < design_end_line)
+	while (i < map_start_line)
 	{
 		if (lst_ptr->content[0] == '\0')
 		{
@@ -125,12 +125,12 @@ void	print_dict(t_dict *d)
 } */
 
 void	init_design(t_clst *file_lst,
-	int design_end_line, void *mlx_ptr, t_game *game)
+	int map_start_line, void *mlx_ptr, t_game *game)
 {
 	t_dict	*design_dict;
 
 	design_dict = dict_new(NULL, NULL);
-	lst_to_design_dict(file_lst, design_end_line, design_dict, game);
+	lst_to_design_dict(file_lst, map_start_line, design_dict, game);
 	validate_design(design_dict, game);
 	load_wall_xpm_files(mlx_ptr, &game->design, design_dict, game);
 	load_ceil_floor_color(&game->design, design_dict, game);
