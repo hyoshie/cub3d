@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 15:25:32 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 10:46:52 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 11:12:54 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,6 @@ int	fd_to_clst(int fd, t_clst *file_lst, t_game *game)
 	}
 }
 
-/* void	file_path_to_lsts(char *file_path, t_parse *parse, size_t sep_line)
-{
-	parse->fd = ft_open_readfile(file_path);
-	parse->num_lines = fd_to_clsts(parse->fd, parse->design_lst, parse->map_lst, sep_line);
-	close(parse->fd);
-} */
-
 int	path_to_clst(char *file_path, t_clst *file_lst, t_game *game)
 {
 	int	fd;
@@ -100,7 +93,7 @@ bool	is_map_line(char *line)
 	return (true);
 }
 
-int	check_map_start(t_clst *file_lst)
+int	map_line_at(t_clst *file_lst)
 {
 	int		map_start_line;
 	t_clst	*p;
@@ -117,10 +110,8 @@ int	check_map_start(t_clst *file_lst)
 	return (-1);
 }
 
-void	validate_file(t_clst *file_lst, int map_start_line, t_game *game)
+void	validate_start_line(int map_start_line, t_game *game)
 {
-	//delete later
-	(void)file_lst;
 	if (map_start_line == -1)
 		free_all_exit(EM_NO_MAP, game);
 	if (map_start_line < NUM_DESIGN_ELEMS)
@@ -132,19 +123,12 @@ void	parse_file(char *file_path, t_game *game, void *mlx_ptr)
 	t_clst	*file_lst;
 	int		map_start_line;
 	int		num_nodes;
-	(void)mlx_ptr;
 
 	file_lst = clst_new(NULL);
 	num_nodes = path_to_clst(file_path, file_lst, game);
-	map_start_line = check_map_start(file_lst);
-	validate_file(file_lst, map_start_line, game);
-	//path_to_design_lst(file_path, &parse, NUM_DESIGN_ELEMS);
-	//path_to_map_lst(file_path, &parse, NUM_DESIGN_ELEMS);
+	map_start_line = map_line_at(file_lst);
+	validate_start_line(map_start_line, game);
 	init_design(file_lst, map_start_line - 1, mlx_ptr, game);
-	clst_clear(file_lst);
-	//printf("%d\n", num_nodes);
-	//init_map(file_lst, map_start_line, num_nodes, game);
-	//print_array(game->map.map_ptr);
-	//init_player(&game->player, game->map.map_ptr, game);
-	exit(0);
+	init_map(file_lst, map_start_line, num_nodes, game);
+	init_player(&game->player, game->map.map_ptr, game);
 }

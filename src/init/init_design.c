@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 20:44:41 by user42            #+#    #+#             */
-/*   Updated: 2022/03/13 21:34:17 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 11:11:28 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,4 @@ void	init_design(t_clst *file_lst, int design_end_line, void *mlx_ptr, t_game *g
 	validate_design(design_dict, game);
 	load_wall_xpm_files(mlx_ptr, &game->design, design_dict, game);
 	load_ceil_floor_color(&game->design, design_dict, game);
-	dict_clear(design_dict);
 }
