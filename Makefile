@@ -6,7 +6,7 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/14 15:34:36 by yshimazu         ###   ########.fr        #
+#    Updated: 2022/03/14 18:24:07 by yshimazu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS		=	main.c\
 				validate_design.c\
 				rgb_utils.c\
 				init_map.c\
+				check_map_closed.c\
 				init_player.c\
 				validate_player.c\
 				init_minimap.c\
