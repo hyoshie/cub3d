@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 12:19:04 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 12:39:09 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@
 # define EM_MLX "Error\nSomething is wrong in mlx function"
 # define EM_DESIGN "Error\nTexture or color settings is invalid in .cub file"
 # define EM_NO_MAP "Error\nCannot find valid map in .cub file"
+# define EM_MAP_CHAR "Error\nMap has wrong charactor"
 
 
 #endif /* CONSTANTS_H */
