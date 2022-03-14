@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 16:22:05 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/14 11:44:15 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 12:16:35 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ static bool	is_all_sides_closed(char **map, int x, int y)
 	if (map[y][x] == '1' || map[y][x] == '@')
 		return (true);
 	map[y][x] = '@';
-	return (is_all_sides_closed(map, x + 1, y) && is_all_sides_closed(map, x - 1, y)
-		&& is_all_sides_closed(map, x, y + 1) && is_all_sides_closed(map, x, y - 1));
+	return (is_all_sides_closed(map, x + 1, y)
+		&& is_all_sides_closed(map, x - 1, y)
+		&& is_all_sides_closed(map, x, y + 1)
+		&& is_all_sides_closed(map, x, y - 1));
 }
 
 void	check_map_closed(char **map, t_game *game)

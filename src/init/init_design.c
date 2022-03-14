@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 20:44:41 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 11:17:41 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 12:16:02 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,19 @@ void	print_array(char **array)
 	}
 } */
 
+/* void	print_clst(t_clst *lst)
+{
+	t_clst	*p;
+
+	p = lst->next;
+	while (p != lst)
+	{
+		printf("%s", p->content);
+		printf(" : %zu\n", ft_strlen(p->content));
+		p = p->next;
+	}
+}
+ */
 static void	load_xpm_file(void *mlx_ptr,
 	t_texture *direction, char *file_path, t_game *game)
 {
@@ -43,17 +56,17 @@ static void	lst_to_design_dict(t_clst *file_lst,
 	char	**vector;
 	int		i;
 
-	i = 1;
+	i = 0;
 	lst_ptr = file_lst->next;
 	while (i < design_end_line)
 	{
-		vector = ft_xsplit(lst_ptr->content, ' ');
-		if (!vector[0] || !vector[1])
+		if (lst_ptr->content[0] == '\0')
 		{
 			lst_ptr = lst_ptr->next;
-			free_vector(vector);
+			i++;
 			continue ;
 		}
+		vector = ft_xsplit(lst_ptr->content, ' ');
 		if (vector[2])
 			free_all_exit(EM_DESIGN, game);
 		dict_addback(design_dict, dict_new(ft_xstrdup(vector[0]),
@@ -109,8 +122,8 @@ void	print_dict(t_dict *d)
 		printf("value: %s\n", p->value);
 		p = p->next;
 	}
-} */
-
+}
+ */
 void	init_design(t_clst *file_lst,
 	int design_end_line, void *mlx_ptr, t_game *game)
 {
@@ -121,4 +134,5 @@ void	init_design(t_clst *file_lst,
 	validate_design(design_dict, game);
 	load_wall_xpm_files(mlx_ptr, &game->design, design_dict, game);
 	load_ceil_floor_color(&game->design, design_dict, game);
+	dict_clear(design_dict);
 }
