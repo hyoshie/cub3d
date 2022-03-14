@@ -6,14 +6,14 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 18:20:58 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/14 21:39:59 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:49:19 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
 
-static size_t	count_array_rows(char **map)
+static int	count_array_rows(char **map)
 {
 	int	i;
 
