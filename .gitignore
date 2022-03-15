@@ -73,3 +73,7 @@ tags
 
 # reference directory
 ref/
+
+# testlogs
+test.log
+leak.log
