@@ -6,7 +6,7 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/15 15:17:07 by user42           ###   ########.fr        #
+#    Updated: 2022/03/15 17:24:56 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ MLX_DIR		=	lib/minilibx-linux
 LIBFT_DIR	=	lib/libft
 OBJDIR		=	./obj
 
-VPATH		=	src:src/raycast:src/render:src/init:src/game:src/utils:src/minimap
+VPATH		=	src:src/raycast:src/render:src/init:src/game:src/utils:src/minimap\
+				bonus/src:bonus/src/raycast:bonus/src/render:bonus/src/init:bonus/src/game:bonus/src/utils:bonus/src/minimap
+
 
 SRCS		=	main.c\
 				init.c\
@@ -54,8 +56,47 @@ SRCS		=	main.c\
 				is_floor.c\
 				xmlx.c
 
+SRCS_BONUS	=	main.c\
+				free_all_exit_bonus.c\
+				process_keypress_bonus.c\
+				register_hooks_bonus.c\
+				update_bonus.c\
+				check_args_bonus.c\
+				check_map_closed_bonus.c\
+				init_bonus.c\
+				init_design_bonus.c\
+				init_map_bonus.c\
+				init_minimap_bonus.c\
+				init_player_bonus.c\
+				parse_file_bonus.c\
+				parse_file_utils_bonus.c\
+				rgb_utils_bonus.c\
+				validate_design_bonus.c\
+				validate_map_bonus.c\
+				validate_player_bonus.c\
+				xmlx_bonus.c\
+				render_all_ray_bonus.c\
+				render_minimap_bonus.c\
+				cast_all_rays_bonus.c\
+				find_horiz_wall_hit_bonus.c\
+				find_vert_wall_hit_bonus.c\
+				set_closer_wall_hit_bonus.c\
+				get_texel_color_bonus.c\
+				my_mlx_pixel_put_bonus.c\
+				render_3d_projection_bonus.c\
+				render_bonus.c\
+				is_floor_bonus.c\
+				is_player_bonus.c\
+				map_has_wall_at_bonus.c\
+				normalize_angle_bonus.c
+
 OBJS		=	$(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
+OBJS_BONUS	=	$(addprefix $(OBJDIR)/, $(notdir $(SRCS_BONUS:.c=.o)))
+BONUS_FLG	=	.bonus_flg
+
 DEPS		=	$(OBJS:.o=.d)
+DEPS_BONUS	=	$(OBJS_BONUS:.o=.d)
+
 LIBS 		=	-L$(LIBFT_DIR) -lft
 
 
@@ -88,7 +129,7 @@ $(OBJDIR):
 	mkdir $(OBJDIR)
 
 clean:
-	$(RM) $(OBJS) $(DEPS)
+	$(RM) $(OBJS) $(OBJS_BONUS) $(DEPS) $(DEPS_BONUS)
 	$(MAKE) -C $(LIBFT_DIR) clean
 	$(MAKE) -C $(MLX_DIR) clean
 
@@ -97,6 +138,14 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+bonus: $(BONUS_FLG)
+
+$(BONUS_FLG):	$(OBJS_BONUS)
+	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) -C $(MLX_DIR)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS_BONUS) $(LIBS) 
+	@touch $(BONUS_FLG)
 
 nm: $(NAME)
 	@nm -u $(NAME) | awk '{print $$2}' | awk -F'@' '{print $$1}' | egrep -v "^_" | egrep -v "open|close|read|write|printf|malloc|free|perror|strerror|exit" | egrep -v "^X" | egrep -v "cos|sin|tan|floor|ceil|pow|sqrt|remainder"
