@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/15 16:52:33 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/15 16:59:09 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct s_player {
 // 余裕があったらis_facingを一つの変数にする
 typedef struct s_ray {
 	double	angle;
-	t_point	light_source;
+	t_point	*light_source;
 	t_point	wall_hit;
 	double	distance;
 	bool	was_hit_vertical;
