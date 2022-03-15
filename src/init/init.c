@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 01:43:56 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/15 16:11:11 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,15 @@ void	init_image(t_img *img, void *mlx_ptr, int width, int height)
 
 static void	init_ray(t_ray **ray, t_player *player, t_map *map)
 {
+	int		i;
+
 	*ray = ft_calloc(sizeof(t_ray), NUM_RAYS);
+	i = 0;
+	while (i < NUM_RAYS)
+	{
+		(*ray)[i].light_source = &player->pos;
+		i++;
+	}
 	cast_all_rays(*ray, player, map);
 }
 

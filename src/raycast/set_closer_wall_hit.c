@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:41:29 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 01:10:23 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/15 16:12:33 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	set_closer_wall_hit(t_ray *ray, t_point *horiz_hit, t_point *vert_hit)
 	double	horiz_distance;
 	double	vert_distance;
 
-	horiz_distance = get_distance(horiz_hit, &ray->light_source);
-	vert_distance = get_distance(vert_hit, &ray->light_source);
+	horiz_distance = get_distance(horiz_hit, ray->light_source);
+	vert_distance = get_distance(vert_hit, ray->light_source);
 	if (horiz_distance < vert_distance)
 	{
 		ray->wall_hit = *horiz_hit;
