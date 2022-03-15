@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/15 10:39:10 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/15 16:52:33 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,19 @@ typedef struct s_wall_strip {
 	int	bottom_pixel;
 }	t_wall_strip;
 
+typedef struct s_parse {
+	t_clst	*file_lst;
+	t_dict	*design_dict;
+	char	**vector;
+	char	**c_vector;
+	char	**f_vector;
+}	t_parse;
+
 typedef struct s_game {
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_img		win_img;
+	t_parse		parse;
 	t_map		map;
 	t_minimap	mini;
 	t_design	design;
@@ -123,12 +132,12 @@ typedef struct s_game {
 void	check_args(int ac, char **av);
 void	init_game(t_game *game, char *file_path);
 void	init_image(t_img *img, void *mlx_ptr, int width, int height);
-void	init_design(t_clst *file_lst, int design_end_line, void *mlx_ptr, t_game *game);
+void	init_design(t_parse *parse, int map_start_line, void *mlx_ptr, t_game *game);
 void	init_map(t_clst *file_lst, int map_start_line, int num_nodes, t_game *game);
 void	check_map_closed(char **map, t_game *game);
 void	init_minimap(t_minimap *mini, t_map *map, t_point player_pos);
 void	init_player(t_player *player, char **map_ptr, t_game *game);
-void	parse_file(char *file_path, t_game *game, void *mlx_ptr);
+void	parse_file(char *file_path, t_parse *parse, t_game *game, void *mlx_ptr);
 int		path_to_clst(char *file_path, t_clst *file_lst, t_game *game);
 t_color	rgb_to_int(int t, int r, int g, int b);
 int		rgb_atoi(char *s, t_game *game);
@@ -141,6 +150,7 @@ void	*xmlx_new_image(void *mlx_ptr, int width, int height);
 
 /*	game	*/
 void	free_all_exit(char *exit_message, t_game *game);
+void	free_design_exit(char *exit_message, t_game *game);
 int		process_key_press(int keycode, t_game *game);
 void	register_hooks(t_game *game);
 void	update(t_game *game);

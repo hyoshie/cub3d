@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 11:24:49 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/14 12:04:23 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/15 16:53:38 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static int	ft_open_readfile(char *readfile)
 	return (fd);
 }
 
+//ここでfree(line)必要か検討
 static int	fd_to_clst(int fd, t_clst *file_lst, t_game *game)
 {
 	char	*line;
@@ -36,7 +37,7 @@ static int	fd_to_clst(int fd, t_clst *file_lst, t_game *game)
 		if (gnl_ret == 0)
 			return (num_nodes);
 		if (gnl_ret == -1)
-			free_all_exit(EM_GNL, game);
+			free_design_exit(EM_GNL, game);
 		num_nodes++;
 		clst_addback(file_lst, clst_new(line));
 	}

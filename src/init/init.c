@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:15:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 01:43:56 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/15 16:30:19 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	init_game(t_game *game, char *file_path)
 {
 	*game = (t_game){0};
 	game->mlx_ptr = xmlx_init();
-	parse_file(file_path, game, game->mlx_ptr);
+	parse_file(file_path, &game->parse, game, game->mlx_ptr);
 	game->win_ptr = \
 		xmlx_new_window(game->mlx_ptr, WINDOW_WIDTH,
 			WINDOW_HEIGHT, WINDOW_NAME);

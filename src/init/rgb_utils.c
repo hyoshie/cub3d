@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 14:54:15 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/11 14:54:46 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/15 16:54:15 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	rgb_atoi(char *s, t_game *game)
 		|| *s == '\r' || *s == '\t' || *s == '\v')
 		s++;
 	if (*s == '-' || *s == '+')
-		free_all_exit(EM_RGB, game);
+		free_design_exit(EM_RGB, game);
 	num = 0;
 	digit = 0;
 	while (ft_isdigit(*s) && digit < 3)
@@ -50,6 +50,6 @@ int	rgb_atoi(char *s, t_game *game)
 		digit++;
 	}
 	if (*s != '\0' || num < 0 || num > 255)
-		free_all_exit(EM_RGB, game);
+		free_design_exit(EM_RGB, game);
 	return (num);
 }
