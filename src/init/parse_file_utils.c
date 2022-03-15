@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 11:24:49 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/14 12:04:23 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/16 06:23:02 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_open_readfile(char *readfile)
 	return (fd);
 }
 
-static int	fd_to_clst(int fd, t_clst *file_lst, t_game *game)
+static int	fd_to_clst(int fd, t_clst *file_lst)
 {
 	char	*line;
 	int		gnl_ret;
@@ -36,19 +36,19 @@ static int	fd_to_clst(int fd, t_clst *file_lst, t_game *game)
 		if (gnl_ret == 0)
 			return (num_nodes);
 		if (gnl_ret == -1)
-			free_all_exit(EM_GNL, game);
+			error_exit(EM_GNL);
 		num_nodes++;
 		clst_addback(file_lst, clst_new(line));
 	}
 }
 
-int	path_to_clst(char *file_path, t_clst *file_lst, t_game *game)
+int	path_to_clst(char *file_path, t_clst *file_lst)
 {
 	int	fd;
 	int	num_nodes;
 
 	fd = ft_open_readfile(file_path);
-	num_nodes = fd_to_clst(fd, file_lst, game);
+	num_nodes = fd_to_clst(fd, file_lst);
 	close(fd);
 	return (num_nodes);
 }

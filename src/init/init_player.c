@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:31:47 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/15 15:15:49 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/16 07:26:32 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ static void	set_pos_angle(t_player *player, char **map_ptr)
 	}
 }
 
-void	init_player(t_player *player, char **map_ptr, t_game *game)
+void	init_player(char **map_ptr, t_player *player)
 {
-	validate_player(map_ptr, game);
+	validate_player(map_ptr);
 	set_pos_angle(player, map_ptr);
 	player->walk_direction = 0;
 	player->fov_angle = 60 * (M_PI / 180);

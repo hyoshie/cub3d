@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/15 16:19:09 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/16 07:30:33 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,26 +123,27 @@ typedef struct s_game {
 void	check_args(int ac, char **av);
 void	init_game(t_game *game, char *file_path);
 void	init_image(t_img *img, void *mlx_ptr, int width, int height);
-void	init_design(t_clst *file_lst, int design_end_line, void *mlx_ptr, \
-						t_game *game);
-void	init_map(t_clst *file_lst, int map_start_line, int num_nodes, \
-						t_game *game);
-void	check_map_closed(char **map, t_game *game);
+void	init_design(t_clst *file_lst, t_design *design, int map_start_line, \
+						void *mlx_ptr);
+void	init_map(t_clst *file_lst, t_map *map, int map_start_line, \
+						int num_nodes);
+void	check_map_closed(char **map);
 void	init_minimap(t_minimap *mini, t_map *map, t_point player_pos);
-void	init_player(t_player *player, char **map_ptr, t_game *game);
+void	init_player(char **map_ptr, t_player *player);
 void	parse_file(char *file_path, t_game *game, void *mlx_ptr);
-int		path_to_clst(char *file_path, t_clst *file_lst, t_game *game);
+int		path_to_clst(char *file_path, t_clst *file_lst);
 t_color	rgb_to_int(int t, int r, int g, int b);
-int		rgb_atoi(char *s, t_game *game);
-void	validate_map(t_map *map, t_game *game);
-void	validate_design(t_dict *design_dict, t_game *game);
-void	validate_player(char **map_ptr, t_game *game);
+int		rgb_atoi(char *s);
+void	validate_map(t_map *map);
+void	validate_design(t_dict *design_dict);
+void	validate_player(char **map_ptr);
 void	*xmlx_init(void);
 void	*xmlx_new_window(void *mlx_ptr, int size_x, int size_y, char *title);
 void	*xmlx_new_image(void *mlx_ptr, int width, int height);
 
 /*	game	*/
-void	free_all_exit(char *exit_message, t_game *game);
+void	free_all_exit(t_game *game);
+void	error_exit(char *message);
 int		process_key_press(int keycode, t_game *game);
 void	register_hooks(t_game *game);
 void	update(t_game *game);
