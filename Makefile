@@ -6,12 +6,12 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/14 18:24:07 by yshimazu         ###   ########.fr        #
+#    Updated: 2022/03/15 15:17:07 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	cub3D
-CFLAGS		=	-Wall -Wextra -Werror -g
+CFLAGS		=	-Wall -Wextra -Werror
 INCLUDES	=	-I./inc -I./$(MLX_DIR) -I$(LIBFT_DIR)
 
 MLX_DIR		=	lib/minilibx-linux
