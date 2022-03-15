@@ -18,7 +18,6 @@ file name: ./map/error/04_open_unable_20_13.cub
 Error
 open: Can't read file: Permission denied
 
-
 file name: ./map/error/06_rgb_20_13.cub
 Error
 rgb numbers need to be integer between 0 and 255
@@ -35,9 +34,13 @@ file name: ./map/error/08_design_word_20_13.cub
 Error
 Design info is wrong in .cub file
 
-file name: ./map/error/09_design_dup_20_13.cub
+file name: ./map/error/09_design_dup2_20_13.cub
 Error
 Design info is wrong in .cub file
+
+file name: ./map/error/09_design_dup_20_13.cub
+Error
+Design info is missing in .cub file
 
 file name: ./map/error/10_design_too_many_20_13.cub
 Error

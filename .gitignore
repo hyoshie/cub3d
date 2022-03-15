@@ -5,6 +5,9 @@
 # Permition test file
 map/error/04_open_unable_20_13.cub
 
+# test
+test.log
+
 # Prerequisites
 *.d
 
