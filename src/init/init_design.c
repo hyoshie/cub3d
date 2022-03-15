@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 20:44:41 by user42            #+#    #+#             */
-/*   Updated: 2022/03/15 10:35:43 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/15 16:07:49 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	lst_to_design_dict(t_clst *file_lst,
 			continue ;
 		}
 		vector = ft_xsplit(lst_ptr->content, ' ');
-		if (vector[2])
+		if (!vector[0] || !vector[1] || vector[2])
 			free_all_exit(EM_DESIGN, game);
 		dict_addback(design_dict, dict_new(ft_xstrdup(vector[0]),
 				ft_xstrdup(vector[1])));
