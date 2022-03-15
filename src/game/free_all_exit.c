@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all_exit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
+/*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 19:51:37 by user42            #+#    #+#             */
-/*   Updated: 2022/03/10 19:51:38 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/14 18:44:40 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ void	free_all_exit(char *exit_message, t_game *game)
 	free(game->mlx_ptr);
 	free(game->ray);
 	free_vector(game->map.map_ptr);
-	printf("%s\n", exit_message);
+	ft_putstr_fd(exit_message, STDERR_FILENO);
 	exit (EXIT_SUCCESS);
 }
