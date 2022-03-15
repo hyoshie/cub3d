@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 12:19:01 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 01:08:21 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/15 16:11:18 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	cast_all_rays(t_ray *ray, t_player *player, t_map *map)
 	i = 0;
 	while (i < NUM_RAYS)
 	{
-		ray[i].light_source = player->pos;
 		cast_ray(&ray[i], ray_angle, map);
 		ray_angle += player->fov_angle / (NUM_RAYS - 1);
 		i++;

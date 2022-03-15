@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 13:41:38 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 01:53:12 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/15 16:11:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static t_point	find_intercept(t_ray *ray)
 {
 	t_point	intercept;
 
-	intercept.x = floor(ray->light_source.x / TILE_SIZE) * TILE_SIZE;
+	intercept.x = floor(ray->light_source->x / TILE_SIZE) * TILE_SIZE;
 	if (ray->is_facing_right)
 		intercept.x += TILE_SIZE;
-	intercept.y = ray->light_source.y + \
-					(intercept.x - ray->light_source.x) * tan(ray->angle);
+	intercept.y = ray->light_source->y + \
+					(intercept.x - ray->light_source->x) * tan(ray->angle);
 	return (intercept);
 }
 
