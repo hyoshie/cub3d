@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 21:31:47 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/13 14:59:47 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/14 21:37:52 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static void	set_angle(t_player *player, char c)
 
 static void	set_pos_angle(t_player *player, char **map_ptr)
 {
-	size_t		y;
-	size_t		x;
+	int	y;
+	int	x;
 
 	y = 0;
 	while (map_ptr[y])

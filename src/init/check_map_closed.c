@@ -6,16 +6,16 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 18:20:58 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/14 18:22:16 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:49:19 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
 
-static size_t	count_array_rows(char **map)
+static int	count_array_rows(char **map)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (map[i])
@@ -23,11 +23,11 @@ static size_t	count_array_rows(char **map)
 	return (i);
 }
 
-char	**array_dup(char **array)
+static char	**array_dup(char **array)
 {
 	char	**copy;
-	size_t	i;
-	size_t	num_rows;
+	int		i;
+	int		num_rows;
 
 	i = 0;
 	num_rows = count_array_rows(array);
