@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 20:44:41 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 22:17:51 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/15 10:35:43 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,9 @@ static void	load_ceil_floor_color(t_design *design,
 
 	c_vector = ft_xsplit(dict_get_value("C", design_dict), ',');
 	f_vector = ft_xsplit(dict_get_value("F", design_dict), ',');
+	if (!c_vector[0] || !c_vector[1] || !c_vector[2]
+		|| !f_vector[0] || !f_vector[1] || !f_vector[2])
+		free_all_exit(EM_FEW_RGB, game);
 	if (c_vector[3] || f_vector[3])
 		free_all_exit(EM_MANY_RGB, game);
 	c_color = rgb_to_int(0, rgb_atoi(c_vector[0], game),

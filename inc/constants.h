@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 13:05:28 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 22:18:30 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/15 10:34:45 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,21 @@
 /*	Exit Message	*/
 # define EM_ESC "(｡-ω-)ﾉsee you again… "
 # define EM_ARG "Error\nUsage ./cub3d xxx.cub"
-# define EM_READ_XPM "Error\nCan't read xpm file (Check your cub file)"
+# define EM_READ_XPM "Error\nCan't read xpm file"
 # define EM_OPEN "Error\nopen: Can't read file"
 # define EM_GNL "Error\ngnl: Can't read line"
 # define EM_RGB "Error\nrgb numbers need to be integer between 0 and 255"
 # define EM_MANY_RGB "Error\nToo many RGB numbers"
-# define EM_MISS_DES "Error\nDesign info is missing in .cub file"
-# define EM_WRONG_DES "Error\nDesign info is wrong in .cub file"
+# define EM_FEW_RGB "Error\nRGB needs to have 3 numbers"
+# define EM_MISS_DES "Error\nDesign info is missing"
+# define EM_WRONG_DES "Error\nDesign info is wrong"
 # define EM_MAP_BIG "Error\nMap is too big (Upto 256 * 256)"
 # define EM_MAP_NOT_CLOSED "Error\nMap is not closed by wall"
 # define EM_MANY_PLAYERS "Error\nToo many players"
 # define EM_NO_PLAYER "Error\nOne player is needed"
 # define EM_MLX "Error\nSomething is wrong in mlx function"
-# define EM_DESIGN "Error\nTexture or color settings is invalid in .cub file"
-# define EM_NO_MAP "Error\nCannot find valid map in .cub file"
+# define EM_DESIGN "Error\nTexture or color settings is invalid"
+# define EM_NO_MAP "Error\nCannot find valid map"
 # define EM_MAP_CHAR "Error\nMap has wrong charactor"
 # define EM_MAP_DUP "Error\nOnly one map is accepted"
 
