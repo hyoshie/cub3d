@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 18:23:08 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/15 10:39:10 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,14 +107,6 @@ typedef struct s_wall_strip {
 	int	top_pixel;
 	int	bottom_pixel;
 }	t_wall_strip;
-
-typedef struct s_parse {
-	int		fd;
-	t_clst	*file_lst;
-	t_clst	*design_lst;
-	t_clst	*map_lst;
-	size_t	num_lines;
-}	t_parse;
 
 typedef struct s_game {
 	void		*mlx_ptr;
