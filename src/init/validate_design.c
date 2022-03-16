@@ -6,12 +6,28 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 15:18:33 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/16 06:15:35 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/16 10:19:11 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
+
+static size_t	count_commas(t_dict *design_dict, char *key)
+{
+	size_t	num_commas;
+	char	*color_str;
+
+	num_commas = 0;
+	color_str = dict_get_value(key, design_dict);
+	while (*color_str)
+	{
+		if (ft_strchr(",", *color_str))
+			num_commas++;
+		color_str++;
+	}
+	return (num_commas);
+}
 
 static bool	exist_all_settings(t_dict *design_dict)
 {
@@ -29,4 +45,7 @@ void	validate_design(t_dict *design_dict)
 		error_exit(EM_MISS_DES);
 	if (dict_count(design_dict) > NUM_DESIGN_ELEMS)
 		error_exit(EM_WRONG_DES);
+	if (count_commas(design_dict, "F") > 2
+		|| count_commas(design_dict, "C") > 2)
+		error_exit(EM_DESIGN);
 }
