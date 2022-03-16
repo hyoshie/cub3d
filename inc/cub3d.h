@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 12:00:27 by user42            #+#    #+#             */
-/*   Updated: 2022/03/16 07:30:33 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/16 11:17:10 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,6 @@ typedef struct s_map {
 	size_t	height;
 }	t_map;
 
-typedef struct s_minimap {
-	t_map	*map;
-	double	scale;
-	double	tile_size;
-	t_point	player_pos;
-	double	player_radius;
-	int		color;
-}	t_minimap;
-
 // should_move, should_rotateの命名がしっくりこないです
 typedef struct s_player {
 	t_point	pos;
@@ -113,7 +104,6 @@ typedef struct s_game {
 	void		*win_ptr;
 	t_img		win_img;
 	t_map		map;
-	t_minimap	mini;
 	t_design	design;
 	t_player	player;
 	t_ray		*ray;
@@ -128,7 +118,6 @@ void	init_design(t_clst *file_lst, t_design *design, int map_start_line, \
 void	init_map(t_clst *file_lst, t_map *map, int map_start_line, \
 						int num_nodes);
 void	check_map_closed(char **map);
-void	init_minimap(t_minimap *mini, t_map *map, t_point player_pos);
 void	init_player(char **map_ptr, t_player *player);
 void	parse_file(char *file_path, t_game *game, void *mlx_ptr);
 int		path_to_clst(char *file_path, t_clst *file_lst);
@@ -166,9 +155,5 @@ bool	is_floor(char c);
 bool	is_player(char c);
 bool	map_has_wall_at(double x, double y, t_map *map);
 double	normalize_angle(double ray_angle);
-
-/*	minimap	*/
-void	render_minimap(t_minimap *mini, t_ray *ray, t_img *win_img);
-void	render_all_ray(t_minimap *mini, t_ray *ray, t_img *win_img);
 
 #endif /* CUB3D_H */

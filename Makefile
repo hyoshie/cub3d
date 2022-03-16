@@ -6,7 +6,7 @@
 #    By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/23 23:37:22 by hyoshie           #+#    #+#              #
-#    Updated: 2022/03/16 11:12:45 by user42           ###   ########.fr        #
+#    Updated: 2022/03/16 11:25:45 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,40 +21,36 @@ OBJDIR		=	./obj
 VPATH		=	src:src/raycast:src/render:src/init:src/game:src/utils:src/minimap\
 				bonus/src:bonus/src/raycast:bonus/src/render:bonus/src/init:bonus/src/game:bonus/src/utils:bonus/src/minimap
 
-
 SRCS		=	main.c\
+				free_all_exit.c\
+				process_keypress.c\
+				register_hooks.c\
+				update.c\
+				check_args.c\
+				check_map_closed.c\
 				init.c\
 				init_design.c\
-				validate_design.c\
-				rgb_utils.c\
 				init_map.c\
-				check_map_closed.c\
 				init_player.c\
-				validate_player.c\
-				init_minimap.c\
+				parse_file.c\
+				parse_file_utils.c\
+				rgb_utils.c\
+				validate_design.c\
 				validate_map.c\
-				free_all_exit.c\
-				register_hooks.c\
-				my_mlx_pixel_put.c\
-				render.c\
-				render_3d_projection.c\
-				render_minimap.c\
-				render_all_ray.c\
-				get_texel_color.c\
-				update.c\
+				validate_player.c\
+				xmlx.c\
 				cast_all_rays.c\
 				find_horiz_wall_hit.c\
 				find_vert_wall_hit.c\
 				set_closer_wall_hit.c\
-				process_keypress.c\
-				check_args.c\
-				parse_file.c\
-				parse_file_utils.c\
-				normalize_angle.c\
-				map_has_wall_at.c\
-				is_player.c\
+				get_texel_color.c\
+				my_mlx_pixel_put.c\
+				render_3d_projection.c\
+				render.c\
 				is_floor.c\
-				xmlx.c
+				is_player.c\
+				map_has_wall_at.c\
+				normalize_angle.c
 
 SRCS_BONUS	=	main.c\
 				free_all_exit_bonus.c\
@@ -148,7 +144,7 @@ $(BONUS_FLG):	$(OBJS_BONUS)
 	@touch $(BONUS_FLG)
 
 norm: $(NAME)
-	norminette inc src lib/libft
+	norminette inc src lib/libft bonus
 
 nm: $(NAME)
 	@nm -u $(NAME) | awk '{print $$2}' | awk -F'@' '{print $$1}' | egrep -v "^_" | egrep -v "open|close|read|write|printf|malloc|free|perror|strerror|exit" | egrep -v "^X" | egrep -v "cos|sin|tan|floor|ceil|pow|sqrt|remainder"
