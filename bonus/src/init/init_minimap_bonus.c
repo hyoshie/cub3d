@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_minimap.c                                     :+:      :+:    :+:   */
+/*   init_minimap_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:51:39 by user42            #+#    #+#             */
-/*   Updated: 2022/03/09 20:09:01 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/16 11:08:58 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "constants.h"
-#include "cub3d.h"
+#include "constants_bonus.h"
+#include "cub3d_bonus.h"
 
 static double	calc_minimap_scale(t_map *map)
 {

@@ -1,22 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   validate_player_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/03 23:22:31 by user42            #+#    #+#             */
-/*   Updated: 2022/03/16 11:16:10 by user42           ###   ########.fr       */
+/*   Created: 2022/03/11 15:29:07 by yshimazu          #+#    #+#             */
+/*   Updated: 2022/03/16 11:08:59 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "constants.h"
-#include "cub3d.h"
+#include "constants_bonus.h"
+#include "cub3d_bonus.h"
 
-int	render(t_game *game)
+void	validate_player(char **map_ptr)
 {
-	render_3d_projection(game, &game->win_img);
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
-								game->win_img.img_ptr, 0, 0);
-	return (0);
+	int	y;
+	int	x;
+	int	num_player;
+
+	y = 0;
+	num_player = 0;
+	while (map_ptr[y])
+	{
+		x = 0;
+		while (map_ptr[y][x])
+		{
+			if (is_player(map_ptr[y][x]))
+			{
+				num_player++;
+				if (num_player > 1)
+					error_exit(EM_MANY_PLAYERS);
+			}
+			x++;
+		}
+		y++;
+	}
+	if (num_player == 0)
+		error_exit(EM_NO_PLAYER);
 }

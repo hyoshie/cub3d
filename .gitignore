@@ -77,3 +77,6 @@ ref/
 # testlogs
 test.log
 leak.log
+
+# utility
+.bonus_flg

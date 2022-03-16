@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_minimap.c                                   :+:      :+:    :+:   */
+/*   render_minimap_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 14:33:02 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 00:48:17 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/16 11:08:59 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "constants.h"
-#include "cub3d.h"
+#include "constants_bonus.h"
+#include "cub3d_bonus.h"
 
 static void	render_player(t_minimap *mini, t_img *win_img)
 {

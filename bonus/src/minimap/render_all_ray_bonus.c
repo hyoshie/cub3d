@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_all_ray.c                                   :+:      :+:    :+:   */
+/*   render_all_ray_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 11:09:55 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 00:44:27 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/16 11:08:59 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "constants.h"
-#include "cub3d.h"
+#include "constants_bonus.h"
+#include "cub3d_bonus.h"
 
 static void	render_ray(t_minimap *mini, t_ray *ray, t_img *win_img)
 {

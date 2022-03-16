@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   my_mlx_pixel_put_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/03 23:22:31 by user42            #+#    #+#             */
-/*   Updated: 2022/03/16 11:16:10 by user42           ###   ########.fr       */
+/*   Created: 2022/02/27 17:34:05 by user42            #+#    #+#             */
+/*   Updated: 2022/03/16 11:09:00 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "constants.h"
-#include "cub3d.h"
+#include "constants_bonus.h"
+#include "cub3d_bonus.h"
 
-int	render(t_game *game)
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
-	render_3d_projection(game, &game->win_img);
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
-								game->win_img.img_ptr, 0, 0);
-	return (0);
+	char	*dst;
+
+	dst = img->addr + (y * img->size_line + x * (img->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }

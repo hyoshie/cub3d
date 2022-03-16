@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/03 23:22:31 by user42            #+#    #+#             */
-/*   Updated: 2022/03/16 11:16:10 by user42           ###   ########.fr       */
+/*   Created: 2022/02/24 12:02:40 by user42            #+#    #+#             */
+/*   Updated: 2022/03/16 11:08:59 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "constants.h"
-#include "cub3d.h"
+#include "constants_bonus.h"
+#include "cub3d_bonus.h"
 
-int	render(t_game *game)
+int	main(int ac, char *av[])
 {
-	render_3d_projection(game, &game->win_img);
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, \
-								game->win_img.img_ptr, 0, 0);
+	t_game	game;
+
+	check_args(ac, av);
+	init_game(&game, av[1]);
+	register_hooks(&game);
+	mlx_loop(game.mlx_ptr);
 	return (0);
 }
