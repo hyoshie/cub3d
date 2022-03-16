@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 20:44:41 by user42            #+#    #+#             */
-/*   Updated: 2022/03/16 07:29:16 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/16 10:32:45 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ static void	load_ceil_floor_color(t_design *design,
 {
 	char	**c_vector;
 	char	**f_vector;
-	t_color	c_color;
-	t_color	f_color;
 
 	c_vector = ft_xsplit(dict_get_value("C", design_dict), ',');
 	f_vector = ft_xsplit(dict_get_value("F", design_dict), ',');
@@ -81,12 +79,10 @@ static void	load_ceil_floor_color(t_design *design,
 		error_exit(EM_FEW_RGB);
 	if (c_vector[3] || f_vector[3])
 		error_exit(EM_MANY_RGB);
-	c_color = rgb_to_int(0, rgb_atoi(c_vector[0]),
+	design->ceil = rgb_to_int(0, rgb_atoi(c_vector[0]),
 			rgb_atoi(c_vector[1]), rgb_atoi(c_vector[2]));
-	f_color = rgb_to_int(0, rgb_atoi(f_vector[0]),
+	design->floor = rgb_to_int(0, rgb_atoi(f_vector[0]),
 			rgb_atoi(f_vector[1]), rgb_atoi(f_vector[2]));
-	design->ceil = c_color;
-	design->floor = f_color;
 	free_vector(c_vector);
 	free_vector(f_vector);
 }
