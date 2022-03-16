@@ -6,14 +6,14 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:29:07 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/14 21:38:48 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/16 06:25:11 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "cub3d.h"
 
-void	validate_player(char **map_ptr, t_game *game)
+void	validate_player(char **map_ptr)
 {
 	int	y;
 	int	x;
@@ -30,12 +30,12 @@ void	validate_player(char **map_ptr, t_game *game)
 			{
 				num_player++;
 				if (num_player > 1)
-					free_all_exit(EM_MANY_PLAYERS, game);
+					error_exit(EM_MANY_PLAYERS);
 			}
 			x++;
 		}
 		y++;
 	}
 	if (num_player == 0)
-		free_all_exit(EM_NO_PLAYER, game);
+		error_exit(EM_NO_PLAYER);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   register_hooks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <hyoshie@student.42tokyo.jp>        +#+  +:+       +#+        */
+/*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:29:08 by user42            #+#    #+#             */
-/*   Updated: 2022/03/13 14:49:54 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/16 06:27:02 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	reset_key_press(int keycode, t_game *game)
 
 static int	close_window(t_game *game)
 {
-	free_all_exit(EM_ESC, game);
+	free_all_exit(game);
 	return (0);
 }
 

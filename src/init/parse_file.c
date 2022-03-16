@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 15:25:32 by user42            #+#    #+#             */
-/*   Updated: 2022/03/14 21:42:09 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/16 07:26:09 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ static int	map_line_at(t_clst *file_lst)
 	return (-1);
 }
 
-static void	validate_start_line(int map_start_line, t_game *game)
+static void	validate_start_line(int map_start_line)
 {
 	if (map_start_line == -1)
-		free_all_exit(EM_NO_MAP, game);
+		error_exit(EM_NO_MAP);
 	if (map_start_line < NUM_DESIGN_ELEMS)
-		free_all_exit(EM_DESIGN, game);
+		error_exit(EM_DESIGN);
 }
 
 void	parse_file(char *file_path, t_game *game, void *mlx_ptr)
@@ -58,10 +58,10 @@ void	parse_file(char *file_path, t_game *game, void *mlx_ptr)
 	int		num_nodes;
 
 	file_lst = clst_new(NULL);
-	num_nodes = path_to_clst(file_path, file_lst, game);
+	num_nodes = path_to_clst(file_path, file_lst);
 	map_start_line = map_line_at(file_lst);
-	validate_start_line(map_start_line, game);
-	init_design(file_lst, map_start_line, mlx_ptr, game);
-	init_map(file_lst, map_start_line, num_nodes, game);
-	init_player(&game->player, game->map.map_ptr, game);
+	validate_start_line(map_start_line);
+	init_design(file_lst, &game->design, map_start_line, mlx_ptr);
+	init_map(file_lst, &game->map, map_start_line, num_nodes);
+	init_player(game->map.map_ptr, &game->player);
 }

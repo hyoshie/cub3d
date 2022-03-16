@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 21:25:29 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/15 11:20:04 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/15 18:18:47 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,5 @@ static int	check_extension(char *filename)
 void	check_args(int ac, char **av)
 {
 	if (ac != 2 || check_extension(av[1]) == -1)
-	{
-		ft_putendl_fd(EM_ARG, STDERR_FILENO);
-		exit (EXIT_SUCCESS);
-	}
+		error_exit(EM_ARG);
 }

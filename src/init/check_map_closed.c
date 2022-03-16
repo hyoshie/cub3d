@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 18:20:58 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/14 21:49:19 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/16 06:19:44 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static bool	is_all_sides_closed(char **map, int x, int y)
 		&& is_all_sides_closed(map, x, y - 1));
 }
 
-void	check_map_closed(char **map, t_game *game)
+void	check_map_closed(char **map)
 {
 	char	**copy;
 	int		x;
@@ -70,7 +70,7 @@ void	check_map_closed(char **map, t_game *game)
 			if (copy[y][x] == '0' || is_player(copy[y][x]))
 			{
 				if (!is_all_sides_closed(copy, x, y))
-					free_all_exit(EM_MAP_NOT_CLOSED, game);
+					error_exit(EM_MAP_NOT_CLOSED);
 			}
 			x++;
 		}

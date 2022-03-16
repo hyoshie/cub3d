@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 15:18:33 by yshimazu          #+#    #+#             */
-/*   Updated: 2022/03/14 21:43:22 by yshimazu         ###   ########.fr       */
+/*   Updated: 2022/03/16 06:15:35 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static bool	exist_all_settings(t_dict *design_dict)
 		&& dict_search_item("C", design_dict));
 }
 
-void	validate_design(t_dict *design_dict, t_game *game)
+void	validate_design(t_dict *design_dict)
 {
 	if (!exist_all_settings(design_dict))
-		free_all_exit(EM_MISS_DES, game);
+		error_exit(EM_MISS_DES);
 	if (dict_count(design_dict) > NUM_DESIGN_ELEMS)
-		free_all_exit(EM_WRONG_DES, game);
+		error_exit(EM_WRONG_DES);
 }

@@ -6,7 +6,7 @@
 /*   By: yshimazu <yshimazu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 11:25:13 by user42            #+#    #+#             */
-/*   Updated: 2022/03/13 14:53:36 by user42           ###   ########.fr       */
+/*   Updated: 2022/03/16 06:27:29 by yshimazu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	process_key_press(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
 	{
-		free_all_exit(EM_ESC, game);
+		free_all_exit(game);
 	}
 	if (is_move_key(keycode))
 	{
