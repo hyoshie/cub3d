@@ -12,12 +12,6 @@ RESET="\033[0m"
 
 testlog=test.log
 
-store_leaklog() {
-	echo "file name: $1" >> $leaklog
-	cat $tmplog >> $leaklog
-	echo >> $leaklog
-}
-
 ##### Main Process #####
 make
 rm -f $testlog $leaklog $tmplog
